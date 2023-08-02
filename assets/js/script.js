@@ -4,9 +4,10 @@ $(document).ready(function () {
     // Toggle code from https://api.jqueryui.com/toggle/
     // Use of scrollTop ensures revealed content is visible - from https://www.geeksforgeeks.org/how-to-scroll-automatically-to-the-bottom-of-the-page-using-jquery/
 
-    $(".toggle").click(function () {
-        $(this).siblings("div").toggle("drop");
-        $(document).scrollTop($(document).height());
+    $("#show-i-search").click(function () {
+        $("#welcome").hide("drop");
+        $("#select-spirit").show("drop", { direction: "up" }, 1000);
+        //$(document).scrollTop($(document).height());
     });
 
     //Link to API to display drinks by main ingredient

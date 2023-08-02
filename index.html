@@ -18,33 +18,38 @@
     <title>Shaker Maker</title>
   </head>
   <body>
-    <!-- Header -->
-    <header>
-      <img
-        class="w-25 d-block mx-auto"
-        id="logo"
-        src="assets/images/logo.png"
-        alt="Neon representation of cocktail glass with Shaker Maker text"
-      />
-
-      <p class="text-center" id="strapline">
-        Your ultimate cocktail recipe resource!!!
-      </p>
-    </header>
-    <!-- /.header -->
-
     <!-- Content -->
     <main>
-      <section id="main-content" class="mx-auto text-center">
-        <div>
-          <button class="btn btn-light toggle my-3">
+      <!-- Welcome -->
+      <section id="welcome" class="container">
+        <img
+          class="w-25 d-block mx-auto"
+          id="logo"
+          src="assets/images/logo.png"
+          alt="Neon representation of cocktail glass with Shaker Maker text"
+        />
+        <h1 class="d-none">Shaker Maker</h1>
+        <p class="text-center" id="strapline">
+          You ultimate cockail recipe resource!!!
+        </p>
+
+        <div id="main-menu">
+          <button class="btn btn-light my-3" id="show-i-search">
             I have some ingredients... inspire me!
           </button>
-          <div
-            id="search-ingredients"
-            class="px-2 mb-5 mx-auto text-center hidden"
-          >
-            <p>To begin, select your base alcohol below.</p>
+
+          <button class="btn btn-light my-3" id="show-c-search">
+            I know what I want... let me find it
+          </button>
+        </div>
+      </section>
+      <!-- /.welcome -->
+
+      <!-- Search by ingredient -->
+      <section id="search-ingredients" class="container text-center">
+        <div id="select-spirit" class="row text-center hidden">
+          <div class="col-12">
+            <h2>Select a spirit to begin:</h2>
             <button class="btn btn-dark" id="vodka-button">Vodka</button>
             <button class="btn btn-dark" id="gin-button">Gin</button>
             <button class="btn btn-dark" id="scotch-button">Scotch</button>
@@ -53,20 +58,71 @@
             <button class="btn btn-dark" id="tequila-button">Tequila</button>
           </div>
         </div>
-        <div id="list" class="container"></div>
-        <div>
-          <button class="btn btn-light toggle my-3">
-            I know what I want... let me find it
-          </button>
-          <div
-            id="search-cocktail"
-            class="px-2 mb-5 mx-auto text-center hidden"
-          >
+        <div class="row text-center hidden" id="select-ingredients">
+          <div class="col-12">
+            <h2>Select other ingredients:</h2>
+          </div>
+
+          <div class="col-3">
+            <h3>Mixers</h3>
+            <button class="btn btn-dark" id="m1-button">Mixer 1</button>
+            <button class="btn btn-dark" id="m2-button">Mixer 2</button>
+            <button class="btn btn-dark" id="m3-button">Mixer 3</button>
+            <button class="btn btn-dark" id="m4-button">Mixer 4</button>
+            <button class="btn btn-dark" id="m5-button">Mixer 5</button>
+            <button class="btn btn-dark" id="m6-button">Mixer 6</button>
+          </div>
+
+          <div class="col-3">
+            <h3>Syrups</h3>
+            <button class="btn btn-dark" id="s1-button">Syrup 1</button>
+            <button class="btn btn-dark" id="s2-button">Syrup 2</button>
+            <button class="btn btn-dark" id="s3-button">Syrup 3</button>
+            <button class="btn btn-dark" id="s4-button">Syrup 4</button>
+            <button class="btn btn-dark" id="s5-button">Syrup 5</button>
+            <button class="btn btn-dark" id="s6-button">Syrup 6</button>
+          </div>
+
+          <div class="col-3">
+            <h3>Bitters</h3>
+            <button class="btn btn-dark" id="b1-button">Bitters 1</button>
+            <button class="btn btn-dark" id="b2-button">Bitters 2</button>
+            <button class="btn btn-dark" id="b3-button">Bitters 3</button>
+            <button class="btn btn-dark" id="b4-button">Bitters 4</button>
+            <button class="btn btn-dark" id="b5-button">Bitters 5</button>
+            <button class="btn btn-dark" id="b6-button">Bitters 6</button>
+          </div>
+
+          <div class="col-3">
+            <h3>Garnishes</h3>
+            <button class="btn btn-dark" id="g1-button">Garnish 1</button>
+            <button class="btn btn-dark" id="g2-button">Garnish 2</button>
+            <button class="btn btn-dark" id="g3-button">Garnish 3</button>
+            <button class="btn btn-dark" id="g4-button">Garnish 4</button>
+            <button class="btn btn-dark" id="g5-button">Garnish 5</button>
+            <button class="btn btn-dark" id="g6-button">Garnish 6</button>
+          </div>
+        </div>
+      </section>
+      <!-- /.search by ingredient -->
+
+      <!-- Search by cocktail -->
+      <section id="search-cocktail" class="container text-center hidden">
+        <div class="row">
+          <div class="col-12">
             <input type="text" placeholder="Search here" />
           </div>
         </div>
       </section>
+      <!-- /.search by cocktail -->
+
+      <!-- Results -->
+      <section id="results" class="container">
+        <div id="list"></div>
+      </section>
     </main>
+    <!-- /.results -->
+
     <!-- /.content -->
 
     <!-- Scripts -->
