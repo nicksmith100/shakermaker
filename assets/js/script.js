@@ -15,7 +15,7 @@ $(document).ready(function () {
     function getData(spirit, cb) {
         var xhr = new XMLHttpRequest();
 
-        xhr.open("GET", "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + spirit);
+        xhr.open("GET", "https://www.thecocktaildb.com/api/json/v2/9973533/filter.php?i=" + spirit);
         xhr.send();
 
         xhr.onreadystatechange = function () {
