@@ -1,11 +1,17 @@
 $(document).ready(function () {
 
-    //Link to API to pull full list of ingredients and push to array (fullIngArray)
+    // Declare consts for API URLs
 
-    function getIngList(cb) {
+    const ingredientListURL = "https://www.thecocktaildb.com/api/json/v2/9973533/list.php?i=list";
+    const ingredientSearchURL = "https://www.thecocktaildb.com/api/json/v2/9973533/filter.php?i=";
+
+    // Link to API to get data based on API URL
+    // Utilises code from "Working with external resources" lessons of CI course
+
+    function getData(apiURL, cb) {
         var xhr = new XMLHttpRequest();
 
-        xhr.open("GET", "https://www.thecocktaildb.com/api/json/v2/9973533/list.php?i=list");
+        xhr.open("GET", apiURL);
         xhr.send();
 
         xhr.onreadystatechange = function () {
@@ -15,21 +21,17 @@ $(document).ready(function () {
         };
     }
 
+    // Invoke getData function to pull full list of ingredients and push to array (fullIngArray)
+
     var fullIngs = [];
 
-    getIngList(function (data) {
+    getData(ingredientListURL, function (data) {
         data = data.drinks;
         data.forEach(function (item) {
             fullIngs.push(item.strIngredient1);
         });
 
     });
-
-    // Timeout inserted to check array is populating correctly - can be removed later
-
-    // setTimeout(function () {
-    // console.log(fullIngs);
-    // }, 500);
 
     //Select top spirits from full ingredients array - ensures names match those from API
 
@@ -61,7 +63,6 @@ $(document).ready(function () {
         }
         );
 
-
     });
 
     $("#show-c-search").click(function () {
@@ -72,32 +73,17 @@ $(document).ready(function () {
 
     });
 
-    //Link to API to display drinks by main ingredient
-    // Utilises code from "Working with external resources" lessons of CI course
-
-    function getData(spirit, cb) {
-        var xhr = new XMLHttpRequest();
-
-        xhr.open("GET", "https://www.thecocktaildb.com/api/json/v2/9973533/filter.php?i=" + spirit);
-        xhr.send();
-
-        xhr.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                cb(JSON.parse(this.responseText));
-            }
-        };
-    }
-
+    //Invoke getData function to display drinks by main ingredient
+    
     function writeToDocument(spirit) {
+        let spiritURL = ingredientSearchURL + spirit;
         document.getElementById("list").innerHTML = "";
-        getData(spirit, function (data) {
+        getData(spiritURL, function (data) {
             data = data.drinks;
             data.forEach(function (item) {
                 document.getElementById("list").innerHTML +=
                     `<span><p>${item.strDrink}</p><img src="${item.strDrinkThumb}" class="mb-5" width="150"></span><br>`;
             });
-
-
 
         });
 
