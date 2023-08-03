@@ -75,8 +75,12 @@ $(document).ready(function () {
 
     }
 
-    // Reveal "Search by ingredient" section on button click and create buttons from topSpirits array
-    // Code for show and hide from https://api.jqueryui.com/
+    // Set value of selectedSpirit variable and display ingredients selection section
+
+
+
+    // Reveal "Select spirit" div on button click and create buttons from topSpirits array
+    // Code for show and hide from: https://api.jqueryui.com/
 
     $("#show-i-search").click(function () {
         $("#welcome").hide("drop", function () {
@@ -86,33 +90,59 @@ $(document).ready(function () {
 
         for (let i = 0; i < topSpirits.length; i++) {
             document.getElementById("spirit-buttons").innerHTML += `
-            <button class="btn btn-dark btn-lg btn-block spirit-btn" id="${topSpirits[i]}-button">${topSpirits[i]}</button>
+            <button class="btn btn-dark btn-lg mx-3 my-3 spirit-btn" id="${topSpirits[i]}-button">${topSpirits[i]}</button>
         `;
         }
 
-        // Code to add event listeners to multiple elements: https://www.codeinwp.com/snippets/add-event-listener-to-multiple-elements-with-javascript/
+        // Add event listeners to spirit buttons. Code adapted from: https://www.codeinwp.com/snippets/add-event-listener-to-multiple-elements-with-javascript/
 
         let spiritBtns = document.querySelectorAll('.spirit-btn');
 
         for (i of spiritBtns) {
             i.addEventListener('click', function () {
-                writeToDocument(this.innerText);
+                this.classList.remove("btn-dark");
+                this.classList.add("btn-light");
+                var ingString = this.innerText;
+                $("#select-ingredients").show("drop", function () {
+
+                    // Reveal "Select ingredients" div on button click and create buttons from topIngs array
+
+                    for (let i = 0; i < topIngs.length; i++) {
+                        document.getElementById("ing-buttons").innerHTML += `
+            <button class="btn btn-dark btn-lg mx-3 my-3 ing-btn" id="${topIngs[i]}-button">${topIngs[i]}</button>
+        `;
+                    }
+
+                    // Add event listeners to ingredient buttons
+
+                    let ingBtns = document.querySelectorAll('.ing-btn');
+
+                    for (i of ingBtns) {
+                        i.addEventListener('click', function () {
+                            this.classList.remove("btn-dark");
+                            this.classList.add("btn-light");
+                            ingString += "," + this.innerText;
+                            console.log(ingString);
+
+                        });
+                    };
+                });
+
             });
-        }
 
+            $("#show-c-search").click(function () {
+                $("#welcome").hide("drop", function () {
+                    $("#search-cocktail").show("drop");
+                }
+                );
+
+            });
+
+
+
+
+
+
+        };
     });
-
-    $("#show-c-search").click(function () {
-        $("#welcome").hide("drop", function () {
-            $("#search-cocktail").show("drop");
-        }
-        );
-
-    });
-
-
-
-
-
-
 });
