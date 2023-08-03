@@ -27,10 +27,29 @@ $(document).ready(function () {
 
     // Timeout inserted to check array is populating correctly - can be removed later
 
+    // setTimeout(function () {
+    // console.log(fullIngs);
+    // }, 500);
+
+    //Select top spirits from full ingredients array - ensures names match those from API
+
+    var topSpirits = [];
+
     setTimeout(function () {
-        console.log(fullIngs);
+        topSpirits.push(fullIngs[0], fullIngs[1], fullIngs[2], fullIngs[3], fullIngs[4], fullIngs[65], fullIngs[66], fullIngs[149], fullIngs[186], fullIngs[349], fullIngs[416], fullIngs[465]);
     }, 500);
 
+    console.log(topSpirits);
+
+    //Select top ingredients from full ingredients array - ensures names match those from API
+
+    var topIngs = [];
+
+    setTimeout(function () {
+        topIngs.push(fullIngs[378], fullIngs[234], fullIngs[247], fullIngs[18], fullIngs[155], fullIngs[385], fullIngs[279], fullIngs[281], fullIngs[396], fullIngs[315], fullIngs[158], fullIngs[361]);
+    }, 500);
+
+    console.log(topIngs);
 
     // Reveal sections on button click
     // Toggle code from https://api.jqueryui.com/toggle/
