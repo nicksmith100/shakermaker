@@ -43,7 +43,7 @@ $(document).ready(function () {
 
     console.log(topSpirits);
 
-    //Select top ingredients from full ingredients array - ensures names match those from API
+    //Select top ingredients from full ingredients array - ensures ingredient names match those from API
 
     var topIngs = [];
 
@@ -53,28 +53,8 @@ $(document).ready(function () {
 
     console.log(topIngs);
 
-    // Reveal sections on button click
-    // Toggle code from https://api.jqueryui.com/toggle/
-    // Use of scrollTop ensures revealed content is visible - from https://www.geeksforgeeks.org/how-to-scroll-automatically-to-the-bottom-of-the-page-using-jquery/
-
-    $("#show-i-search").click(function () {
-        $("#welcome").hide("drop", function () {
-            $("#select-spirit").show("drop");
-        }
-        );
-
-    });
-
-    $("#show-c-search").click(function () {
-        $("#welcome").hide("drop", function () {
-            $("#search-cocktail").show("drop");
-        }
-        );
-
-    });
-
     //Invoke getData function to display drinks by main ingredient
-    
+
     function writeToDocument(spirit) {
         let spiritURL = ingredientSearchURL + spirit;
         document.getElementById("list").innerHTML = "";
@@ -95,23 +75,44 @@ $(document).ready(function () {
 
     }
 
-    $("#vodka-button").click(function () {
-        writeToDocument("Vodka");
+    // Reveal "Search by ingredient" section on button click and create buttons from topSpirits array
+    // Code for show and hide from https://api.jqueryui.com/
+
+    $("#show-i-search").click(function () {
+        $("#welcome").hide("drop", function () {
+            $("#select-spirit").show("drop");
+        }
+        );
+
+        for (let i = 0; i < topSpirits.length; i++) {
+            document.getElementById("spirit-buttons").innerHTML += `
+            <button class="btn btn-dark btn-lg btn-block spirit-btn" id="${topSpirits[i]}-button">${topSpirits[i]}</button>
+        `;
+        }
+
+        // Code to add event listeners to multiple elements: https://www.codeinwp.com/snippets/add-event-listener-to-multiple-elements-with-javascript/
+
+        let spiritBtns = document.querySelectorAll('.spirit-btn');
+
+        for (i of spiritBtns) {
+            i.addEventListener('click', function () {
+                writeToDocument(this.innerText);
+            });
+        }
+
     });
-    $("#gin-button").click(function () {
-        writeToDocument("Gin");
+
+    $("#show-c-search").click(function () {
+        $("#welcome").hide("drop", function () {
+            $("#search-cocktail").show("drop");
+        }
+        );
+
     });
-    $("#scotch-button").click(function () {
-        writeToDocument("Scotch");
-    });
-    $("#bourbon-button").click(function () {
-        writeToDocument("Bourbon");
-    });
-    $("#rum-button").click(function () {
-        writeToDocument("Rum");
-    });
-    $("#tequila-button").click(function () {
-        writeToDocument("Tequila");
-    });
+
+
+
+
+
 
 });
