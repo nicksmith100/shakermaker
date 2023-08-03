@@ -25,7 +25,11 @@ $(document).ready(function () {
 
     });
 
-    console.log(fullIngs);
+    // Timeout inserted to check array is populating correctly - can be removed later
+
+    setTimeout(function () {
+        console.log(fullIngs);
+    }, 500);
 
 
     // Reveal sections on button click
