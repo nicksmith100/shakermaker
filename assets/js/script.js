@@ -1,12 +1,21 @@
 $(document).ready(function () {
 
-    // Reveal divs on button click
+    // Reveal sections on button click
     // Toggle code from https://api.jqueryui.com/toggle/
     // Use of scrollTop ensures revealed content is visible - from https://www.geeksforgeeks.org/how-to-scroll-automatically-to-the-bottom-of-the-page-using-jquery/
 
     $("#show-i-search").click(function () {
         $("#welcome").hide("drop", function () {
             $("#select-spirit").show("drop");
+        }
+        );
+
+        //$(document).scrollTop($(document).height());
+    });
+
+    $("#show-c-search").click(function () {
+        $("#welcome").hide("drop", function () {
+            $("#search-cocktail").show("drop");
         }
         );
 
