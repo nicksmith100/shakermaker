@@ -107,7 +107,12 @@ $(document).ready(function () {
                 this.classList.remove("btn-dark");
                 this.classList.add("btn-light");
                 var ingString = this.innerText;
-                                   
+                
+                // Reveal "Select ingredients" div if not already visible, and create buttons from topIngs array
+                // Code for checking visibility adapted from: https://www.tutorialrepublic.com/faq/how-to-check-an-element-is-visible-or-not-using-jquery.php with reference to https://api.jquery.com/hidden-selector/
+
+                if($("#select-ingredients").is(":hidden")){
+
                 $("#select-ingredients").show("drop", function () {
 
                     for (let i = 0; i < topIngs.length; i++) {
@@ -132,7 +137,7 @@ $(document).ready(function () {
                     };
                 });
 
-            
+                }
 
             });
 
