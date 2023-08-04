@@ -128,10 +128,22 @@ $(document).ready(function () {
 
                     for (i of ingBtns) {
                         i.addEventListener('click', function () {
-                            this.classList.remove("btn-dark");
-                            this.classList.add("btn-light");
-                            ingString += "," + this.innerText;
-                            console.log(ingString);
+                            
+                                let selectedIngs = document.getElementsByClassName("ing-selected");
+                                                                
+                                // Allow toggling of button classes
+
+                                if(this.classList.contains("btn-dark")) {
+                                    this.classList.remove("btn-dark");
+                                    this.classList.add("btn-light", "ing-selected"); }
+                                else if (this.classList.contains("ing-selected")) {
+                                    this.classList.remove("btn-light", "ing-selected");
+                                    this.classList.add("btn-dark"); }
+                            
+                                console.log(selectedIngs.length);
+
+                            // ingString += "," + this.innerText;
+                            // console.log(ingString);
 
                         });
                     };
