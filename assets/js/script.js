@@ -53,28 +53,6 @@ $(document).ready(function () {
 
     console.log(topIngs);
 
-    //Invoke getData function to display drinks by main ingredient
-
-    function writeToDocument(spirit) {
-        let spiritURL = ingredientSearchURL + spirit;
-        document.getElementById("list").innerHTML = "";
-        getData(spiritURL, function (data) {
-            data = data.drinks;
-            data.forEach(function (item) {
-                document.getElementById("list").innerHTML +=
-                    `<span><p>${item.strDrink}</p><img src="${item.strDrinkThumb}" class="mb-5" width="150"></span><br>`;
-            });
-
-        });
-
-        $("#select-spirit").hide("drop", function () {
-            $("#results").show();
-        }
-
-        );
-
-    }
-
     // Reveal "Select spirit" div on button click and create buttons from topSpirits array
     // Code for show and hide from: https://api.jqueryui.com/
 
@@ -184,6 +162,8 @@ $(document).ready(function () {
 
     $("#i-search-button").click(function () {
         
+        // Create search string from inner text of selected spirit and ingredients
+
         let ingString = document.getElementsByClassName("spirit-selected")[0].innerText;
         let selectedIngs = document.getElementsByClassName("ing-selected");
         
@@ -192,12 +172,36 @@ $(document).ready(function () {
             ingString += "," + i.innerText;
             console.log(ingString);
         }; 
-                
+        
+        // Hide "search-ingredients" div and display "results" div
+
         $("#search-ingredients").hide("drop", function () {
                     $("#results").show("drop");
                 }
                 );
-         
+        
+        //Invoke getData function to display drinks by main ingredient
+
+        function writeResults(ingredients) {
+            searchURL = ingredientSearchURL + ingredients;
+            console.log(searchURL);
+            document.getElementById("result-list").innerHTML = "";
+            getData(searchURL, function (data) {
+                data = data.drinks;
+                data.forEach(function (item) {
+                    document.getElementById("result-list").innerHTML +=
+                        `<span><p>${item.strDrink}</p><img src="${item.strDrinkThumb}" class="mb-5" width="150"></span><br>`;
+                });
+
+            });
+     
+
+            
+
+        }
+
+        writeResults(ingString);
+
     });
 
 });
