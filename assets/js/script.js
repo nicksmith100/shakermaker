@@ -105,7 +105,7 @@ $(document).ready(function () {
                     j.classList.add("btn-dark");
                 }
                 this.classList.remove("btn-dark");
-                this.classList.add("btn-light");
+                this.classList.add("btn-light", "spirit-selected");
                 var ingString = this.innerText;
                 
                 // Reveal "Select ingredients" div if not already visible, and create buttons from topIngs array
@@ -131,16 +131,30 @@ $(document).ready(function () {
                             
                                 let selectedIngs = document.getElementsByClassName("ing-selected");
                                                                 
-                                // Allow toggling of button classes
+                                // Allow toggling of button classes, and add max selection of 3
 
-                                if(this.classList.contains("btn-dark")) {
-                                    this.classList.remove("btn-dark");
-                                    this.classList.add("btn-light", "ing-selected"); }
-                                else if (this.classList.contains("ing-selected")) {
-                                    this.classList.remove("btn-light", "ing-selected");
-                                    this.classList.add("btn-dark"); }
+                                if(selectedIngs.length < 3) {
+
+                                    if(this.classList.contains("btn-dark")) {
+                                        this.classList.remove("btn-dark");
+                                        this.classList.add("btn-light", "ing-selected"); }
+                                    else if (this.classList.contains("ing-selected")) {
+                                        this.classList.remove("btn-light", "ing-selected");
+                                        this.classList.add("btn-dark"); }
                             
                                 console.log(selectedIngs.length);
+
+                                }
+
+                                else if(selectedIngs.length === 3) {
+
+                                    if(this.classList.contains("btn-dark")) {
+                                        alert("The maximum number of additional ingredients is three"); }
+                                    else if (this.classList.contains("ing-selected")) {
+                                        this.classList.remove("btn-light", "ing-selected");
+                                        this.classList.add("btn-dark"); }
+                                    
+                                }
 
                             // ingString += "," + this.innerText;
                             // console.log(ingString);
@@ -168,4 +182,14 @@ $(document).ready(function () {
 
         };
     });
+
+    // Add event listener to search button
+
+    $("#i-search-button").click(function () {
+        $("#search-ingredients").hide("drop", function () {
+                    $("#results").show("drop");
+                }
+                ); 
+    });
+
 });
