@@ -75,10 +75,6 @@ $(document).ready(function () {
 
     }
 
-    // Set value of selectedSpirit variable and display ingredients selection section
-
-
-
     // Reveal "Select spirit" div on button click and create buttons from topSpirits array
     // Code for show and hide from: https://api.jqueryui.com/
 
@@ -100,18 +96,26 @@ $(document).ready(function () {
 
         for (i of spiritBtns) {
             i.addEventListener('click', function () {
+
+                // Highlight selected spirit button only
+
+                let spiritBtns2 = document.querySelectorAll('.spirit-btn');
+                for (j of spiritBtns2) {
+                    j.classList.remove("btn-light");
+                    j.classList.add("btn-dark");
+                }
                 this.classList.remove("btn-dark");
                 this.classList.add("btn-light");
                 var ingString = this.innerText;
+                                   
                 $("#select-ingredients").show("drop", function () {
-
-                    // Reveal "Select ingredients" div on button click and create buttons from topIngs array
 
                     for (let i = 0; i < topIngs.length; i++) {
                         document.getElementById("ing-buttons").innerHTML += `
             <button class="btn btn-dark btn-lg mx-3 my-3 ing-btn" id="${topIngs[i]}-button">${topIngs[i]}</button>
         `;
                     }
+                
 
                     // Add event listeners to ingredient buttons
 
@@ -127,6 +131,8 @@ $(document).ready(function () {
                         });
                     };
                 });
+
+            
 
             });
 
