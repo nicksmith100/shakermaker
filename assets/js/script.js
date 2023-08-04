@@ -155,10 +155,7 @@ $(document).ready(function () {
                                         this.classList.add("btn-dark"); }
                                     
                                 }
-
-                            // ingString += "," + this.innerText;
-                            // console.log(ingString);
-
+                            
                         });
                     };
                 });
@@ -186,10 +183,21 @@ $(document).ready(function () {
     // Add event listener to search button
 
     $("#i-search-button").click(function () {
+        
+        let ingString = document.getElementsByClassName("spirit-selected")[0].innerText;
+        let selectedIngs = document.getElementsByClassName("ing-selected");
+        
+        for(i of selectedIngs) {
+            
+            ingString += "," + i.innerText;
+            console.log(ingString);
+        }; 
+                
         $("#search-ingredients").hide("drop", function () {
                     $("#results").show("drop");
                 }
-                ); 
+                );
+         
     });
 
 });
