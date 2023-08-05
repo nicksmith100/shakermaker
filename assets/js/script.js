@@ -85,58 +85,62 @@ $(document).ready(function () {
                 this.classList.remove("btn-dark");
                 this.classList.add("btn-light", "spirit-selected");
                 var ingString = this.innerText;
-                
+
                 // Reveal "Select ingredients" div if not already visible, and create buttons from topIngs array
                 // Code for checking visibility adapted from: https://www.tutorialrepublic.com/faq/how-to-check-an-element-is-visible-or-not-using-jquery.php with reference to https://api.jquery.com/hidden-selector/
 
-                if($("#select-ingredients").is(":hidden")){
+                if ($("#select-ingredients").is(":hidden")) {
 
-                $("#select-ingredients").show("drop", function () {
+                    $("#select-ingredients").show("drop", function () {
 
-                    for (let i = 0; i < topIngs.length; i++) {
-                        document.getElementById("ing-buttons").innerHTML += `
+                        for (let i = 0; i < topIngs.length; i++) {
+                            document.getElementById("ing-buttons").innerHTML += `
             <button class="btn btn-dark btn-lg mx-3 my-3 ing-btn" id="${topIngs[i]}-button">${topIngs[i]}</button>
         `;
-                    }
-                
+                        }
 
-                    // Add event listeners to ingredient buttons
 
-                    let ingBtns = document.querySelectorAll('.ing-btn');
+                        // Add event listeners to ingredient buttons
 
-                    for (i of ingBtns) {
-                        i.addEventListener('click', function () {
-                            
+                        let ingBtns = document.querySelectorAll('.ing-btn');
+
+                        for (i of ingBtns) {
+                            i.addEventListener('click', function () {
+
                                 let selectedIngs = document.getElementsByClassName("ing-selected");
-                                                                
+
                                 // Allow toggling of button classes, and add max selection of 3
 
-                                if(selectedIngs.length < 3) {
+                                if (selectedIngs.length < 3) {
 
-                                    if(this.classList.contains("btn-dark")) {
+                                    if (this.classList.contains("btn-dark")) {
                                         this.classList.remove("btn-dark");
-                                        this.classList.add("btn-light", "ing-selected"); }
+                                        this.classList.add("btn-light", "ing-selected");
+                                    }
                                     else if (this.classList.contains("ing-selected")) {
                                         this.classList.remove("btn-light", "ing-selected");
-                                        this.classList.add("btn-dark"); }
-                            
-                                console.log(selectedIngs.length);
+                                        this.classList.add("btn-dark");
+                                    }
+
+                                    console.log(selectedIngs.length);
 
                                 }
 
-                                else if(selectedIngs.length === 3) {
+                                else if (selectedIngs.length === 3) {
 
-                                    if(this.classList.contains("btn-dark")) {
-                                        alert("The maximum number of additional ingredients is three"); }
+                                    if (this.classList.contains("btn-dark")) {
+                                        alert("The maximum number of additional ingredients is three");
+                                    }
                                     else if (this.classList.contains("ing-selected")) {
                                         this.classList.remove("btn-light", "ing-selected");
-                                        this.classList.add("btn-dark"); }
-                                    
+                                        this.classList.add("btn-dark");
+                                    }
+
                                 }
-                            
-                        });
-                    };
-                });
+
+                            });
+                        };
+                    });
 
                 }
 
@@ -161,42 +165,49 @@ $(document).ready(function () {
     // Add event listener to search button
 
     $("#i-search-button").click(function () {
-        
+
         // Create search string from inner text of selected spirit and ingredients
 
         let ingString = document.getElementsByClassName("spirit-selected")[0].innerText;
         let selectedIngs = document.getElementsByClassName("ing-selected");
-        
-        for(i of selectedIngs) {
-            
+
+        for (i of selectedIngs) {
+
             ingString += "," + i.innerText;
             console.log(ingString);
-        }; 
-        
+        };
+
         // Hide "search-ingredients" div and display "results" div
 
         $("#search-ingredients").hide("drop", function () {
-                    $("#results").show("drop");
-                }
-                );
-        
+            $("#results").show("drop");
+        }
+        );
+
         //Invoke getData function to display drinks by main ingredient
 
         function writeResults(ingredients) {
             searchURL = ingredientSearchURL + ingredients;
-            console.log(searchURL);
+
             document.getElementById("result-list").innerHTML = "";
             getData(searchURL, function (data) {
                 data = data.drinks;
-                data.forEach(function (item) {
-                    document.getElementById("result-list").innerHTML +=
-                        `<span><p>${item.strDrink}</p><img src="${item.strDrinkThumb}" class="mb-5" width="150"></span><br>`;
-                });
+                console.dir(data);
+                if (data.includes("None")) {
+                    document.getElementById("result-list").innerHTML = "Sorry, no drinks were found with those ingredients. Please try again.";
+                }
+
+                else {
+
+                    data.forEach(function (item) {
+
+                        document.getElementById("result-list").innerHTML +=
+                            `<span><p>${item.strDrink}</p><img src="${item.strDrinkThumb}" class="mb-5" width="150"></span><br>`;
+                    });
+
+                }
 
             });
-     
-
-            
 
         }
 
