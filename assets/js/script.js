@@ -209,34 +209,47 @@ $(document).ready(function () {
                         data = data.drinks;
 
                         data.forEach(function (item) {
-                            
+
                             let drinkCode = item.idDrink;
                             let drinkImage = item.strDrinkThumb;
                             let drinkName = item.strDrink;
-                            
+
 
                             getData(cocktailSearchURL + drinkCode, function (data) {
                                 data = data.drinks;
                                 data.forEach(function (item) {
                                     let drinkInstructions = item.strInstructions;
-                                    let drinkIngredients = [item.strIngredient1, item.strIngredient2, item.strIngredient3, item.strIngredient4, item.strIngredient5, item.strIngredient6, item.strIngredient7, item.strIngredient8, item.strIngredient9, item.strIngredient10, item.strIngredient11, item.strIngredient12, item.strIngredient13, item.strIngredient14, item.strIngredient15]; 
-                                    
+                                    let drinkIngredients = [item.strIngredient1, item.strIngredient2, item.strIngredient3, item.strIngredient4, item.strIngredient5, item.strIngredient6, item.strIngredient7, item.strIngredient8, item.strIngredient9, item.strIngredient10, item.strIngredient11, item.strIngredient12, item.strIngredient13, item.strIngredient14, item.strIngredient15];
+
                                     //Filter null values
 
                                     drinkIngredients = drinkIngredients.filter(elements => {
-                                    return elements !== null;
+                                        return elements !== null;
                                     });
                                     console.log(drinkIngredients);
-                                    
 
                                     document.getElementById("result-list").innerHTML +=
 
-                                `<div id="${drinkCode}"><img src="${drinkImage}" class="mb-5" width="150"><p>${drinkName}</p><p>${drinkInstructions}</p></div>`;
+                                        `<div>
+                                        <img src="${drinkImage}" class="drink-img">
+                                        <p><strong>${drinkName}</strong></p>
+                                        <p><strong>Ingredients:</strong></p>
+                                        <ul id="ingredient-list${drinkCode}"></ul>
+                                        <p><strong>Instructions:</strong><br>${drinkInstructions}</p></div>`;
+
+                                    //Create list from array. Code from: https://www.tutorialspoint.com/how-to-create-html-list-from-javascript-array
+
+                                    let list = document.getElementById("ingredient-list" + drinkCode);
+                                    for (i = 0; i < drinkIngredients.length; ++i) {
+                                        let li = document.createElement('li');
+                                        li.innerText = drinkIngredients[i];
+                                        list.appendChild(li);
+                                    }
 
                                 });
                             });
 
-                            
+
                         });
 
 
@@ -247,35 +260,48 @@ $(document).ready(function () {
                 else {
 
                     data.forEach(function (item) {
-                            
-                            let drinkCode = item.idDrink;
-                            let drinkImage = item.strDrinkThumb;
-                            let drinkName = item.strDrink;
-                            
 
-                            getData(cocktailSearchURL + drinkCode, function (data) {
-                                data = data.drinks;
-                                data.forEach(function (item) {
-                                    let drinkInstructions = item.strInstructions;
-                                    let drinkIngredients = [item.strIngredient1, item.strIngredient2, item.strIngredient3, item.strIngredient4, item.strIngredient5, item.strIngredient6, item.strIngredient7, item.strIngredient8, item.strIngredient9, item.strIngredient10, item.strIngredient11, item.strIngredient12, item.strIngredient13, item.strIngredient14, item.strIngredient15]; 
-                                    
-                                    //Filter null values
+                        let drinkCode = item.idDrink;
+                        let drinkImage = item.strDrinkThumb;
+                        let drinkName = item.strDrink;
 
-                                    drinkIngredients = drinkIngredients.filter(elements => {
+
+                        getData(cocktailSearchURL + drinkCode, function (data) {
+                            data = data.drinks;
+                            data.forEach(function (item) {
+                                let drinkInstructions = item.strInstructions;
+                                let drinkIngredients = [item.strIngredient1, item.strIngredient2, item.strIngredient3, item.strIngredient4, item.strIngredient5, item.strIngredient6, item.strIngredient7, item.strIngredient8, item.strIngredient9, item.strIngredient10, item.strIngredient11, item.strIngredient12, item.strIngredient13, item.strIngredient14, item.strIngredient15];
+
+                                //Filter null values
+
+                                drinkIngredients = drinkIngredients.filter(elements => {
                                     return elements !== null;
-                                    });
-
-                                    console.log(drinkIngredients);
-                                    
-
-                                    document.getElementById("result-list").innerHTML +=
-
-                                `<div id="${drinkCode}"><img src="${drinkImage}" class="mb-5" width="150"><p>${drinkName}</p><p>${drinkInstructions}</p></div>`;
-
                                 });
-                            });
 
+                                console.log(drinkIngredients);
+
+                                document.getElementById("result-list").innerHTML +=
+
+                                    `<div>
+                                        <img src="${drinkImage}" class="drink-img">
+                                        <p><strong>${drinkName}</strong></p>
+                                        <p><strong>Ingredients:</strong></p>
+                                        <ul id="ingredient-list${drinkCode}"></ul>
+                                        <p><strong>Instructions:</strong><br>${drinkInstructions}</p></div>`;
+
+                                //Create list from array. Code from: https://www.tutorialspoint.com/how-to-create-html-list-from-javascript-array
+
+                                let list = document.getElementById("ingredient-list" + drinkCode);
+                                for (i = 0; i < drinkIngredients.length; ++i) {
+                                    let li = document.createElement('li');
+                                    li.innerText = drinkIngredients[i];
+                                    list.appendChild(li);
+                                }
+
+                            });
                         });
+
+                    });
 
                 }
 
@@ -292,7 +318,7 @@ $(document).ready(function () {
 
 
 
-    
+
 
 // Return to home on button click
 
