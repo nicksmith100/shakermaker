@@ -4,6 +4,7 @@ $(document).ready(function () {
 
     const ingredientListURL = "https://www.thecocktaildb.com/api/json/v2/9973533/list.php?i=list";
     const ingredientSearchURL = "https://www.thecocktaildb.com/api/json/v2/9973533/filter.php?i=";
+    const cocktailSearchURL = "https://www.thecocktaildb.com/api/json/v2/9973533/lookup.php?i=";
 
     // Link to API to get data based on API URL
     // Utilises code from "Working with external resources" lessons of CI course
@@ -208,10 +209,26 @@ $(document).ready(function () {
                         data = data.drinks;
 
                         data.forEach(function (item) {
+                            
+                            let drinkCode = item.idDrink;
+                            let drinkImage = item.strDrinkThumb;
+                            let drinkName = item.strDrink;
 
-                            document.getElementById("result-list").innerHTML +=
+                            getData(cocktailSearchURL + drinkCode, function (data) {
+                                data = data.drinks;
+                                data.forEach(function (item) {
+                                    let drinkInstructions = item.strInstructions;
 
-                                `<p>${item.strDrink}</p><img src="${item.strDrinkThumb}" class="mb-5" width="150"><br>`;
+                                    console.log(drinkInstructions);
+
+                                    document.getElementById("result-list").innerHTML +=
+
+                                `<div id="${drinkCode}"><img src="${drinkImage}" class="mb-5" width="150"><p>${drinkName}</p><p>${drinkInstructions}</p></div>`;
+
+                                });
+                            });
+
+                            
                         });
 
 
@@ -222,10 +239,26 @@ $(document).ready(function () {
                 else {
 
                     data.forEach(function (item) {
+                            
+                            let drinkCode = item.idDrink;
+                            let drinkImage = item.strDrinkThumb;
+                            let drinkName = item.strDrink;
 
-                        document.getElementById("result-list").innerHTML +=
-                            `<span><p>${item.strDrink}</p><img src="${item.strDrinkThumb}" class="mb-5" width="150"></span><br>`;
-                    });
+                            getData(cocktailSearchURL + drinkCode, function (data) {
+                                data = data.drinks;
+                                data.forEach(function (item) {
+                                    let drinkInstructions = item.strInstructions;
+
+                                    console.log(drinkInstructions);
+
+                                    document.getElementById("result-list").innerHTML +=
+
+                                `<div id="${drinkCode}"><img src="${drinkImage}" class="mb-5" width="150"><p>${drinkName}</p><p>${drinkInstructions}</p></div>`;
+
+                                });
+                            });
+
+                        });
 
                 }
 
@@ -238,6 +271,11 @@ $(document).ready(function () {
     });
 
 });
+
+
+
+
+    
 
 // Return to home on button click
 
