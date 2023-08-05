@@ -213,13 +213,21 @@ $(document).ready(function () {
                             let drinkCode = item.idDrink;
                             let drinkImage = item.strDrinkThumb;
                             let drinkName = item.strDrink;
+                            
 
                             getData(cocktailSearchURL + drinkCode, function (data) {
                                 data = data.drinks;
                                 data.forEach(function (item) {
                                     let drinkInstructions = item.strInstructions;
+                                    let drinkIngredients = [item.strIngredient1, item.strIngredient2, item.strIngredient3, item.strIngredient4, item.strIngredient5, item.strIngredient6, item.strIngredient7, item.strIngredient8, item.strIngredient9, item.strIngredient10, item.strIngredient11, item.strIngredient12, item.strIngredient13, item.strIngredient14, item.strIngredient15]; 
+                                    
+                                    //Filter null values
 
-                                    console.log(drinkInstructions);
+                                    drinkIngredients = drinkIngredients.filter(elements => {
+                                    return elements !== null;
+                                    });
+                                    console.log(drinkIngredients);
+                                    
 
                                     document.getElementById("result-list").innerHTML +=
 
@@ -243,13 +251,22 @@ $(document).ready(function () {
                             let drinkCode = item.idDrink;
                             let drinkImage = item.strDrinkThumb;
                             let drinkName = item.strDrink;
+                            
 
                             getData(cocktailSearchURL + drinkCode, function (data) {
                                 data = data.drinks;
                                 data.forEach(function (item) {
                                     let drinkInstructions = item.strInstructions;
+                                    let drinkIngredients = [item.strIngredient1, item.strIngredient2, item.strIngredient3, item.strIngredient4, item.strIngredient5, item.strIngredient6, item.strIngredient7, item.strIngredient8, item.strIngredient9, item.strIngredient10, item.strIngredient11, item.strIngredient12, item.strIngredient13, item.strIngredient14, item.strIngredient15]; 
+                                    
+                                    //Filter null values
 
-                                    console.log(drinkInstructions);
+                                    drinkIngredients = drinkIngredients.filter(elements => {
+                                    return elements !== null;
+                                    });
+
+                                    console.log(drinkIngredients);
+                                    
 
                                     document.getElementById("result-list").innerHTML +=
 
