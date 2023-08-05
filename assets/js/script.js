@@ -168,8 +168,10 @@ $(document).ready(function () {
 
         // Create search string from inner text of selected spirit and ingredients
 
-        let ingString = document.getElementsByClassName("spirit-selected")[0].innerText;
+        let selectedSpirit = document.getElementsByClassName("spirit-selected")[0].innerText;
         let selectedIngs = document.getElementsByClassName("ing-selected");
+
+        let ingString = selectedSpirit;
 
         for (i of selectedIngs) {
 
@@ -188,13 +190,33 @@ $(document).ready(function () {
 
         function writeResults(ingredients) {
             searchURL = ingredientSearchURL + ingredients;
+            searchURL2 = ingredientSearchURL + selectedSpirit;
 
             document.getElementById("result-list").innerHTML = "";
+
             getData(searchURL, function (data) {
                 data = data.drinks;
                 console.dir(data);
+
+                // Returns drinks based on just base spirit if no results found for particular ingredients
+
                 if (data.includes("None")) {
-                    document.getElementById("result-list").innerHTML = "Sorry, no drinks were found with those ingredients. Please try again.";
+
+                    document.getElementById("result-list").innerHTML = `<p>Sorry, no drinks were found with those specific ingredients, but here are all the cocktails you can make with <strong>${selectedSpirit}</strong>.</p>`;
+
+                    getData(searchURL2, function (data) {
+                        data = data.drinks;
+
+                        data.forEach(function (item) {
+
+                            document.getElementById("result-list").innerHTML +=
+
+                                `<p>${item.strDrink}</p><img src="${item.strDrinkThumb}" class="mb-5" width="150"><br>`;
+                        });
+
+
+                    });
+
                 }
 
                 else {
@@ -209,7 +231,7 @@ $(document).ready(function () {
 
             });
 
-        }
+        };
 
         writeResults(ingString);
 
