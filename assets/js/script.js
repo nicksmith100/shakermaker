@@ -162,7 +162,7 @@ $(document).ready(function () {
         };
     });
 
-    // Add event listener to search button
+    // Add event listener to search buttons
 
     $("#i-search-button").click(function () {
 
@@ -215,4 +215,13 @@ $(document).ready(function () {
 
     });
 
+});
+
+// Return to home on button click
+
+$("#return-button").click(function () {
+    $("#results").hide("drop", function () {
+        $("#welcome").show("drop");
+    }
+    );
 });
