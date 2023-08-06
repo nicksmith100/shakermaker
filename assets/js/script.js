@@ -230,12 +230,16 @@ $(document).ready(function () {
 
                                     document.getElementById("result-list").innerHTML +=
 
-                                        `<div>
-                                        <img src="${drinkImage}" class="drink-img">
-                                        <p><strong>${drinkName}</strong></p>
-                                        <p><strong>Ingredients:</strong></p>
-                                        <ul id="ingredient-list${drinkCode}"></ul>
-                                        <p><strong>Instructions:</strong><br>${drinkInstructions}</p></div>`;
+                                        `<div class="col-12 col-md-6 px-5 py-5 text-left">
+                                    <h2>${drinkName}</h2>
+                                    <img src="${drinkImage}" class="drink-img">
+                                    <div class="recipe-instructions">
+                                        <h3>Ingredients:</h3>
+                                        <ul id="ingredient-list${drinkCode}" class="list-unstyled"></ul>
+                                        <h3>Instructions:</h3><p>${drinkInstructions}</p>
+                                    </div>
+                                    </div>
+                                    `;
 
                                     //Create list from array. Code from: https://www.tutorialspoint.com/how-to-create-html-list-from-javascript-array
 
@@ -282,12 +286,16 @@ $(document).ready(function () {
 
                                 document.getElementById("result-list").innerHTML +=
 
-                                    `<div>
-                                        <img src="${drinkImage}" class="drink-img">
-                                        <p><strong>${drinkName}</strong></p>
-                                        <p><strong>Ingredients:</strong></p>
-                                        <ul id="ingredient-list${drinkCode}"></ul>
-                                        <p><strong>Instructions:</strong><br>${drinkInstructions}</p></div>`;
+                                    `<div class="col-12 col-md-6 px-5 py-5 text-left">
+                                    <h2>${drinkName}</h2>
+                                    <img src="${drinkImage}" class="drink-img">
+                                    <div class="recipe-instructions">
+                                        <h3>Ingredients:</h3>
+                                        <ul id="ingredient-list${drinkCode}" class="list-unstyled"></ul>
+                                        <h3>Instructions:</h3><p>${drinkInstructions}</p>
+                                    </div>
+                                    </div>
+                                    `;
 
                                 //Create list from array. Code from: https://www.tutorialspoint.com/how-to-create-html-list-from-javascript-array
 
