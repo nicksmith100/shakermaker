@@ -147,13 +147,7 @@ $(document).ready(function () {
 
             });
 
-            $("#show-c-search").click(function () {
-                $("#welcome").hide("drop", function () {
-                    $("#search-cocktail").show("drop");
-                }
-                );
 
-            });
 
 
 
@@ -371,6 +365,14 @@ $(document).ready(function () {
         };
 
         writeResults(ingString);
+
+    });
+
+    $("#show-c-search").click(function () {
+        $("#welcome").hide("drop", function () {
+            $("#search-cocktail").show("drop");
+        }
+        );
 
     });
 
