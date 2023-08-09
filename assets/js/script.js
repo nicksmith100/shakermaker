@@ -231,15 +231,22 @@ $(document).ready(function () {
                                     document.getElementById("result-list").innerHTML +=
 
                                         `<div class="col-12 col-md-6 px-5 py-5 text-left">
-                                    <h2>${drinkName}</h2>
-                                    <img src="${drinkImage}" class="drink-img">
-                                    <div class="recipe-instructions">
-                                        <h3>Ingredients:</h3>
-                                        <ul id="ingredient-list${drinkCode}" class="list-unstyled"></ul>
-                                        <h3>Instructions:</h3><p>${drinkInstructions}</p>
-                                    </div>
-                                    </div>
+                                            <div id="thumbnail-${drinkCode}">
+                                                <h2>${drinkName}</h2>
+                                                <img src="${drinkImage}" class="drink-img">
+                                            </div>
+                                            <div id="recipe-${drinkCode}" class="recipe hidden">
+                                                <h3>Ingredients:</h3>
+                                                <ul id="ingredient-list${drinkCode}" class="list-unstyled"></ul>
+                                                <h3>Instructions:</h3><p>${drinkInstructions}</p>
+                                            </div>
+                                        </div>
                                     `;
+
+
+                                    document.getElementById("thumbnail-" + drinkCode).addEventListener('click', function () {
+                                        $("#recipe-" + drinkCode).toggle();
+                                    });
 
                                     //Create list from array. Code from: https://www.tutorialspoint.com/how-to-create-html-list-from-javascript-array
 
@@ -287,15 +294,38 @@ $(document).ready(function () {
                                 document.getElementById("result-list").innerHTML +=
 
                                     `<div class="col-12 col-md-6 px-5 py-5 text-left">
-                                    <h2>${drinkName}</h2>
-                                    <img src="${drinkImage}" class="drink-img">
-                                    <div class="recipe-instructions">
-                                        <h3>Ingredients:</h3>
-                                        <ul id="ingredient-list${drinkCode}" class="list-unstyled"></ul>
-                                        <h3>Instructions:</h3><p>${drinkInstructions}</p>
-                                    </div>
-                                    </div>
+                                            <div id="result-${drinkCode}" class="drink-result">
+                                                <h2>${drinkName}</h2>
+                                                <img src="${drinkImage}" class="drink-img">
+                                                <div id="recipe-${drinkCode}" class="recipe hidden">
+                                                    <h3>Ingredients:</h3>
+                                                    <ul id="ingredient-list${drinkCode}" class="list-unstyled"></ul>
+                                                    <h3>Instructions:</h3><p>${drinkInstructions}</p>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
                                     `;
+
+
+
+                                document.getElementById("result-list").onclick = function (event) {
+
+                                    let target = event.target;
+                                    // let targetElement = target as HTMLElement;
+                                    // console.log(targetElement);
+
+                                    if (target.tagName === "IMG") {
+
+                                        $(target.nextElementSibling).toggle("drop");
+
+                                    }
+
+
+                                };
+
+
 
                                 //Create list from array. Code from: https://www.tutorialspoint.com/how-to-create-html-list-from-javascript-array
 
