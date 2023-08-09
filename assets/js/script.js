@@ -297,12 +297,12 @@ $(document).ready(function () {
                                             <div id="result-${drinkCode}" class="drink-result">
                                                 <h2>${drinkName}</h2>
                                                 <img src="${drinkImage}" class="drink-img">
-                                                <div id="recipe-${drinkCode}" class="recipe hidden">
-                                                    <h3>Ingredients:</h3>
-                                                    <ul id="ingredient-list${drinkCode}" class="list-unstyled"></ul>
-                                                    <h3>Instructions:</h3><p>${drinkInstructions}</p>
-                                                </div>
-
+                                            </div>
+                                            <div id="recipe-${drinkCode}" class="recipe hidden">
+                                                <h3>Ingredients:</h3>
+                                                <ul id="ingredient-list${drinkCode}" class="list-unstyled"></ul>
+                                                <h3>Instructions:</h3>
+                                                <p>${drinkInstructions}</p>
                                             </div>
 
                                         </div>
@@ -313,12 +313,16 @@ $(document).ready(function () {
                                 document.getElementById("result-list").onclick = function (event) {
 
                                     let target = event.target;
-                                    // let targetElement = target as HTMLElement;
-                                    // console.log(targetElement);
 
                                     if (target.tagName === "IMG") {
 
-                                        $(target.nextElementSibling).toggle("drop");
+                                        $(target.parentNode.nextElementSibling).toggle("drop");
+
+                                    }
+
+                                    else if (target.tagName === "H2") {
+
+                                        $(target.parentNode.nextElementSibling).toggle("drop");
 
                                     }
 
