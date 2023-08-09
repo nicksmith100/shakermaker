@@ -203,7 +203,7 @@ $(document).ready(function () {
 
                 if (data.includes("None")) {
 
-                    document.getElementById("result-list").innerHTML = `<p>Sorry, no drinks were found with those specific ingredients, but here are all the cocktails you can make with <strong>${selectedSpirit}</strong>.</p>`;
+                    document.getElementById("result-list").innerHTML = `<p>Sorry, no drinks were found with those specific ingredients, but here are all the cocktails you can make with <strong>${selectedSpirit}</strong>. Click on a drink to see the full recipe and instructions.</p>`;
 
                     getData(searchURL2, function (data) {
                         data = data.drinks;
@@ -231,15 +231,17 @@ $(document).ready(function () {
                                     document.getElementById("result-list").innerHTML +=
 
                                         `<div class="col-12 col-md-6 px-5 py-5 text-left">
-                                            <div id="thumbnail-${drinkCode}">
+                                            <div id="result-${drinkCode}" class="drink-result">
                                                 <h2>${drinkName}</h2>
                                                 <img src="${drinkImage}" class="drink-img">
                                             </div>
                                             <div id="recipe-${drinkCode}" class="recipe hidden">
                                                 <h3>Ingredients:</h3>
                                                 <ul id="ingredient-list${drinkCode}" class="list-unstyled"></ul>
-                                                <h3>Instructions:</h3><p>${drinkInstructions}</p>
+                                                <h3>Instructions:</h3>
+                                                <p>${drinkInstructions}</p>
                                             </div>
+
                                         </div>
                                     `;
 
@@ -270,12 +272,13 @@ $(document).ready(function () {
 
                 else {
 
+                    document.getElementById("result-list").innerHTML = `<p>Here are all the cocktails you can make with your selected ingredients. Click on a drink to see the full recipe and instructions.</p>`;
+
                     data.forEach(function (item) {
 
                         let drinkCode = item.idDrink;
                         let drinkImage = item.strDrinkThumb;
                         let drinkName = item.strDrink;
-
 
                         getData(cocktailSearchURL + drinkCode, function (data) {
                             data = data.drinks;
