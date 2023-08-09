@@ -246,9 +246,25 @@ $(document).ready(function () {
                                     `;
 
 
-                                    document.getElementById("thumbnail-" + drinkCode).addEventListener('click', function () {
-                                        $("#recipe-" + drinkCode).toggle();
-                                    });
+                                    document.getElementById("result-list").onclick = function (event) {
+
+                                        let target = event.target;
+
+                                        if (target.tagName === "IMG") {
+
+                                            $(target.parentNode.nextElementSibling).toggle("drop");
+
+                                        }
+
+                                        else if (target.tagName === "H2") {
+
+                                            $(target.parentNode.nextElementSibling).toggle("drop");
+
+                                        }
+
+
+                                    };
+
 
                                     //Create list from array. Code from: https://www.tutorialspoint.com/how-to-create-html-list-from-javascript-array
 
