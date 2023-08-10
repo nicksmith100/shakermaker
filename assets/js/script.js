@@ -165,7 +165,22 @@ $(document).ready(function () {
         for (i of selectedIngs) {
 
             ingString += "," + i.innerText;
+
         };
+
+        // Create spaced, grammatical list for results page
+
+        let ingStringSpaced = selectedSpirit;
+
+        for (i of selectedIngs) {
+
+            ingStringSpaced += ", " + i.innerText;
+
+        };
+
+        // Replace final comma with "and" - code from: https://stackoverflow.com/questions/29985085/replace-final-comma-in-a-string-with-and
+
+        ingStringSpaced = ingStringSpaced.replace(/,(?=[^,]+$)/, ' and ');
 
         // Hide "search-ingredients" div and display "results" div
 
@@ -189,7 +204,7 @@ $(document).ready(function () {
 
                 if (data.includes("None")) {
 
-                    document.getElementById("result-list").innerHTML = `<p>Sorry, no drinks were found with those specific ingredients, but here are all the cocktails you can make with <strong>${selectedSpirit}</strong>. Click on a drink to see the full recipe and instructions.</p>`;
+                    document.getElementById("result-list").innerHTML = `<p>Sorry, no drinks were found with <strong>${ingStringSpaced}</strong>, but here are all the cocktails you can make with <strong>${selectedSpirit}</strong>. Click on a drink to see the full recipe and instructions.</p>`;
 
                     getData(searchURL2, function (data) {
                         data = data.drinks;
@@ -273,7 +288,7 @@ $(document).ready(function () {
 
                 else {
 
-                    document.getElementById("result-list").innerHTML = `<p>Here are all the cocktails you can make with your selected ingredients. Click on a drink to see the full recipe and instructions.</p>`;
+                    document.getElementById("result-list").innerHTML = `<p>Here are all the cocktails you can make with <strong>${ingStringSpaced}</strong>. Click on a drink to see the full recipe and instructions.</p>`;
 
                     data.forEach(function (item) {
 
