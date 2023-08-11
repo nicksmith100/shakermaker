@@ -5,6 +5,7 @@ $(document).ready(function () {
     const ingredientListURL = "https://www.thecocktaildb.com/api/json/v2/9973533/list.php?i=list";
     const ingredientSearchURL = "https://www.thecocktaildb.com/api/json/v2/9973533/filter.php?i=";
     const cocktailSearchURL = "https://www.thecocktaildb.com/api/json/v2/9973533/lookup.php?i=";
+    const nameSearchURL = "https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=";
 
     // Link to API to get data based on API URL
     // Utilises code from "Working with external resources" lessons of CI course
@@ -182,13 +183,6 @@ $(document).ready(function () {
         // Replace final comma with "and" - code from: https://stackoverflow.com/questions/29985085/replace-final-comma-in-a-string-with-and
 
         ingStringSpaced = ingStringSpaced.replace(/,(?=[^,]+$)/, ' and ');
-
-        // Hide "search-ingredients" div and display "results" div
-
-        $("#search-ingredients").hide("drop", function () {
-            $("#results").show("drop");
-        }
-        );
 
         //Invoke getData function to display drinks by main ingredient
 
@@ -371,6 +365,13 @@ $(document).ready(function () {
 
         writeResults(ingString);
 
+        // Hide "search-ingredients" div and display "results" div
+
+        $("#search-ingredients").hide("drop", function () {
+            $("#results").show("drop");
+        }
+        );
+
     });
 
     // Show "search-cocktail" section and header on button click
@@ -384,11 +385,103 @@ $(document).ready(function () {
 
     });
 
+    function searchName(event) {
+
+        event.preventDefault();
+
+        let searchInput = document.getElementById("search-input").value;
+
+        document.getElementById("result-list").innerHTML = `<p>Here are the cocktails which match your search for <strong>${searchInput}</strong>. Click on a drink to see the full recipe and instructions.</p>`;
+
+        //Invoke getData function on submission of form to get and display results
+
+        getData(nameSearchURL + searchInput, function (data) {
+            data = data.drinks;
+            console.log(data);
+            data.forEach(function (item) {
+                let drinkCode = item.idDrink;
+                let drinkImage = item.strDrinkThumb;
+                let drinkName = item.strDrink;
+                let drinkInstructions = item.strInstructions;
+                let drinkIngredients = [item.strIngredient1, item.strIngredient2, item.strIngredient3, item.strIngredient4, item.strIngredient5, item.strIngredient6, item.strIngredient7, item.strIngredient8, item.strIngredient9, item.strIngredient10, item.strIngredient11, item.strIngredient12, item.strIngredient13, item.strIngredient14, item.strIngredient15];
+
+                //Filter null values
+
+                drinkIngredients = drinkIngredients.filter(elements => {
+                    return elements !== null;
+                });
+
+                document.getElementById("result-list").innerHTML +=
+
+                    `<div class="col-12 col-md-6 px-5 py-5 text-left">
+                                            <div id="result-${drinkCode}" class="drink-result">
+                                                <h2>${drinkName}</h2>
+                                                <img src="${drinkImage}" class="drink-img">
+                                            </div>
+                                            <div id="recipe-${drinkCode}" class="recipe hidden">
+                                                <h3>Ingredients:</h3>
+                                                <ul id="ingredient-list${drinkCode}" class="list-unstyled"></ul>
+                                                <h3>Instructions:</h3>
+                                                <p>${drinkInstructions}</p>
+                                            </div>
+
+                                        </div>
+                                    `;
+
+                document.getElementById("result-list").onclick = function (event) {
+
+                    let target = event.target;
+
+                    if (target.tagName === "IMG") {
+
+                        $(target.parentNode.nextElementSibling).toggle("drop");
+
+                    }
+
+                    else if (target.tagName === "H2") {
+
+                        $(target.parentNode.nextElementSibling).toggle("drop");
+
+                    }
+
+
+                };
+
+                //Create list from array. Code from: https://www.tutorialspoint.com/how-to-create-html-list-from-javascript-array
+
+                let list = document.getElementById("ingredient-list" + drinkCode);
+
+                for (i = 0; i < drinkIngredients.length; ++i) {
+                    let li = document.createElement('li');
+                    li.innerText = drinkIngredients[i];
+                    list.appendChild(li);
+                }
+
+
+
+            });
+        });
+
+
+
+
+        // Hide "search-cocktail" div and display "results" div
+
+        $("#search-cocktail").hide("drop", function () {
+            $("#results").show("drop");
+        }
+        );
+
+    }
+
+    let searchForm = document.getElementById("search-form");
+    searchForm.addEventListener('submit', searchName);
+
+
+
 
 
 });
-
-
 
 
 
