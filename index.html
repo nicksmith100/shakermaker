@@ -101,12 +101,14 @@
       <!-- Search by cocktail -->
       <section id="search-cocktail" class="container text-center hidden">
         <div class="row">
-          <div class="col-12">
-            <input type="text" placeholder="Search here" />
+          <div class="col-12 col-sm-6 offset-sm-3 mt-5">
+            <form onsubmit="return searchCocktail();">
+            <input type="text" id="search-input" name="search-input" class="form-control" placeholder="Search here" />
             <br />
             <button type="submit" class="btn btn-outline-light btn-lg">
               Submit
             </button>
+            </form>
           </div>
         </div>
       </section>
