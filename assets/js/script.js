@@ -56,6 +56,7 @@ $(document).ready(function () {
     $("#show-i-search").click(function () {
         $("#welcome").hide("drop", function () {
             $("#select-spirit").show("drop");
+            $("#header").show("drop");
         }
         );
 
@@ -372,11 +373,12 @@ $(document).ready(function () {
 
     });
 
-    // Show "search-cocktail" section on button click
+    // Show "search-cocktail" section and header on button click
 
     $("#show-c-search").click(function () {
         $("#welcome").hide("drop", function () {
             $("#search-cocktail").show("drop");
+            $("#header").show("drop");
         }
         );
 
@@ -399,3 +401,8 @@ $("#return-button").click(function () {
     }
     );
 });
+
+$("#header-return-button").click(function () {
+    location.reload();
+});
+

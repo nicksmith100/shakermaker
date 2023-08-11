@@ -7,6 +7,10 @@ body {
     display: none;
 }
 
+#header-logo {
+    width: 100px;
+}
+
 .drink-img {
     width: 300px;
     height: 300px;
