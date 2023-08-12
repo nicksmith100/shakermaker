@@ -492,8 +492,7 @@ $(document).ready(function () {
 
                 $("#search-cocktail").hide("drop", function () {
                     $("#results").show("drop");
-                }
-                );
+                });
 
             }
 
@@ -508,6 +507,69 @@ $(document).ready(function () {
 
 
 
+
+
+    });
+
+    $("#random-search").click(function () {
+
+        document.getElementById("result-list").innerHTML = `<p>Here's a <strong>random cocktail</strong> for you to try!</p>`;
+
+        getData(randomSearchURL, function (data) {
+            data = data.drinks;
+            data.forEach(function (item) {
+                let drinkCode = item.idDrink;
+                let drinkImage = item.strDrinkThumb;
+                let drinkName = item.strDrink;
+                let drinkInstructions = item.strInstructions;
+                let drinkIngredients = [item.strIngredient1, item.strIngredient2, item.strIngredient3, item.strIngredient4, item.strIngredient5, item.strIngredient6, item.strIngredient7, item.strIngredient8, item.strIngredient9, item.strIngredient10, item.strIngredient11, item.strIngredient12, item.strIngredient13, item.strIngredient14, item.strIngredient15];
+
+                //Filter null values
+
+                drinkIngredients = drinkIngredients.filter(elements => {
+                    return elements !== null;
+                });
+
+                document.getElementById("result-list").innerHTML +=
+
+                    `<div class="col-12 col-md-6 px-5 py-5 text-left">
+                                            <div id="result-${drinkCode}" class="drink-result">
+                                                <h2>${drinkName}</h2>
+                                                <img src="${drinkImage}" class="drink-img">
+                                            </div>
+                                            <div id="recipe-${drinkCode}" class="recipe">
+                                                <h3>Ingredients:</h3>
+                                                <ul id="ingredient-list${drinkCode}" class="list-unstyled"></ul>
+                                                <h3>Instructions:</h3>
+                                                <p>${drinkInstructions}</p>
+                                            </div>
+
+                                        </div>
+                                    `;
+
+
+                //Create list from array. Code from: https://www.tutorialspoint.com/how-to-create-html-list-from-javascript-array
+
+                let list = document.getElementById("ingredient-list" + drinkCode);
+
+                for (i = 0; i < drinkIngredients.length; ++i) {
+                    let li = document.createElement('li');
+                    li.innerText = drinkIngredients[i];
+                    list.appendChild(li);
+                }
+
+
+
+            });
+        });
+
+        // Hide "welcome" div and display "results" div with header
+
+        $("#welcome").hide("drop", function () {
+            $("#header").show("drop");
+            $("#results").show("drop");
+
+        });
 
 
     });
