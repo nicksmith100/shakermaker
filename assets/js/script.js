@@ -6,6 +6,7 @@ $(document).ready(function () {
     const ingredientSearchURL = "https://www.thecocktaildb.com/api/json/v2/9973533/filter.php?i=";
     const cocktailSearchURL = "https://www.thecocktaildb.com/api/json/v2/9973533/lookup.php?i=";
     const nameSearchURL = "https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=";
+    const alcoholSearchURL = "https://www.thecocktaildb.com/api/json/v2/9973533/filter.php?a=";
 
     // Link to API to get data based on API URL
     // Utilises code from "Working with external resources" lessons of CI course
@@ -385,35 +386,56 @@ $(document).ready(function () {
 
     });
 
-    function searchName(event) {
+    // Get full list of cocktail names and add to array
 
-        event.preventDefault();
+    let cocktailNames = [];
 
-        let searchInput = document.getElementById("search-input").value;
+    getData(alcoholSearchURL + "Alcoholic", function (data) {
+        data = data.drinks;
+        data.forEach(function (item) {
+            cocktailNames.push(item.strDrink);
+        });
 
-        document.getElementById("result-list").innerHTML = `<p>Here are the cocktails which match your search for <strong>${searchInput}</strong>. Click on a drink to see the full recipe and instructions.</p>`;
-
-        //Invoke getData function on submission of form to get and display results
-
-        getData(nameSearchURL + searchInput, function (data) {
+        getData(alcoholSearchURL + "Non_Alcoholic", function (data) {
             data = data.drinks;
-            console.log(data);
             data.forEach(function (item) {
-                let drinkCode = item.idDrink;
-                let drinkImage = item.strDrinkThumb;
-                let drinkName = item.strDrink;
-                let drinkInstructions = item.strInstructions;
-                let drinkIngredients = [item.strIngredient1, item.strIngredient2, item.strIngredient3, item.strIngredient4, item.strIngredient5, item.strIngredient6, item.strIngredient7, item.strIngredient8, item.strIngredient9, item.strIngredient10, item.strIngredient11, item.strIngredient12, item.strIngredient13, item.strIngredient14, item.strIngredient15];
+                cocktailNames.push(item.strDrink);
+            });
 
-                //Filter null values
+            // Add autocomplete functionality to search form
 
-                drinkIngredients = drinkIngredients.filter(elements => {
-                    return elements !== null;
-                });
+            $("#search-input").autocomplete({
+                source: cocktailNames
+            });
 
-                document.getElementById("result-list").innerHTML +=
+            // Get and display results
 
-                    `<div class="col-12 col-md-6 px-5 py-5 text-left">
+            function searchName(event) {
+
+                event.preventDefault();
+
+                let searchInput = document.getElementById("search-input").value;
+
+                document.getElementById("result-list").innerHTML = `<p>Here are the cocktails which match your search for <strong>${searchInput}</strong>. Click on a drink to see the full recipe and instructions.</p>`;
+
+                getData(nameSearchURL + searchInput, function (data) {
+                    data = data.drinks;
+                    data.forEach(function (item) {
+                        let drinkCode = item.idDrink;
+                        let drinkImage = item.strDrinkThumb;
+                        let drinkName = item.strDrink;
+                        let drinkInstructions = item.strInstructions;
+                        let drinkIngredients = [item.strIngredient1, item.strIngredient2, item.strIngredient3, item.strIngredient4, item.strIngredient5, item.strIngredient6, item.strIngredient7, item.strIngredient8, item.strIngredient9, item.strIngredient10, item.strIngredient11, item.strIngredient12, item.strIngredient13, item.strIngredient14, item.strIngredient15];
+
+                        //Filter null values
+
+                        drinkIngredients = drinkIngredients.filter(elements => {
+                            return elements !== null;
+                        });
+
+                        document.getElementById("result-list").innerHTML +=
+
+                            `<div class="col-12 col-md-6 px-5 py-5 text-left">
                                             <div id="result-${drinkCode}" class="drink-result">
                                                 <h2>${drinkName}</h2>
                                                 <img src="${drinkImage}" class="drink-img">
@@ -428,74 +450,75 @@ $(document).ready(function () {
                                         </div>
                                     `;
 
-                document.getElementById("result-list").onclick = function (event) {
+                        document.getElementById("result-list").onclick = function (event) {
 
-                    let target = event.target;
+                            let target = event.target;
 
-                    if (target.tagName === "IMG") {
+                            if (target.tagName === "IMG") {
 
-                        $(target.parentNode.nextElementSibling).toggle("drop");
+                                $(target.parentNode.nextElementSibling).toggle("drop");
 
-                    }
+                            }
 
-                    else if (target.tagName === "H2") {
+                            else if (target.tagName === "H2") {
 
-                        $(target.parentNode.nextElementSibling).toggle("drop");
+                                $(target.parentNode.nextElementSibling).toggle("drop");
 
-                    }
+                            }
 
 
-                };
+                        };
 
-                //Create list from array. Code from: https://www.tutorialspoint.com/how-to-create-html-list-from-javascript-array
+                        //Create list from array. Code from: https://www.tutorialspoint.com/how-to-create-html-list-from-javascript-array
 
-                let list = document.getElementById("ingredient-list" + drinkCode);
+                        let list = document.getElementById("ingredient-list" + drinkCode);
 
-                for (i = 0; i < drinkIngredients.length; ++i) {
-                    let li = document.createElement('li');
-                    li.innerText = drinkIngredients[i];
-                    list.appendChild(li);
+                        for (i = 0; i < drinkIngredients.length; ++i) {
+                            let li = document.createElement('li');
+                            li.innerText = drinkIngredients[i];
+                            list.appendChild(li);
+                        }
+
+
+
+                    });
+                });
+
+
+
+
+                // Hide "search-cocktail" div and display "results" div
+
+                $("#search-cocktail").hide("drop", function () {
+                    $("#results").show("drop");
                 }
+                );
+
+            }
+
+            let searchForm = document.getElementById("search-form");
+            searchForm.addEventListener('submit', searchName);
 
 
 
-            });
+
+
         });
 
 
 
 
-        // Hide "search-cocktail" div and display "results" div
+        // Return to home on button click
 
-        $("#search-cocktail").hide("drop", function () {
-            $("#results").show("drop");
-        }
-        );
+        $("#return-button").click(function () {
+            $("#results").hide("drop", function () {
+                $("#welcome").show("drop");
+            }
+            );
+        });
 
-    }
-
-    let searchForm = document.getElementById("search-form");
-    searchForm.addEventListener('submit', searchName);
-
-
-
-
-
+        $("#header-return-button").click(function () {
+            location.reload();
+        });
+    });
 });
-
-
-
-
-// Return to home on button click
-
-$("#return-button").click(function () {
-    $("#results").hide("drop", function () {
-        $("#welcome").show("drop");
-    }
-    );
-});
-
-$("#header-return-button").click(function () {
-    location.reload();
-});
-
