@@ -9,6 +9,16 @@ $(document).ready(function () {
     const alcoholSearchURL = "https://www.thecocktaildb.com/api/json/v2/9973533/filter.php?a=";
     const randomSearchURL = "https://www.thecocktaildb.com/api/json/v2/9973533/random.php?";
 
+    // Reveal header and menu after delay
+
+    setTimeout(function () {
+        $("#welcome").hide("drop", function () {
+            $("#header").show("drop");
+            $("#main-menu").show("drop");
+        });
+
+    }, 3000);
+
     // Link to API to get data based on API URL
     // Utilises code from "Working with external resources" lessons of CI course
 

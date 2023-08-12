@@ -22,18 +22,18 @@
     <!-- Header -->
     <header id="header" class="container hidden">
       <div class="row">
-        <div class="col-3">
+        <div class="col-3" id="img-container">
           <img
-            class="d-block mr-auto"
+            class="d-block"
             id="header-logo"
-            src="assets/images/logo.png"
+            src="assets/images/logo_static.png"
             alt="Neon representation of cocktail glass with Shaker Maker text"
           />
         </div>
         <div class="col-6 text-center">
           <h2 class="align-middle my-auto">Find your perfect cocktail</h2>
         </div>
-        <div class="col-3">
+        <div class="col-3 text-right">
           <p class="text-right">
             <a href="index.html"><button
               class="btn btn-outline-light btn-lg"
@@ -49,34 +49,37 @@
 
     <!-- Content -->
     <main>
-      <!-- Welcome -->
-      <section id="welcome" class="container">
-        <img
-          class="w-25 d-block mx-auto"
-          id="logo"
-          src="assets/images/logo.png"
-          alt="Neon representation of cocktail glass with Shaker Maker text"
-        />
-        <h1 class="d-none">Shaker Maker</h1>
-        <p class="text-center" id="welcome-strapline">
-          Find your perfect cocktail
-        </p>
-
-        <div id="main-menu" class="text-center">
-          <button class="btn btn-light mt-4" id="show-i-search">
-            I have some ingredients... inspire me!</button
-          ><br />
-
-          <button class="btn btn-light mt-4" id="show-c-search">
-            I know what I want... let me find it
-          </button><br />
+        <!-- Welcome -->
+        <section id="welcome" class="container">
+            <img
+            class="w-50 mt-5 d-block mx-auto"
+            id="logo"
+            src="assets/images/logo_animated.gif"
+            alt="Neon representation of cocktail glass with Shaker Maker text"
+            />
+            <h1 class="d-none">Shaker Maker</h1>
+        </section>
+        <!-- /.welcome -->
+    
+        <!-- Main menu -->
+        <section id="main-menu" class="container text-center hidden mt-5">
+            <div class="row">
+            <button class="xl-btn mt-4 bg-yellow rounded col-4 mx-auto" id="show-i-search">
+                <span class="fs-2">Search by ingredients</span><br>
+                <i class="bi bi-basket-fill fs-1"></i></button>
         
-        <button class="btn btn-light mt-4" id="random-search">
-            Surprise me!
-        </button>
-        </div>
-      </section>
-      <!-- /.welcome -->
+            <button class="xl-btn mt-4 bg-green rounded col-4 mx-auto" id="show-c-search">
+                <span class="fs-2">Look up cocktail by name</span><br>
+                <i class="bi bi-search fs-1"></i>
+            </button>
+        
+            <button class="xl-btn mt-4 bg-pink rounded col-4 mx-auto" id="random-search">
+                <span class="fs-2">Surprise me!</span><br><br><br>
+                <i class="bi bi-dice-5-fill fs-1"></span></i>
+            </button>
+            </div>
+        </section>
+        <!-- /.main menu -->
 
       <!-- Search by ingredient -->
       <section id="search-ingredients" class="container text-center">

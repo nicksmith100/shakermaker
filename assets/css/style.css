@@ -3,12 +3,38 @@ body {
     color: #eee;
 }
 
-.hidden {
-    display: none;
+#header {
+    height: 200px;
+    position: relative;
 }
 
 #header-logo {
-    width: 100px;
+    height: 200px;
+}
+
+.xl-btn {
+    width: 300px;
+}
+
+.xl-btn:hover {
+    opacity: 0.7;
+}
+
+.bg-yellow {
+    background-color: #dfc706;
+
+}
+
+.bg-pink {
+    background-color: #e01c80;
+}
+
+.bg-green {
+    background-color: #719d02;
+}
+
+.hidden {
+    display: none;
 }
 
 .recipe-card {
