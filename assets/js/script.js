@@ -7,6 +7,7 @@ $(document).ready(function () {
     const cocktailSearchURL = "https://www.thecocktaildb.com/api/json/v2/9973533/lookup.php?i=";
     const nameSearchURL = "https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=";
     const alcoholSearchURL = "https://www.thecocktaildb.com/api/json/v2/9973533/filter.php?a=";
+    const randomSearchURL = "https://www.thecocktaildb.com/api/json/v2/9973533/random.php?";
 
     // Link to API to get data based on API URL
     // Utilises code from "Working with external resources" lessons of CI course
@@ -508,17 +509,13 @@ $(document).ready(function () {
 
 
 
-        // Return to home on button click
 
-        $("#return-button").click(function () {
-            $("#results").hide("drop", function () {
-                $("#welcome").show("drop");
-            }
-            );
-        });
-
-        $("#header-return-button").click(function () {
-            location.reload();
-        });
     });
+
+    // Return to home on button click
+
+    $("#header-return-button").click(function () {
+        location.reload();
+    });
+
 });
