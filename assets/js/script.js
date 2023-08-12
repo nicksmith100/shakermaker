@@ -128,7 +128,8 @@ $(document).ready(function () {
                                 else if (selectedIngs.length === 3) {
 
                                     if (this.classList.contains("btn-dark")) {
-                                        alert("The maximum number of additional ingredients is three");
+                                        $('#modal-alert').modal("show");
+
                                     }
                                     else if (this.classList.contains("ing-selected")) {
                                         this.classList.remove("btn-light", "ing-selected");
