@@ -230,7 +230,7 @@ $(document).ready(function () {
                                         `<div class="col-12 col-md-6 px-5 py-5 text-left">
                                             <div id="result-${drinkCode}" class="drink-result">
                                                 <h2>${drinkName}</h2>
-                                                <img src="${drinkImage}" class="drink-img">
+                                                <img src="${drinkImage}" class="drink-img rounded border border-light">
                                             </div>
                                             <div id="recipe-${drinkCode}" class="recipe hidden">
                                                 <h3>Ingredients:</h3>
@@ -310,7 +310,7 @@ $(document).ready(function () {
                                     `<div class="col-12 col-md-6 px-5 py-5 text-left">
                                             <div id="result-${drinkCode}" class="drink-result">
                                                 <h2>${drinkName}</h2>
-                                                <img src="${drinkImage}" class="drink-img">
+                                                <img src="${drinkImage}" class="drink-img rounded border border-light">
                                             </div>
                                             <div id="recipe-${drinkCode}" class="recipe hidden">
                                                 <h3>Ingredients:</h3>
@@ -439,7 +439,7 @@ $(document).ready(function () {
                             `<div class="col-12 col-md-6 px-5 py-5 text-left">
                                             <div id="result-${drinkCode}" class="drink-result">
                                                 <h2>${drinkName}</h2>
-                                                <img src="${drinkImage}" class="drink-img">
+                                                <img src="${drinkImage}" class="drink-img rounded border border-light">
                                             </div>
                                             <div id="recipe-${drinkCode}" class="recipe hidden">
                                                 <h3>Ingredients:</h3>
@@ -535,7 +535,7 @@ $(document).ready(function () {
                     `<div class="col-12 col-md-6 px-5 py-5 text-left">
                                             <div id="result-${drinkCode}" class="drink-result">
                                                 <h2>${drinkName}</h2>
-                                                <img src="${drinkImage}" class="drink-img">
+                                                <img src="${drinkImage}" class="drink-img rounded border border-light">
                                             </div>
                                             <div id="recipe-${drinkCode}" class="recipe">
                                                 <h3>Ingredients:</h3>
