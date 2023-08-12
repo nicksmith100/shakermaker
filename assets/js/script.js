@@ -201,7 +201,7 @@ $(document).ready(function () {
 
                 if (data.includes("None")) {
 
-                    document.getElementById("result-list").innerHTML = `<p>Sorry, no drinks were found with <strong>${ingStringSpaced}</strong>, but here are all the cocktails you can make with <strong>${selectedSpirit}</strong>. Click on a drink to see the full recipe and instructions.</p>`;
+                    document.getElementById("result-list").innerHTML = `<p class="fs-2">Sorry, no drinks were found with <strong>${ingStringSpaced}</strong>, but here are all the cocktails you can make with <strong>${selectedSpirit}</strong>. Click on a drink image to see the full recipe.</p>`;
 
                     getData(searchURL2, function (data) {
                         data = data.drinks;
@@ -227,21 +227,31 @@ $(document).ready(function () {
 
                                     document.getElementById("result-list").innerHTML +=
 
-                                        `<div class="col-12 col-md-6 px-5 py-5 text-left">
-                                            <div id="result-${drinkCode}" class="drink-result">
-                                                <h2>${drinkName}</h2>
-                                                <img src="${drinkImage}" class="drink-img rounded border border-light">
-                                            </div>
-                                            <div id="recipe-${drinkCode}" class="recipe hidden">
-                                                <h3>Ingredients:</h3>
-                                                <ul id="ingredient-list${drinkCode}" class="list-unstyled"></ul>
-                                                <h3>Instructions:</h3>
-                                                <p>${drinkInstructions}</p>
-                                            </div>
-
-                                        </div>
-                                    `;
-
+                                        `<div id="result-${drinkCode}" class="drink-result mt-5">
+                        <div class="row">
+                            <div class="col-12">
+                                <h2>${drinkName}</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-4">
+                                <img src="${drinkImage}" class="drink-img img-fluid rounded border border-light">
+                            </div>
+                            <div id="recipe-${drinkCode}" class="recipe hidden col-12 col-sm-4">
+                                <div class = "rounded text-dark px-3 py-2 mt-2 my-sm-0 recipe-card">
+                                    <h3>Ingredients:</h3>
+                                    <ul id="ingredient-list${drinkCode}" class="list-unstyled"></ul>
+                                </div>
+                            </div>
+                            <div id="instructions-${drinkCode}" class="instructions hidden col-12 col-sm-4">
+                                <div class = "rounded text-dark px-3 py-2 mt-2 my-sm-0 inst-card">    
+                                    <h3>Instructions:</h3>
+                                    <p>${drinkInstructions}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    `;
 
                                     document.getElementById("result-list").onclick = function (event) {
 
@@ -249,16 +259,11 @@ $(document).ready(function () {
 
                                         if (target.tagName === "IMG") {
 
-                                            $(target.parentNode.nextElementSibling).toggle("drop");
+                                            $(target.parentNode.nextElementSibling).show("drop");
+                                            $(target.parentNode.nextElementSibling).siblings().show("drop");
+
 
                                         }
-
-                                        else if (target.tagName === "H2") {
-
-                                            $(target.parentNode.nextElementSibling).toggle("drop");
-
-                                        }
-
 
                                     };
 
@@ -285,7 +290,7 @@ $(document).ready(function () {
 
                 else {
 
-                    document.getElementById("result-list").innerHTML = `<p>Here are all the cocktails you can make with <strong>${ingStringSpaced}</strong>. Click on a drink to see the full recipe and instructions.</p>`;
+                    document.getElementById("result-list").innerHTML = `<p class="fs-2">Here are all the cocktails you can make with <strong>${ingStringSpaced}</strong>. Click on a drink image to see the full recipe.</p>`;
 
                     data.forEach(function (item) {
 
@@ -307,20 +312,33 @@ $(document).ready(function () {
 
                                 document.getElementById("result-list").innerHTML +=
 
-                                    `<div class="col-12 col-md-6 px-5 py-5 text-left">
-                                            <div id="result-${drinkCode}" class="drink-result">
-                                                <h2>${drinkName}</h2>
-                                                <img src="${drinkImage}" class="drink-img rounded border border-light">
-                                            </div>
-                                            <div id="recipe-${drinkCode}" class="recipe hidden">
-                                                <h3>Ingredients:</h3>
-                                                <ul id="ingredient-list${drinkCode}" class="list-unstyled"></ul>
-                                                <h3>Instructions:</h3>
-                                                <p>${drinkInstructions}</p>
-                                            </div>
+                                    `<div id="result-${drinkCode}" class="drink-result mt-5">
+                        <div class="row">
+                            <div class="col-12">
+                                <h2>${drinkName}</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-4">
+                                <img src="${drinkImage}" class="drink-img img-fluid rounded border border-light">
+                            </div>
+                            <div id="recipe-${drinkCode}" class="recipe hidden col-12 col-sm-4">
+                                <div class = "rounded text-dark px-3 py-2 mt-2 my-sm-0 recipe-card">
+                                    <h3>Ingredients:</h3>
+                                    <ul id="ingredient-list${drinkCode}" class="list-unstyled"></ul>
+                                </div>
+                            </div>
+                            <div id="instructions-${drinkCode}" class="instructions hidden col-12 col-sm-4">
+                                <div class = "rounded text-dark px-3 py-2 mt-2 my-sm-0 inst-card">    
+                                    <h3>Instructions:</h3>
+                                    <p>${drinkInstructions}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    `;
 
-                                        </div>
-                                    `;
+
 
 
 
@@ -330,16 +348,10 @@ $(document).ready(function () {
 
                                     if (target.tagName === "IMG") {
 
-                                        $(target.parentNode.nextElementSibling).toggle("drop");
+                                        $(target.parentNode.nextElementSibling).show("drop");
+                                        $(target.parentNode.nextElementSibling).siblings().show("drop");
 
                                     }
-
-                                    else if (target.tagName === "H2") {
-
-                                        $(target.parentNode.nextElementSibling).toggle("drop");
-
-                                    }
-
 
                                 };
 
@@ -417,7 +429,7 @@ $(document).ready(function () {
 
                 let searchInput = document.getElementById("search-input").value;
 
-                document.getElementById("result-list").innerHTML = `<p>Here are the cocktails which match your search for <strong>${searchInput}</strong>. Click on a drink to see the full recipe and instructions.</p>`;
+                document.getElementById("result-list").innerHTML = `<p class="fs-2">Here are the cocktails which match your search for <strong>${searchInput}</strong>. Click on a drink image to see the full recipe.</p>`;
 
                 getData(nameSearchURL + searchInput, function (data) {
                     data = data.drinks;
@@ -436,20 +448,31 @@ $(document).ready(function () {
 
                         document.getElementById("result-list").innerHTML +=
 
-                            `<div class="col-12 col-md-6 px-5 py-5 text-left">
-                                            <div id="result-${drinkCode}" class="drink-result">
-                                                <h2>${drinkName}</h2>
-                                                <img src="${drinkImage}" class="drink-img rounded border border-light">
-                                            </div>
-                                            <div id="recipe-${drinkCode}" class="recipe hidden">
-                                                <h3>Ingredients:</h3>
-                                                <ul id="ingredient-list${drinkCode}" class="list-unstyled"></ul>
-                                                <h3>Instructions:</h3>
-                                                <p>${drinkInstructions}</p>
-                                            </div>
-
-                                        </div>
-                                    `;
+                            `<div id="result-${drinkCode}" class="drink-result mt-5">
+                        <div class="row">
+                            <div class="col-12">
+                                <h2>${drinkName}</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-4">
+                                <img src="${drinkImage}" class="drink-img img-fluid rounded border border-light">
+                            </div>
+                            <div id="recipe-${drinkCode}" class="recipe hidden col-12 col-sm-4">
+                                <div class = "rounded text-dark px-3 py-2 mt-2 my-sm-0 recipe-card">
+                                    <h3>Ingredients:</h3>
+                                    <ul id="ingredient-list${drinkCode}" class="list-unstyled"></ul>
+                                </div>
+                            </div>
+                            <div id="instructions-${drinkCode}" class="instructions hidden col-12 col-sm-4">
+                                <div class = "rounded text-dark px-3 py-2 mt-2 my-sm-0 inst-card">    
+                                    <h3>Instructions:</h3>
+                                    <p>${drinkInstructions}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    `;
 
                         document.getElementById("result-list").onclick = function (event) {
 
@@ -457,16 +480,10 @@ $(document).ready(function () {
 
                             if (target.tagName === "IMG") {
 
-                                $(target.parentNode.nextElementSibling).toggle("drop");
+                                $(target.parentNode.nextElementSibling).show("drop");
+                                $(target.parentNode.nextElementSibling).siblings().show("drop");
 
                             }
-
-                            else if (target.tagName === "H2") {
-
-                                $(target.parentNode.nextElementSibling).toggle("drop");
-
-                            }
-
 
                         };
 
@@ -513,7 +530,7 @@ $(document).ready(function () {
 
     $("#random-search").click(function () {
 
-        document.getElementById("result-list").innerHTML = `<p>Here's a <strong>random cocktail</strong> for you to try!</p>`;
+        document.getElementById("result-list").innerHTML = `<p class="fs-2">Here's a <strong>random cocktail</strong> for you to try!</p>`;
 
         getData(randomSearchURL, function (data) {
             data = data.drinks;
@@ -532,21 +549,31 @@ $(document).ready(function () {
 
                 document.getElementById("result-list").innerHTML +=
 
-                    `<div class="col-12 col-md-6 px-5 py-5 text-left">
-                                            <div id="result-${drinkCode}" class="drink-result">
-                                                <h2>${drinkName}</h2>
-                                                <img src="${drinkImage}" class="drink-img rounded border border-light">
-                                            </div>
-                                            <div id="recipe-${drinkCode}" class="recipe">
-                                                <h3>Ingredients:</h3>
-                                                <ul id="ingredient-list${drinkCode}" class="list-unstyled"></ul>
-                                                <h3>Instructions:</h3>
-                                                <p>${drinkInstructions}</p>
-                                            </div>
-
-                                        </div>
-                                    `;
-
+                    `<div id="result-${drinkCode}" class="drink-result mt-5">
+                        <div class="row">
+                            <div class="col-12">
+                                <h2>${drinkName}</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-4">
+                                <img src="${drinkImage}" class="drink-img img-fluid rounded border border-light">
+                            </div>
+                            <div id="recipe-${drinkCode}" class="recipe hidden col-12 col-sm-4">
+                                <div class = "rounded text-dark px-3 py-2 mt-2 my-sm-0 recipe-card">
+                                    <h3>Ingredients:</h3>
+                                    <ul id="ingredient-list${drinkCode}" class="list-unstyled"></ul>
+                                </div>
+                            </div>
+                            <div id="instructions-${drinkCode}" class="instructions hidden col-12 col-sm-4">
+                                <div class = "rounded text-dark px-3 py-2 mt-2 my-sm-0 inst-card">    
+                                    <h3>Instructions:</h3>
+                                    <p>${drinkInstructions}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    `;
 
                 //Create list from array. Code from: https://www.tutorialspoint.com/how-to-create-html-list-from-javascript-array
 
@@ -567,7 +594,11 @@ $(document).ready(function () {
 
         $("#welcome").hide("drop", function () {
             $("#header").show("drop");
-            $("#results").show("drop");
+            $("#results").show("drop", function () {
+                $(".recipe").show("drop");
+                $(".instructions").show("drop");
+
+            });
 
         });
 

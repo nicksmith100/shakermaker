@@ -11,11 +11,10 @@ body {
     width: 100px;
 }
 
-.drink-img {
-    width: 300px;
-    height: 300px;
+.recipe-card {
+    background-color: #eee;
 }
 
-.recipe-instructions {
-    width: 300px;
+.inst-card {
+    background-color: #ccc;
 }
