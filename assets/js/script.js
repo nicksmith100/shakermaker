@@ -19,6 +19,12 @@ $(document).ready(function () {
 
     }, 3000);
 
+    // Display instructions on button press
+
+    $("#instructions-button").click(function () {
+        $('#modal-instructions').modal("show");
+    });
+
     // Link to API to get data based on API URL
     // Utilises code from "Working with external resources" lessons of CI course
 

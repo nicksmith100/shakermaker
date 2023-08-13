@@ -91,6 +91,7 @@ h2 {
     background-color: #ccc;
 }
 
-#modal-alert {
+#modal-alert,
+#modal-instructions {
     background-color: #000;
 }
