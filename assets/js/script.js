@@ -12,9 +12,9 @@ $(document).ready(function () {
     // Reveal header and menu after delay
 
     setTimeout(function () {
-        $("#welcome").hide("drop", function () {
-            $("#header").show("drop");
-            $("#main-menu").show("drop");
+        $("#welcome").hide("drop", { direction: "up" }, function () {
+            $("#header").show("drop", { direction: "up" });
+            $("#main-menu").show("drop", { direction: "up" });
         });
 
     }, 3000);
@@ -73,7 +73,7 @@ $(document).ready(function () {
     // Code for show and hide from: https://api.jqueryui.com/
 
     $("#show-i-search").click(function () {
-        $("#welcome").hide("drop", function () {
+        $("#main-menu").hide("drop", function () {
             $("#select-spirit").show("drop");
             $("#header").show("drop");
         }
@@ -105,69 +105,57 @@ $(document).ready(function () {
                 // Reveal "Select ingredients" div if not already visible, and create buttons from topIngs array
                 // Code for checking visibility adapted from: https://www.tutorialrepublic.com/faq/how-to-check-an-element-is-visible-or-not-using-jquery.php with reference to https://api.jquery.com/hidden-selector/
 
-                if ($("#select-ingredients").is(":hidden")) {
+                $("#select-spirit").hide("drop", function () {
+                    $("#select-ingredients").show("drop");
+                    for (let i = 0; i < topIngs.length; i++) {
+                        document.getElementById("ing-buttons").innerHTML += `
+                            <button class="btn btn-dark btn-lg mx-3 my-3 ing-btn" id="${topIngs[i]}-button">${topIngs[i]}</button>
+                            `;
+                    }
 
-                    $("#select-ingredients").show("drop", function () {
+                    // Add event listeners to ingredient buttons
 
-                        for (let i = 0; i < topIngs.length; i++) {
-                            document.getElementById("ing-buttons").innerHTML += `
-            <button class="btn btn-dark btn-lg mx-3 my-3 ing-btn" id="${topIngs[i]}-button">${topIngs[i]}</button>
-        `;
-                        }
+                    let ingBtns = document.querySelectorAll('.ing-btn');
 
+                    for (i of ingBtns) {
+                        i.addEventListener('click', function () {
 
-                        // Add event listeners to ingredient buttons
+                            let selectedIngs = document.getElementsByClassName("ing-selected");
 
-                        let ingBtns = document.querySelectorAll('.ing-btn');
+                            // Allow toggling of button classes, and add max selection of 3
 
-                        for (i of ingBtns) {
-                            i.addEventListener('click', function () {
+                            if (selectedIngs.length < 3) {
 
-                                let selectedIngs = document.getElementsByClassName("ing-selected");
-
-                                // Allow toggling of button classes, and add max selection of 3
-
-                                if (selectedIngs.length < 3) {
-
-                                    if (this.classList.contains("btn-dark")) {
-                                        this.classList.remove("btn-dark");
-                                        this.classList.add("btn-light", "ing-selected");
-                                    }
-                                    else if (this.classList.contains("ing-selected")) {
-                                        this.classList.remove("btn-light", "ing-selected");
-                                        this.classList.add("btn-dark");
-                                    }
-
-
+                                if (this.classList.contains("btn-dark")) {
+                                    this.classList.remove("btn-dark");
+                                    this.classList.add("btn-light", "ing-selected");
+                                }
+                                else if (this.classList.contains("ing-selected")) {
+                                    this.classList.remove("btn-light", "ing-selected");
+                                    this.classList.add("btn-dark");
                                 }
 
-                                else if (selectedIngs.length === 3) {
 
-                                    if (this.classList.contains("btn-dark")) {
-                                        $('#modal-alert').modal("show");
+                            }
 
-                                    }
-                                    else if (this.classList.contains("ing-selected")) {
-                                        this.classList.remove("btn-light", "ing-selected");
-                                        this.classList.add("btn-dark");
-                                    }
+                            else if (selectedIngs.length === 3) {
+
+                                if (this.classList.contains("btn-dark")) {
+                                    $('#modal-alert').modal("show");
 
                                 }
+                                else if (this.classList.contains("ing-selected")) {
+                                    this.classList.remove("btn-light", "ing-selected");
+                                    this.classList.add("btn-dark");
+                                }
 
-                            });
-                        };
-                    });
+                            }
 
-                }
+                        });
+                    };
+                });
 
             });
-
-
-
-
-
-
-
 
         };
     });
@@ -408,7 +396,7 @@ $(document).ready(function () {
     // Show "search-cocktail" section and header on button click
 
     $("#show-c-search").click(function () {
-        $("#welcome").hide("drop", function () {
+        $("#main-menu").hide("drop", function () {
             $("#search-cocktail").show("drop");
             $("#header").show("drop");
         }
@@ -607,9 +595,9 @@ $(document).ready(function () {
             });
         });
 
-        // Hide "welcome" div and display "results" div with header
+        // Hide "main-menu" div and display "results" div with header
 
-        $("#welcome").hide("drop", function () {
+        $("#main-menu").hide("drop", function () {
             $("#header").show("drop");
             $("#results").show("drop", function () {
                 $(".recipe").show("drop");
@@ -624,7 +612,7 @@ $(document).ready(function () {
 
     // Return to home on button click
 
-    $("#header-return-button").click(function () {
+    $(".return").click(function () {
         location.reload();
     });
 
