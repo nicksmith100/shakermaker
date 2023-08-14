@@ -77,6 +77,12 @@ h2 {
     color: #eee;
 }
 
+.img-btn {
+    height: 150px;
+    width: 150px;
+    font-weight: bold;
+}
+
 .bg-yellow {
     background-color: #dfc706;
 }
