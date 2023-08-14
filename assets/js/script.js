@@ -451,7 +451,17 @@ $(document).ready(function () {
             // Add autocomplete functionality to search form
 
             $("#search-input").autocomplete({
-                source: cocktailNames
+                source: cocktailNames,
+
+                // Force selection from autocomplete list, otherwise sets value to blank string - code from: https://itecnote.com/tecnote/jquery-autocomplete-how-to-force-selection-from-list-keyboard/
+
+                change: function (event, ui) {
+                    if (!ui.item) {
+                        $("#search-input").val("");
+                    }
+
+                }
+
             });
 
             // Get and display results
@@ -461,6 +471,8 @@ $(document).ready(function () {
                 event.preventDefault();
 
                 let searchInput = document.getElementById("search-input").value;
+
+
 
                 document.getElementById("result-list").innerHTML = `<p class="fs-2">Here are the cocktails which match your search for <strong>${searchInput}</strong>. Click on a drink image to see the full recipe.</p>`;
 
