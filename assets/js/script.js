@@ -472,28 +472,31 @@ $(document).ready(function () {
 
                 let searchInput = document.getElementById("search-input").value;
 
+                if (!cocktailNames.includes(searchInput)) {
+                    $('#modal-no-input-alert').modal("show");
+                }
 
+                else {
+                    document.getElementById("result-list").innerHTML = `<p class="fs-2">Here are the cocktails which match your search for <strong>${searchInput}</strong>. Click on a drink image to see the full recipe.</p>`;
 
-                document.getElementById("result-list").innerHTML = `<p class="fs-2">Here are the cocktails which match your search for <strong>${searchInput}</strong>. Click on a drink image to see the full recipe.</p>`;
+                    getData(nameSearchURL + searchInput, function (data) {
+                        data = data.drinks;
+                        data.forEach(function (item) {
+                            let drinkCode = item.idDrink;
+                            let drinkImage = item.strDrinkThumb;
+                            let drinkName = item.strDrink;
+                            let drinkInstructions = item.strInstructions;
+                            let drinkIngredients = [item.strIngredient1, item.strIngredient2, item.strIngredient3, item.strIngredient4, item.strIngredient5, item.strIngredient6, item.strIngredient7, item.strIngredient8, item.strIngredient9, item.strIngredient10, item.strIngredient11, item.strIngredient12, item.strIngredient13, item.strIngredient14, item.strIngredient15];
 
-                getData(nameSearchURL + searchInput, function (data) {
-                    data = data.drinks;
-                    data.forEach(function (item) {
-                        let drinkCode = item.idDrink;
-                        let drinkImage = item.strDrinkThumb;
-                        let drinkName = item.strDrink;
-                        let drinkInstructions = item.strInstructions;
-                        let drinkIngredients = [item.strIngredient1, item.strIngredient2, item.strIngredient3, item.strIngredient4, item.strIngredient5, item.strIngredient6, item.strIngredient7, item.strIngredient8, item.strIngredient9, item.strIngredient10, item.strIngredient11, item.strIngredient12, item.strIngredient13, item.strIngredient14, item.strIngredient15];
+                            //Filter null values
 
-                        //Filter null values
+                            drinkIngredients = drinkIngredients.filter(elements => {
+                                return elements !== null;
+                            });
 
-                        drinkIngredients = drinkIngredients.filter(elements => {
-                            return elements !== null;
-                        });
+                            document.getElementById("result-list").innerHTML +=
 
-                        document.getElementById("result-list").innerHTML +=
-
-                            `<div id="result-${drinkCode}" class="drink-result mt-5">
+                                `<div id="result-${drinkCode}" class="drink-result mt-5">
                         <div class="row">
                             <div class="col-12">
                                 <h2>${drinkName}</h2>
@@ -519,42 +522,43 @@ $(document).ready(function () {
                     </div>
                     `;
 
-                        document.getElementById("result-list").onclick = function (event) {
+                            document.getElementById("result-list").onclick = function (event) {
 
-                            let target = event.target;
+                                let target = event.target;
 
-                            if (target.tagName === "IMG") {
+                                if (target.tagName === "IMG") {
 
-                                $(target.parentNode.nextElementSibling).show("drop");
-                                $(target.parentNode.nextElementSibling).siblings().show("drop");
+                                    $(target.parentNode.nextElementSibling).show("drop");
+                                    $(target.parentNode.nextElementSibling).siblings().show("drop");
 
+                                }
+
+                            };
+
+                            //Create list from array. Code from: https://www.tutorialspoint.com/how-to-create-html-list-from-javascript-array
+
+                            let list = document.getElementById("ingredient-list" + drinkCode);
+
+                            for (i = 0; i < drinkIngredients.length; ++i) {
+                                let li = document.createElement('li');
+                                li.innerText = drinkIngredients[i];
+                                list.appendChild(li);
                             }
 
-                        };
-
-                        //Create list from array. Code from: https://www.tutorialspoint.com/how-to-create-html-list-from-javascript-array
-
-                        let list = document.getElementById("ingredient-list" + drinkCode);
-
-                        for (i = 0; i < drinkIngredients.length; ++i) {
-                            let li = document.createElement('li');
-                            li.innerText = drinkIngredients[i];
-                            list.appendChild(li);
-                        }
 
 
-
+                        });
                     });
-                });
 
 
 
 
-                // Hide "search-cocktail" div and display "results" div
+                    // Hide "search-cocktail" div and display "results" div
 
-                $("#search-cocktail").hide("drop", function () {
-                    $("#results").show("drop");
-                });
+                    $("#search-cocktail").hide("drop", function () {
+                        $("#results").show("drop");
+                    });
+                }
 
             }
 

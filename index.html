@@ -184,7 +184,7 @@
         <div class="row">
           <div class="col-12 col-sm-6 offset-sm-3 mt-5">
             <form id="search-form" class="ui-widget">
-            <input type="text" id="search-input" name="search-input" class="form-control" placeholder="Search here" />
+            <input type="text" id="search-input" name="search-input" class="form-control" placeholder="Start typing" />
             <br />
             <button type="submit" id="search-submit" class="btn btn-lg btn-orange border border-light mt-3">
               Submit
@@ -197,6 +197,21 @@
         </div>
       </section>
       <!-- /.search by cocktail -->
+
+    <!-- No search input alert -->
+    <div id="modal-no-input-alert" class="modal fade alert alert-dark" tabindex="-1" role="dialog" data-mdb-backdrop="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p>Please start typing and select an item from the list.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.no search input alert -->
 
       <!-- Results -->
       <section id="results" class="hidden mb-5">

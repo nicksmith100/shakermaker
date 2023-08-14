@@ -93,7 +93,8 @@ h2 {
 
 #modal-ing-alert,
 #modal-spirit-alert,
-#modal-instructions {
+#modal-instructions,
+#modal-no-input-alert {
     background-color: #000;
 }
 
