@@ -107,66 +107,77 @@ $(document).ready(function () {
         };
     });
 
-    // Reveal "Select ingredients" div, and create buttons from topIngs array
-
     $("#s-search-back").click(function () {
         $("#select-spirit").hide("drop", function () {
             $("#main-menu").show("drop");
         });
     });
 
+    // Reveal "Select ingredients" div, and create buttons from topIngs array
+
     $("#s-search-next").click(function () {
 
-        $("#select-spirit").hide("drop", function () {
-            $("#select-ingredients").show("drop");
-            for (let i = 0; i < topIngs.length; i++) {
-                document.getElementById("ing-buttons").innerHTML += `
+        let selectedSpiritBtn = document.getElementsByClassName("spirit-selected")[0];
+
+        if (selectedSpiritBtn == undefined) {
+            $('#modal-spirit-alert').modal("show");
+        }
+
+        else {
+
+            $("#select-spirit").hide("drop", function () {
+                $("#select-ingredients").show("drop");
+                for (let i = 0; i < topIngs.length; i++) {
+                    document.getElementById("ing-buttons").innerHTML += `
                                 <button class="btn btn-yellow btn-lg mx-3 my-3 ing-btn" id="${topIngs[i]}-button">${topIngs[i]}</button>
                                 `;
-            }
+                }
 
 
-            // Add event listeners to ingredient buttons
+                // Add event listeners to ingredient buttons
 
-            let ingBtns = document.querySelectorAll('.ing-btn');
+                let ingBtns = document.querySelectorAll('.ing-btn');
 
-            for (i of ingBtns) {
-                i.addEventListener('click', function () {
+                for (i of ingBtns) {
+                    i.addEventListener('click', function () {
 
-                    let selectedIngs = document.getElementsByClassName("ing-selected");
+                        let selectedIngs = document.getElementsByClassName("ing-selected");
 
-                    // Allow toggling of button classes, and add max selection of 3
+                        // Allow toggling of button classes, and add max selection of 3
 
-                    if (selectedIngs.length < 3) {
+                        if (selectedIngs.length < 3) {
 
-                        if (this.classList.contains("btn-yellow")) {
-                            this.classList.remove("btn-yellow");
-                            this.classList.add("btn-green", "ing-selected");
-                        }
-                        else if (this.classList.contains("ing-selected")) {
-                            this.classList.remove("btn-green", "ing-selected");
-                            this.classList.add("btn-yellow");
-                        }
+                            if (this.classList.contains("btn-yellow")) {
+                                this.classList.remove("btn-yellow");
+                                this.classList.add("btn-green", "ing-selected");
+                            }
+                            else if (this.classList.contains("ing-selected")) {
+                                this.classList.remove("btn-green", "ing-selected");
+                                this.classList.add("btn-yellow");
+                            }
 
-
-                    }
-
-                    else if (selectedIngs.length === 3) {
-
-                        if (this.classList.contains("btn-yellow")) {
-                            $('#modal-alert').modal("show");
 
                         }
-                        else if (this.classList.contains("ing-selected")) {
-                            this.classList.remove("btn-green", "ing-selected");
-                            this.classList.add("btn-yellow");
+
+                        else if (selectedIngs.length === 3) {
+
+                            if (this.classList.contains("btn-yellow")) {
+                                $('#modal-ing-alert').modal("show");
+
+                            }
+                            else if (this.classList.contains("ing-selected")) {
+                                this.classList.remove("btn-green", "ing-selected");
+                                this.classList.add("btn-yellow");
+                            }
+
                         }
 
-                    }
+                    });
+                };
+            });
 
-                });
-            };
-        });
+        }
+
     });
 
 
