@@ -48,18 +48,10 @@ h2 {
 .btn-orange:hover {
     background-color: #1498e5;
     color: #eee;
-}
-
-.btn-blue {
-    background-color: #1498e5;
-    font-family: 'Oswald',
-        sans-serif;
-    color: black;
-}
-
-.btn-blue:hover {
-    background-color: #f56d1c;
-    color: #eee;
+    /* Code for ease-in-out effect from Code Institute: https://github.com/Code-Institute-Solutions/resume-miniproject-bootstrap4/tree/master/07-adding-hover-css */
+    transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
 }
 
 .btn-yellow {
@@ -75,6 +67,9 @@ h2 {
 .btn-green:hover {
     background-color: #719d02;
     color: #eee;
+    transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
 }
 
 .img-btn {
@@ -95,8 +90,6 @@ h2 {
     background-color: #e01c80;
 }
 
-
-
 #modal-ing-alert,
 #modal-spirit-alert,
 #modal-instructions,
@@ -113,14 +106,12 @@ h2 {
 }
 
 .xl-btn:hover {
-    opacity: 0.95;
+    opacity: 0.9;
     color: #eee;
+    transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
 }
-
-
-
-/* Ingredients Search */
-
 
 /* Results */
 
