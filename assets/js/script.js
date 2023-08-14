@@ -15,6 +15,7 @@ $(document).ready(function () {
         $("#welcome").hide("drop", { direction: "up" }, function () {
             $("#header").show("drop", { direction: "up" });
             $("#main-menu").show("drop", { direction: "up" });
+            console.log("test connect");
         });
 
     }, 3000);
@@ -182,7 +183,7 @@ $(document).ready(function () {
 
 
 
-    // Add event listener to search buttons
+    // Add event listener to back and search buttons
 
     $("#i-search-back").click(function () {
         $("#select-ingredients").hide("drop", function () {
@@ -536,7 +537,11 @@ $(document).ready(function () {
                 });
 
 
+                $("#c-search-back").click(function () {
+                    console.log("button clicked");
 
+
+                });
 
                 // Hide "search-cocktail" div and display "results" div
 
