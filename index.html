@@ -45,11 +45,15 @@
             <h1>Find your perfect cocktail</h1>
         </div>
         <div class="col-6 col-sm-3 d-flex align-items-end justify-content-end">
-                        
-            <button class="btn btn-lg btn-orange border border-light mb-2 header-btn w-100" id="instructions-button">
+            <div class="w-100">
+            <button class="btn btn-lg btn-orange border border-light mb-2 w-100 hidden" id="results-back">
+                Back to menu
+            </button><br>
+
+            <button class="btn btn-lg btn-orange border border-light mb-2 w-100" id="instructions-button">
                 Instructions
             </button>
-        
+            </div>
         </div>
       </div>
     </header>
@@ -215,9 +219,11 @@
 
       <!-- Results -->
       <section id="results" class="hidden mb-5">
-        <div id="result-list" class="container"></div>        
+        <div id="result-list" class="container">
+            
+        </div>        
       </section>
-    </main>
+    
     <!-- /.results -->
 
     

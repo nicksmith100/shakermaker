@@ -416,6 +416,7 @@ $(document).ready(function () {
 
         $("#search-ingredients").hide("drop", function () {
             $("#results").show("drop");
+            $("#results-back").fadeIn();
         }
         );
 
@@ -557,6 +558,7 @@ $(document).ready(function () {
 
                     $("#search-cocktail").hide("drop", function () {
                         $("#results").show("drop");
+                        $("#results-back").fadeIn();
                     });
                 }
 
@@ -651,21 +653,27 @@ $(document).ready(function () {
 
         $("#main-menu").hide("drop", function () {
             $("#header").show("drop");
+
             $("#results").show("drop", function () {
                 $(".recipe").show("drop");
                 $(".instructions").show("drop");
 
             });
 
+            $("#results-back").fadeIn();
+
         });
 
 
     });
 
-    // Return to home on button click
+    // Return to main menu on button click
 
-    $(".return").click(function () {
-        location.reload();
+    $("#results-back").click(function () {
+        $("#results").hide("drop", function () {
+            $("#main-menu").show("drop");
+            $("#results-back").fadeOut();
+        });
     });
 
 });
