@@ -81,7 +81,7 @@ $(document).ready(function () {
 
         for (let i = 0; i < topSpirits.length; i++) {
             document.getElementById("spirit-buttons").innerHTML += `
-            <button class="btn btn-dark btn-lg mx-3 my-3 spirit-btn" id="${topSpirits[i]}-button">${topSpirits[i]}</button>
+            <button class="btn btn-lg mx-3 my-3 spirit-btn btn-yellow" id="${topSpirits[i]}-button">${topSpirits[i]}</button>
         `;
         }
 
@@ -96,71 +96,88 @@ $(document).ready(function () {
 
                 let spiritBtns2 = document.querySelectorAll('.spirit-btn');
                 for (j of spiritBtns2) {
-                    j.classList.remove("btn-light");
-                    j.classList.add("btn-dark");
+                    j.classList.remove("btn-green");
+                    j.classList.add("btn-yellow");
                 }
-                this.classList.remove("btn-dark");
-                this.classList.add("btn-light", "spirit-selected");
-
-                // Reveal "Select ingredients" div if not already visible, and create buttons from topIngs array
-                // Code for checking visibility adapted from: https://www.tutorialrepublic.com/faq/how-to-check-an-element-is-visible-or-not-using-jquery.php with reference to https://api.jquery.com/hidden-selector/
-
-                $("#select-spirit").hide("drop", function () {
-                    $("#select-ingredients").show("drop");
-                    for (let i = 0; i < topIngs.length; i++) {
-                        document.getElementById("ing-buttons").innerHTML += `
-                            <button class="btn btn-dark btn-lg mx-3 my-3 ing-btn" id="${topIngs[i]}-button">${topIngs[i]}</button>
-                            `;
-                    }
-
-                    // Add event listeners to ingredient buttons
-
-                    let ingBtns = document.querySelectorAll('.ing-btn');
-
-                    for (i of ingBtns) {
-                        i.addEventListener('click', function () {
-
-                            let selectedIngs = document.getElementsByClassName("ing-selected");
-
-                            // Allow toggling of button classes, and add max selection of 3
-
-                            if (selectedIngs.length < 3) {
-
-                                if (this.classList.contains("btn-dark")) {
-                                    this.classList.remove("btn-dark");
-                                    this.classList.add("btn-light", "ing-selected");
-                                }
-                                else if (this.classList.contains("ing-selected")) {
-                                    this.classList.remove("btn-light", "ing-selected");
-                                    this.classList.add("btn-dark");
-                                }
-
-
-                            }
-
-                            else if (selectedIngs.length === 3) {
-
-                                if (this.classList.contains("btn-dark")) {
-                                    $('#modal-alert').modal("show");
-
-                                }
-                                else if (this.classList.contains("ing-selected")) {
-                                    this.classList.remove("btn-light", "ing-selected");
-                                    this.classList.add("btn-dark");
-                                }
-
-                            }
-
-                        });
-                    };
-                });
+                this.classList.remove("btn-yellow");
+                this.classList.add("btn-green", "spirit-selected");
 
             });
 
         };
     });
 
+    // Reveal "Select ingredients" div, and create buttons from topIngs array
+
+    $("#s-search-back").click(function () {
+        $("#select-spirit").hide("drop", function () {
+            $("#main-menu").show("drop");
+        });
+    });
+
+    $("#s-search-next").click(function () {
+
+        $("#select-spirit").hide("drop", function () {
+            $("#select-ingredients").show("drop");
+            for (let i = 0; i < topIngs.length; i++) {
+                document.getElementById("ing-buttons").innerHTML += `
+                                <button class="btn btn-yellow btn-lg mx-3 my-3 ing-btn" id="${topIngs[i]}-button">${topIngs[i]}</button>
+                                `;
+            }
+
+
+            // Add event listeners to ingredient buttons
+
+            let ingBtns = document.querySelectorAll('.ing-btn');
+
+            for (i of ingBtns) {
+                i.addEventListener('click', function () {
+
+                    let selectedIngs = document.getElementsByClassName("ing-selected");
+
+                    // Allow toggling of button classes, and add max selection of 3
+
+                    if (selectedIngs.length < 3) {
+
+                        if (this.classList.contains("btn-yellow")) {
+                            this.classList.remove("btn-yellow");
+                            this.classList.add("btn-green", "ing-selected");
+                        }
+                        else if (this.classList.contains("ing-selected")) {
+                            this.classList.remove("btn-green", "ing-selected");
+                            this.classList.add("btn-yellow");
+                        }
+
+
+                    }
+
+                    else if (selectedIngs.length === 3) {
+
+                        if (this.classList.contains("btn-yellow")) {
+                            $('#modal-alert').modal("show");
+
+                        }
+                        else if (this.classList.contains("ing-selected")) {
+                            this.classList.remove("btn-green", "ing-selected");
+                            this.classList.add("btn-yellow");
+                        }
+
+                    }
+
+                });
+            };
+        });
+    });
+
+
+
     // Add event listener to search buttons
+
+    $("#i-search-back").click(function () {
+        $("#select-ingredients").hide("drop", function () {
+            $("#select-spirit").show("drop");
+        });
+    });
 
     $("#i-search-button").click(function () {
 

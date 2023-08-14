@@ -26,23 +26,74 @@ body {
         sans-serif;
 }
 
+.hidden {
+    display: none;
+}
+
 h1,
 h2 {
     font-family: 'Oswald',
         sans-serif;
 }
 
-/* Header */
+/* Buttons */
 
-.header-btn {
+.btn-orange {
+    background-color: #f56d1c;
     font-family: 'Oswald',
         sans-serif;
     color: black;
 }
 
-.header-btn:hover {
+.btn-orange:hover {
     background-color: #1498e5;
     color: #eee;
+}
+
+.btn-blue {
+    background-color: #1498e5;
+    font-family: 'Oswald',
+        sans-serif;
+    color: black;
+}
+
+.btn-blue:hover {
+    background-color: #f56d1c;
+    color: #eee;
+}
+
+.btn-yellow {
+    background-color: #dfc706;
+}
+
+.btn-green {
+    background-color: #719d02;
+    color: #eee;
+}
+
+.btn-yellow:hover,
+.btn-green:hover {
+    background-color: #719d02;
+    color: #eee;
+}
+
+.bg-yellow {
+    background-color: #dfc706;
+}
+
+.bg-green {
+    background-color: #719d02;
+}
+
+.bg-pink {
+    background-color: #e01c80;
+}
+
+
+
+#modal-alert,
+#modal-instructions {
+    background-color: #000;
 }
 
 /* Main menu */
@@ -54,34 +105,16 @@ h2 {
 }
 
 .xl-btn:hover {
-    opacity: 0.7;
-}
-
-.bg-orange {
-    background-color: #f56d1c;
-}
-
-.bg-blue {
-    background-color: #1498e5;
-}
-
-.bg-yellow {
-    background-color: #dfc706;
-}
-
-.bg-pink {
-    background-color: #e01c80;
-}
-
-.bg-green {
-    background-color: #719d02;
+    opacity: 0.95;
+    color: #eee;
 }
 
 
 
-.hidden {
-    display: none;
-}
+/* Ingredients Search */
+
+
+/* Results */
 
 .recipe-card {
     background-color: #eee;
@@ -89,9 +122,4 @@ h2 {
 
 .inst-card {
     background-color: #ccc;
-}
-
-#modal-alert,
-#modal-instructions {
-    background-color: #000;
 }

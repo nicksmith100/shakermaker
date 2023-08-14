@@ -31,7 +31,7 @@
     <!-- /.welcome -->
 
     <!-- Header -->
-    <header id="header" class="container hidden">
+    <header id="header" class="container hidden mb-5">
       <div class="row">
         <div class="col-6 col-sm-3 d-flex justify-content-start" id="img-container">
           <img
@@ -46,7 +46,7 @@
         </div>
         <div class="col-6 col-sm-3 d-flex align-items-end justify-content-end">
                         
-            <button class="btn btn-lg bg-orange border border-light mb-2 header-btn w-100" id="instructions-button">
+            <button class="btn btn-lg btn-orange border border-light mb-2 header-btn w-100" id="instructions-button">
                 Instructions
             </button>
         
@@ -97,26 +97,53 @@
 
       <!-- Search by ingredient -->
       <section id="search-ingredients" class="container text-center">
-        <div id="select-spirit" class="row text-center hidden mt-4">
-          <div class="col-12" id="spirit-buttons">
-            <h2>Select a spirit</h2>
-          </div>
-        </div>
-        <div class="row text-center hidden mt-4" id="select-ingredients">
-          <div class="col-12" id="ing-buttons">
-            <h2>Select up to three other ingredients</h2>
-          </div>
-          <div class="row">
-            <div class="col-12">
-              <button
-                class="btn btn-outline-light btn-lg mt-4"
-                id="i-search-button"
-              >
-                Search
-              </button>
+            <div id="select-spirit" class="text-center hidden mt-4">
+                <div class="row">
+                    <div class="col-12" id="spirit-heading">
+                        <h2>Select a spirit</h2>
+                    </div>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-12" id="spirit-buttons">
+                    </div>
+                </div>            
+                <div class="row">
+                    <div class="col-12" id="spirit-nav">
+                        <button class="btn btn-lg btn-orange border border-light mt-3" id="s-search-back">
+                            Back
+                        </button>
+                        <button class="btn btn-lg btn-orange border border-light mt-3" id="s-search-next">
+                            Next
+                        </button>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
+                
+            <div class="text-center hidden mt-4" id="select-ingredients">
+                <div class="row">
+                    <div class="col-12" id="ing-heading">
+                        <h2>Select up to three other ingredients</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12" id="ing-buttons">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <button class="btn btn-lg btn-orange border border-light mt-3" id="i-search-back">
+                            Back
+                        </button>
+                        <button
+                        class="btn btn-lg btn-orange border border-light mt-3"
+                        id="i-search-button"
+                        >
+                        Search
+                        </button>
+                    </div>
+                </div>
+            </div>
       </section>
       <!-- /.search by ingredient -->
 
