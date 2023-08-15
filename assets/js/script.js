@@ -9,6 +9,15 @@ $(document).ready(function () {
     const alcoholSearchURL = "https://www.thecocktaildb.com/api/json/v2/9973533/filter.php?a=";
     const randomSearchURL = "https://www.thecocktaildb.com/api/json/v2/9973533/random.php?";
 
+    // Declare consts for DOM elements
+
+    const spiritBtnsDiv = document.getElementById("spirit-buttons");
+    const ingBtnsDiv = document.getElementById("ing-buttons");
+    const resultList = document.getElementById("result-list");
+    const searchInput = document.getElementById("search-input");
+    const searchForm = document.getElementById("search-form");
+
+
     // Reveal header and menu after delay
 
     setTimeout(function () {
@@ -80,7 +89,7 @@ $(document).ready(function () {
         );
 
         for (let i = 0; i < topSpirits.length; i++) {
-            document.getElementById("spirit-buttons").innerHTML += `
+            spiritBtnsDiv.innerHTML += `
             <button class="btn btn-lg mx-3 my-3 spirit-btn btn-yellow d-sm-none" id="${topSpirits[i]}-button">${topSpirits[i]}</button>
             <button class="spirit-btn img-btn btn-yellow d-none d-sm-inline-block rounded border border-light mx-1 my-1" id="${topSpirits[i]}-button"><img src="https://www.thecocktaildb.com/images/ingredients/${topSpirits[i]}-Small.png" alt="${topSpirits[i]} bottle" class="w-75"><br><br>${topSpirits[i]}</button>
         `;
@@ -112,7 +121,7 @@ $(document).ready(function () {
         $("#select-spirit").hide("drop", function () {
 
             // Reset innerHTML of "spirit-buttons" to avoid potential duplication
-            document.getElementById("spirit-buttons").innerHTML = "";
+            spiritBtnsDiv.innerHTML = "";
 
             $("#main-menu").show("drop");
         });
@@ -133,7 +142,7 @@ $(document).ready(function () {
             $("#select-spirit").hide("drop", function () {
                 $("#select-ingredients").show("drop");
                 for (let i = 0; i < topIngs.length; i++) {
-                    document.getElementById("ing-buttons").innerHTML += `
+                    ingBtnsDiv.innerHTML += `
                                 <button class="btn btn-yellow btn-lg mx-3 my-3 ing-btn" id="${topIngs[i]}-button">${topIngs[i]}</button>
                                 `;
                 }
@@ -193,7 +202,7 @@ $(document).ready(function () {
         $("#select-ingredients").hide("drop", function () {
 
             // Reset innerHTML of "ing-buttons" to avoid potential duplication
-            document.getElementById("ing-buttons").innerHTML = "";
+            ingBtnsDiv.innerHTML = "";
 
             $("#select-spirit").show("drop");
         });
@@ -234,7 +243,7 @@ $(document).ready(function () {
             searchURL = ingredientSearchURL + ingredients;
             searchURL2 = ingredientSearchURL + selectedSpirit;
 
-            document.getElementById("result-list").innerHTML = "";
+            resultList.innerHTML = "";
 
             getData(searchURL, function (data) {
                 data = data.drinks;
@@ -243,7 +252,7 @@ $(document).ready(function () {
 
                 if (data.includes("None")) {
 
-                    document.getElementById("result-list").innerHTML = `<p class="fs-2">Sorry, no drinks were found with <strong>${ingStringSpaced}</strong>, but here are all the cocktails you can make with <strong>${selectedSpirit}</strong>. Click on a drink image to see the full recipe.</p>`;
+                    resultList.innerHTML = `<p class="fs-2">Sorry, no drinks were found with <strong>${ingStringSpaced}</strong>, but here are all the cocktails you can make with <strong>${selectedSpirit}</strong>. Click on a drink image to see the full recipe.</p>`;
 
                     getData(searchURL2, function (data) {
                         data = data.drinks;
@@ -267,7 +276,7 @@ $(document).ready(function () {
                                         return elements !== null;
                                     });
 
-                                    document.getElementById("result-list").innerHTML +=
+                                    resultList.innerHTML +=
 
                                         `<div id="result-${drinkCode}" class="drink-result mt-5">
                         <div class="row">
@@ -295,7 +304,7 @@ $(document).ready(function () {
                     </div>
                     `;
 
-                                    document.getElementById("result-list").onclick = function (event) {
+                                    resultList.onclick = function (event) {
 
                                         let target = event.target;
 
@@ -332,7 +341,7 @@ $(document).ready(function () {
 
                 else {
 
-                    document.getElementById("result-list").innerHTML = `<p class="fs-2">Here are all the cocktails you can make with <strong>${ingStringSpaced}</strong>. Click on a drink image to see the full recipe.</p>`;
+                    resultList.innerHTML = `<p class="fs-2">Here are all the cocktails you can make with <strong>${ingStringSpaced}</strong>. Click on a drink image to see the full recipe.</p>`;
 
                     data.forEach(function (item) {
 
@@ -352,7 +361,7 @@ $(document).ready(function () {
                                     return elements !== null;
                                 });
 
-                                document.getElementById("result-list").innerHTML +=
+                                resultList.innerHTML +=
 
                                     `<div id="result-${drinkCode}" class="drink-result mt-5">
                         <div class="row">
@@ -381,7 +390,7 @@ $(document).ready(function () {
                     `;
 
 
-                                document.getElementById("result-list").onclick = function (event) {
+                                resultList.onclick = function (event) {
 
                                     let target = event.target;
 
@@ -477,16 +486,16 @@ $(document).ready(function () {
 
                 event.preventDefault();
 
-                let searchInput = document.getElementById("search-input").value;
+                let searchTerm = searchInput.value;
 
-                if (!cocktailNames.includes(searchInput)) {
+                if (!cocktailNames.includes(searchTerm)) {
                     $('#modal-no-input-alert').modal("show");
                 }
 
                 else {
-                    document.getElementById("result-list").innerHTML = `<p class="fs-2">Here's the recipe for <strong>${searchInput}</strong>.</p>`;
+                    resultList.innerHTML = `<p class="fs-2">Here's the recipe for <strong>${searchTerm}</strong>.</p>`;
 
-                    getData(nameSearchURL + searchInput, function (data) {
+                    getData(nameSearchURL + searchTerm, function (data) {
                         data = data.drinks;
                         data.forEach(function (item) {
                             let drinkCode = item.idDrink;
@@ -501,7 +510,7 @@ $(document).ready(function () {
                                 return elements !== null;
                             });
 
-                            document.getElementById("result-list").innerHTML +=
+                            resultList.innerHTML +=
 
                                 `<div id="result-${drinkCode}" class="drink-result mt-5">
                         <div class="row">
@@ -576,7 +585,7 @@ $(document).ready(function () {
 
             }
 
-            let searchForm = document.getElementById("search-form");
+
             searchForm.addEventListener('submit', searchName);
 
 
@@ -601,7 +610,7 @@ $(document).ready(function () {
 
     $("#random-search").click(function () {
 
-        document.getElementById("result-list").innerHTML = `<p class="fs-2">Here's a <strong>random cocktail</strong> for you to try!</p>`;
+        resultList.innerHTML = `<p class="fs-2">Here's a <strong>random cocktail</strong> for you to try!</p>`;
 
         getData(randomSearchURL, function (data) {
             data = data.drinks;
@@ -618,7 +627,7 @@ $(document).ready(function () {
                     return elements !== null;
                 });
 
-                document.getElementById("result-list").innerHTML +=
+                resultList.innerHTML +=
 
                     `<div id="result-${drinkCode}" class="drink-result mt-5">
                         <div class="row">
