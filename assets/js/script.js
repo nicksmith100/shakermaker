@@ -1,22 +1,22 @@
+// Declare consts for API URLs
+
+const ingredientListURL = "https://www.thecocktaildb.com/api/json/v2/9973533/list.php?i=list";
+const ingredientSearchURL = "https://www.thecocktaildb.com/api/json/v2/9973533/filter.php?i=";
+const cocktailSearchURL = "https://www.thecocktaildb.com/api/json/v2/9973533/lookup.php?i=";
+const nameSearchURL = "https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=";
+const alcoholSearchURL = "https://www.thecocktaildb.com/api/json/v2/9973533/filter.php?a=";
+const randomSearchURL = "https://www.thecocktaildb.com/api/json/v2/9973533/random.php?";
+
+// Declare consts for DOM elements
+
+const spiritBtnsDiv = document.getElementById("spirit-buttons");
+const ingBtnsDiv = document.getElementById("ing-buttons");
+const resultList = document.getElementById("result-list");
+const searchInput = document.getElementById("search-input");
+const searchForm = document.getElementById("search-form");
+
 $(document).ready(function () {
-
-    // Declare consts for API URLs
-
-    const ingredientListURL = "https://www.thecocktaildb.com/api/json/v2/9973533/list.php?i=list";
-    const ingredientSearchURL = "https://www.thecocktaildb.com/api/json/v2/9973533/filter.php?i=";
-    const cocktailSearchURL = "https://www.thecocktaildb.com/api/json/v2/9973533/lookup.php?i=";
-    const nameSearchURL = "https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=";
-    const alcoholSearchURL = "https://www.thecocktaildb.com/api/json/v2/9973533/filter.php?a=";
-    const randomSearchURL = "https://www.thecocktaildb.com/api/json/v2/9973533/random.php?";
-
-    // Declare consts for DOM elements
-
-    const spiritBtnsDiv = document.getElementById("spirit-buttons");
-    const ingBtnsDiv = document.getElementById("ing-buttons");
-    const resultList = document.getElementById("result-list");
-    const searchInput = document.getElementById("search-input");
-    const searchForm = document.getElementById("search-form");
-
+    0.;
 
     // Reveal header and menu after delay
 
