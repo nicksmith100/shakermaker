@@ -91,6 +91,14 @@ h2 {
     background-color: #e01c80;
 }
 
+#search-submit {
+    font-family: 'Oswald',
+        sans-serif;
+    font-size: 20px;
+}
+
+/* Modals */
+
 #modal-ing-alert,
 #modal-spirit-alert,
 #modal-instructions,
