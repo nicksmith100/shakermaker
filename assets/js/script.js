@@ -82,7 +82,7 @@ $(document).ready(function () {
         for (let i = 0; i < topSpirits.length; i++) {
             document.getElementById("spirit-buttons").innerHTML += `
             <button class="btn btn-lg mx-3 my-3 spirit-btn btn-yellow d-sm-none" id="${topSpirits[i]}-button">${topSpirits[i]}</button>
-            <button class="spirit-btn img-btn btn-yellow d-none d-sm-inline-block rounded border border-light mx-1 my-1" id="${topSpirits[i]}-button"><img src="https://www.thecocktaildb.com/images/ingredients/${topSpirits[i]}-Small.png" alt="${topSpirits[i]} bottle" class="w-75"><br>${topSpirits[i]}</button>
+            <button class="spirit-btn img-btn btn-yellow d-none d-sm-inline-block rounded border border-light mx-1 my-1" id="${topSpirits[i]}-button"><img src="https://www.thecocktaildb.com/images/ingredients/${topSpirits[i]}-Small.png" alt="${topSpirits[i]} bottle" class="w-75"><br><br>${topSpirits[i]}</button>
         `;
         }
 
