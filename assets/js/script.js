@@ -110,6 +110,10 @@ $(document).ready(function () {
 
     $("#s-search-back").click(function () {
         $("#select-spirit").hide("drop", function () {
+
+            // Reset innerHTML of "spirit-buttons" to avoid potential duplication
+            document.getElementById("spirit-buttons").innerHTML = "";
+
             $("#main-menu").show("drop");
         });
     });
@@ -187,6 +191,10 @@ $(document).ready(function () {
 
     $("#i-search-back").click(function () {
         $("#select-ingredients").hide("drop", function () {
+
+            // Reset innerHTML of "ing-buttons" to avoid potential duplication
+            document.getElementById("ing-buttons").innerHTML = "";
+
             $("#select-spirit").show("drop");
         });
     });
