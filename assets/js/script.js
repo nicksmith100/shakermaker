@@ -252,7 +252,8 @@ $(document).ready(function () {
 
                 if (data.includes("None")) {
 
-                    resultList.innerHTML = `<p class="fs-2">Sorry, no drinks were found with <strong>${ingStringSpaced}</strong>, but here are all the cocktails you can make with <strong>${selectedSpirit}</strong>. Click on a drink image to see the full recipe.</p>`;
+                    resultList.innerHTML = `<p class="fs-2">Sorry, no drinks were found with <strong>${ingStringSpaced}</strong>, but here are all the cocktails you can make with <strong>${selectedSpirit}</strong>.</p>
+                    <p class="fs-3">(Click on a drink image to see the full recipe.)</p>`;
 
                     getData(searchURL2, function (data) {
                         data = data.drinks;
@@ -341,7 +342,8 @@ $(document).ready(function () {
 
                 else {
 
-                    resultList.innerHTML = `<p class="fs-2">Here are all the cocktails you can make with <strong>${ingStringSpaced}</strong>. Click on a drink image to see the full recipe.</p>`;
+                    resultList.innerHTML = `<p class="fs-2">Here are all the cocktails you can make with <strong>${ingStringSpaced}</strong>.</p>
+                    <p class="fs-3">(Click on a drink image to see the full recipe.)</p>`;
 
                     data.forEach(function (item) {
 
