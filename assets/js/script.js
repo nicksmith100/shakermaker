@@ -373,9 +373,6 @@ $(document).ready(function () {
                     `;
 
 
-
-
-
                                 document.getElementById("result-list").onclick = function (event) {
 
                                     let target = event.target;
@@ -479,7 +476,7 @@ $(document).ready(function () {
                 }
 
                 else {
-                    document.getElementById("result-list").innerHTML = `<p class="fs-2">Here are the cocktails which match your search for <strong>${searchInput}</strong>. Click on a drink image to see the full recipe.</p>`;
+                    document.getElementById("result-list").innerHTML = `<p class="fs-2">Here's the recipe for <strong>${searchInput}</strong>.</p>`;
 
                     getData(nameSearchURL + searchInput, function (data) {
                         data = data.drinks;
@@ -524,18 +521,12 @@ $(document).ready(function () {
                     </div>
                     `;
 
-                            document.getElementById("result-list").onclick = function (event) {
 
-                                let target = event.target;
 
-                                if (target.tagName === "IMG") {
 
-                                    $(target.parentNode.nextElementSibling).show("drop");
-                                    $(target.parentNode.nextElementSibling).siblings().show("drop");
 
-                                }
 
-                            };
+
 
                             //Create list from array. Code from: https://www.tutorialspoint.com/how-to-create-html-list-from-javascript-array
 
@@ -547,7 +538,19 @@ $(document).ready(function () {
                                 list.appendChild(li);
                             }
 
+                            // Hide "search-cocktail" div and display "results" div, then show recipe and instructions.
 
+                            $("#search-cocktail").hide("drop", function () {
+
+                                $("#results").show("drop", function () {
+                                    $(".recipe").show("drop");
+                                    $(".instructions").show("drop");
+
+                                });
+
+                                $("#results-back").fadeIn();
+
+                            });
 
                         });
                     });
@@ -650,7 +653,7 @@ $(document).ready(function () {
             });
         });
 
-        // Hide "main-menu" div and display "results" div with header
+        // Hide "main-menu" div and display "results" div with header, then show recipe and instructions.
 
         $("#main-menu").hide("drop", function () {
             $("#header").show("drop");
@@ -678,3 +681,13 @@ $(document).ready(function () {
     });
 
 });
+
+function isIntoView(elem) {
+    var documentViewTop = $(window).scrollTop();
+    var documentViewBottom = documentViewTop + $(window).height();
+
+    var elementTop = $(elem).offset().top;
+    var elementBottom = elementTop + $(elem).height();
+
+    return ((elementBottom <= documentViewBottom) && (elementTop >= documentViewTop));
+}
