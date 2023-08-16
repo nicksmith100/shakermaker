@@ -79,7 +79,12 @@ function ingSearchBack() {
 // Hide ingredient search, display results and "Back to menu" button
 
 function searchIngredientsToResults() {
-    $("#search-ingredients").hide("drop", function () {
+    $("#select-ingredients").hide("drop", function () {
+
+        // Reset innerHTML of "spirit-buttons" and "ing-buttons" to avoid potential duplication
+        spiritBtnsDiv.innerHTML = "";
+        ingBtnsDiv.innerHTML = "";
+
         $("#results").show("drop");
         $("#results-back").fadeIn();
     }
@@ -369,6 +374,8 @@ $(document).ready(function () {
             });
 
         }
+
+        ingSearchBack();
 
     });
 
