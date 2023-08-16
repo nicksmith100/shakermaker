@@ -26,6 +26,122 @@ function welcomeToMainMenu() {
         $("#header").show("drop", { direction: "up" });
         $("#main-menu").show("drop", { direction: "up" });
     });
+}
+
+// Hide main menu, reveal spirit selection
+
+function mainMenuToSpirits() {
+    $("#main-menu").hide("drop", function () {
+        $("#select-spirit").show("drop");
+        $("#header").show("drop");
+    }
+    );
+}
+
+// Hide main menu, reveal cocktail search
+
+function mainMenuToCocktailSearch() {
+    $("#main-menu").hide("drop", function () {
+        $("#search-cocktail").show("drop");
+        $("#header").show("drop");
+    }
+    );
+}
+
+// Hide spirit selection, show main menu
+
+function spiritSearchBack() {
+    $("#s-search-back").click(function () {
+        $("#select-spirit").hide("drop", function () {
+
+            // Reset innerHTML of "spirit-buttons" to avoid potential duplication
+            spiritBtnsDiv.innerHTML = "";
+
+            $("#main-menu").show("drop");
+        });
+    });
+}
+
+// Hide ingredient selection, show spirit search
+
+function ingSearchBack() {
+    $("#i-search-back").click(function () {
+        $("#select-ingredients").hide("drop", function () {
+
+            // Reset innerHTML of "ing-buttons" to avoid potential duplication
+            ingBtnsDiv.innerHTML = "";
+
+            $("#select-spirit").show("drop");
+        });
+    });
+}
+
+// Hide ingredient search, display results and "Back to menu" button
+
+function searchIngredientsToResults() {
+    $("#search-ingredients").hide("drop", function () {
+        $("#results").show("drop");
+        $("#results-back").fadeIn();
+    }
+    );
+}
+
+// Hide cocktail search, display main menu
+
+function cocktailSearchBack() {
+    $("#search-cocktail").hide("drop", function () {
+        $("#main-menu").show("drop");
+    }
+    );
+}
+
+// Hide cocktail search, display results and "Back to menu" button
+
+function cocktailSearchToResults() {
+
+    $("#search-cocktail").hide("drop", function () {
+
+        $("#results").show("drop", function () {
+            $(".recipe").show("drop");
+            $(".instructions").show("drop");
+
+        });
+
+        $("#results-back").fadeIn();
+
+    });
+}
+
+// Hide main menu, display results with recipe, and display "Back to menu" button
+
+function mainMenuToResults() {
+
+    $("#main-menu").hide("drop", function () {
+        $("#header").show("drop");
+
+        $("#results").show("drop", function () {
+            $(".recipe").show("drop");
+            $(".instructions").show("drop");
+
+        });
+
+        $("#results-back").fadeIn();
+
+    });
+
+}
+
+// Return to main menu
+
+function returnToMainMenu() {
+
+    $("#results-back").click(function () {
+        getFullIngredients();
+        $("#results").hide("drop", function () {
+            $("#main-menu").show("drop");
+            $("#results-back").fadeOut();
+        });
+    });
 
 }
 
@@ -35,6 +151,24 @@ function showInstructions() {
     $("#instructions-button").click(function () {
         $('#modal-instructions').modal("show");
     });
+}
+
+// Alert if no spirit selected
+
+function noSpiritAlert() {
+    $('#modal-spirit-alert').modal("show");
+}
+
+// Alert if maximum number of ingredients exceeded
+
+function maxIngredientsAlert() {
+    $('#modal-ing-alert').modal("show");
+}
+
+// Alert if no search input provided
+
+function noInputAlert() {
+    $('#modal-no-input-alert').modal("show");
 }
 
 // Create calls to API ------------------------------------------ //
@@ -89,6 +223,29 @@ function getSelectedIngredients(...indices) {
     }
 
     return ingArray;
+}
+
+// Get full list of cocktail names and add to array
+
+function getCocktailNames() {
+
+    let array = [];
+
+    getData(alcoholSearchURL + "Alcoholic", function (data) {
+        data = data.drinks;
+        data.forEach(function (item) {
+            array.push(item.strDrink);
+        });
+    });
+
+    getData(alcoholSearchURL + "Non_Alcoholic", function (data) {
+        data = data.drinks;
+        data.forEach(function (item) {
+            array.push(item.strDrink);
+        });
+    });
+
+    return array;
 
 }
 
@@ -140,24 +297,10 @@ $(document).ready(function () {
 
         };
 
-        $("#main-menu").hide("drop", function () {
+        mainMenuToSpirits();
 
-            $("#select-spirit").show("drop");
-            $("#header").show("drop");
-        }
-        );
+        spiritSearchBack();
 
-
-    });
-
-    $("#s-search-back").click(function () {
-        $("#select-spirit").hide("drop", function () {
-
-            // Reset innerHTML of "spirit-buttons" to avoid potential duplication
-            spiritBtnsDiv.innerHTML = "";
-
-            $("#main-menu").show("drop");
-        });
     });
 
     // Select 30 most popular ingredients from full ingredients array
@@ -171,7 +314,7 @@ $(document).ready(function () {
         let selectedSpiritBtn = document.getElementsByClassName("spirit-selected")[0];
 
         if (selectedSpiritBtn == undefined) {
-            $('#modal-spirit-alert').modal("show");
+            noSpiritAlert();
         }
 
         else {
@@ -183,7 +326,6 @@ $(document).ready(function () {
                                 <button class="btn btn-yellow btn-lg mx-3 my-3 ing-btn" id="${topIngs[i]}-button">${topIngs[i]}</button>
                                 `;
                 }
-
 
                 // Add event listeners to ingredient buttons
 
@@ -207,13 +349,12 @@ $(document).ready(function () {
                                 this.classList.add("btn-yellow");
                             }
 
-
                         }
 
                         else if (selectedIngs.length === 3) {
 
                             if (this.classList.contains("btn-yellow")) {
-                                $('#modal-ing-alert').modal("show");
+                                maxIngredientsAlert();
 
                             }
                             else if (this.classList.contains("ing-selected")) {
@@ -231,19 +372,7 @@ $(document).ready(function () {
 
     });
 
-
-
-    // Add event listener to search buttons
-
-    $("#i-search-back").click(function () {
-        $("#select-ingredients").hide("drop", function () {
-
-            // Reset innerHTML of "ing-buttons" to avoid potential duplication
-            ingBtnsDiv.innerHTML = "";
-
-            $("#select-spirit").show("drop");
-        });
-    });
+    // Add event listener to search button
 
     $("#i-search-button").click(function () {
 
@@ -300,7 +429,6 @@ $(document).ready(function () {
                             let drinkCode = item.idDrink;
                             let drinkImage = item.strDrinkThumb;
                             let drinkName = item.strDrink;
-
 
                             getData(cocktailSearchURL + drinkCode, function (data) {
                                 data = data.drinks;
@@ -466,92 +594,64 @@ $(document).ready(function () {
 
         writeResults(ingString);
 
-        // Hide "search-ingredients" div and display "results" div
-
-        $("#search-ingredients").hide("drop", function () {
-            $("#results").show("drop");
-            $("#results-back").fadeIn();
-        }
-        );
+        searchIngredientsToResults();
 
     });
 
-    // Show "search-cocktail" section and header on button click
 
-    $("#show-c-search").click(function () {
-        $("#main-menu").hide("drop", function () {
-            $("#search-cocktail").show("drop");
-            $("#header").show("drop");
+    $("#show-c-search").click(mainMenuToCocktailSearch);
+
+    // Add autocomplete functionality to search form
+
+    let cocktailNames = getCocktailNames();
+
+    $("#search-input").autocomplete({
+
+        source: cocktailNames,
+
+        /* Force selection from autocomplete list, otherwise set value to blank string
+        (Code from: https://itecnote.com/tecnote/jquery-autocomplete-how-to-force-selection-from-list-keyboard/) */
+
+        change: function (event, ui) {
+            if (!ui.item) {
+                $("#search-input").val("");
+            }
         }
-        );
-
     });
 
-    // Get full list of cocktail names and add to array
+    // Get and display results
 
-    let cocktailNames = [];
+    function searchName(event) {
 
-    getData(alcoholSearchURL + "Alcoholic", function (data) {
-        data = data.drinks;
-        data.forEach(function (item) {
-            cocktailNames.push(item.strDrink);
-        });
+        event.preventDefault();
 
-        getData(alcoholSearchURL + "Non_Alcoholic", function (data) {
-            data = data.drinks;
-            data.forEach(function (item) {
-                cocktailNames.push(item.strDrink);
-            });
+        let searchTerm = searchInput.value;
 
-            // Add autocomplete functionality to search form
+        if (!cocktailNames.includes(searchTerm)) {
+            noInputAlert();
+        }
 
-            $("#search-input").autocomplete({
-                source: cocktailNames,
+        else {
+            resultList.innerHTML = `<p class="fs-2">Here's the recipe for <strong>${searchTerm}</strong>.</p>`;
 
-                // Force selection from autocomplete list, otherwise sets value to blank string - code from: https://itecnote.com/tecnote/jquery-autocomplete-how-to-force-selection-from-list-keyboard/
+            getData(nameSearchURL + searchTerm, function (data) {
+                data = data.drinks;
+                data.forEach(function (item) {
+                    let drinkCode = item.idDrink;
+                    let drinkImage = item.strDrinkThumb;
+                    let drinkName = item.strDrink;
+                    let drinkInstructions = item.strInstructions;
+                    let drinkIngredients = [item.strIngredient1, item.strIngredient2, item.strIngredient3, item.strIngredient4, item.strIngredient5, item.strIngredient6, item.strIngredient7, item.strIngredient8, item.strIngredient9, item.strIngredient10, item.strIngredient11, item.strIngredient12, item.strIngredient13, item.strIngredient14, item.strIngredient15];
 
-                change: function (event, ui) {
-                    if (!ui.item) {
-                        $("#search-input").val("");
-                    }
+                    //Filter null values
 
-                }
+                    drinkIngredients = drinkIngredients.filter(elements => {
+                        return elements !== null;
+                    });
 
-            });
+                    resultList.innerHTML +=
 
-            // Get and display results
-
-            function searchName(event) {
-
-                event.preventDefault();
-
-                let searchTerm = searchInput.value;
-
-                if (!cocktailNames.includes(searchTerm)) {
-                    $('#modal-no-input-alert').modal("show");
-                }
-
-                else {
-                    resultList.innerHTML = `<p class="fs-2">Here's the recipe for <strong>${searchTerm}</strong>.</p>`;
-
-                    getData(nameSearchURL + searchTerm, function (data) {
-                        data = data.drinks;
-                        data.forEach(function (item) {
-                            let drinkCode = item.idDrink;
-                            let drinkImage = item.strDrinkThumb;
-                            let drinkName = item.strDrink;
-                            let drinkInstructions = item.strInstructions;
-                            let drinkIngredients = [item.strIngredient1, item.strIngredient2, item.strIngredient3, item.strIngredient4, item.strIngredient5, item.strIngredient6, item.strIngredient7, item.strIngredient8, item.strIngredient9, item.strIngredient10, item.strIngredient11, item.strIngredient12, item.strIngredient13, item.strIngredient14, item.strIngredient15];
-
-                            //Filter null values
-
-                            drinkIngredients = drinkIngredients.filter(elements => {
-                                return elements !== null;
-                            });
-
-                            resultList.innerHTML +=
-
-                                `<div id="result-${drinkCode}" class="drink-result mt-5">
+                        `<div id="result-${drinkCode}" class="drink-result mt-5">
                         <div class="row">
                             <div class="col-12">
                                 <h2>${drinkName}</h2>
@@ -579,73 +679,30 @@ $(document).ready(function () {
 
 
 
+                    //Create list from array. Code from: https://www.tutorialspoint.com/how-to-create-html-list-from-javascript-array
+
+                    let list = document.getElementById("ingredient-list" + drinkCode);
+
+                    for (i = 0; i < drinkIngredients.length; ++i) {
+                        let li = document.createElement('li');
+                        li.innerText = drinkIngredients[i];
+                        list.appendChild(li);
+                    }
+
+                    cocktailSearchToResults();
+
+                });
+            });
 
 
 
-
-
-                            //Create list from array. Code from: https://www.tutorialspoint.com/how-to-create-html-list-from-javascript-array
-
-                            let list = document.getElementById("ingredient-list" + drinkCode);
-
-                            for (i = 0; i < drinkIngredients.length; ++i) {
-                                let li = document.createElement('li');
-                                li.innerText = drinkIngredients[i];
-                                list.appendChild(li);
-                            }
-
-                            // Hide "search-cocktail" div and display "results" div, then show recipe and instructions.
-
-                            $("#search-cocktail").hide("drop", function () {
-
-                                $("#results").show("drop", function () {
-                                    $(".recipe").show("drop");
-                                    $(".instructions").show("drop");
-
-                                });
-
-                                $("#results-back").fadeIn();
-
-                            });
-
-                        });
-                    });
-
-
-
-
-                    // Hide "search-cocktail" div and display "results" div
-
-                    $("#search-cocktail").hide("drop", function () {
-                        $("#results").show("drop");
-                        $("#results-back").fadeIn();
-                    });
-                }
-
-            }
-
-
-            searchForm.addEventListener('submit', searchName);
-
-
-
-
-
-        });
-
-
-
-
-
-    });
-
-    $("#c-search-back").click(function () {
-        $("#search-cocktail").hide("drop", function () {
-            $("#main-menu").show("drop");
         }
-        );
 
-    });
+    }
+
+    searchForm.addEventListener('submit', searchName);
+
+    $("#c-search-back").click(cocktailSearchBack);
 
     $("#random-search").click(function () {
 
@@ -704,37 +761,15 @@ $(document).ready(function () {
                     list.appendChild(li);
                 }
 
-
-
             });
         });
 
-        // Hide "main-menu" div and display "results" div with header, then show recipe and instructions.
-
-        $("#main-menu").hide("drop", function () {
-            $("#header").show("drop");
-
-            $("#results").show("drop", function () {
-                $(".recipe").show("drop");
-                $(".instructions").show("drop");
-
-            });
-
-            $("#results-back").fadeIn();
-
-        });
-
+        mainMenuToResults();
 
     });
 
     // Return to main menu on button click
 
-    $("#results-back").click(function () {
-        getFullIngredients();
-        $("#results").hide("drop", function () {
-            $("#main-menu").show("drop");
-            $("#results-back").fadeOut();
-        });
-    });
+    returnToMainMenu();
 
 });
