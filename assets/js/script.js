@@ -254,11 +254,13 @@ function getCocktailNames() {
 
 }
 
+// Call functions when document ready ------------------------------------------ //
+
 $(document).ready(function () {
 
     // Reveal header and menu after delay
 
-    setTimeout(welcomeToMainMenu, 500);
+    setTimeout(welcomeToMainMenu, 2000);
 
     // Call other general functions
 
