@@ -1,3 +1,5 @@
+// Declare consts ------------------------------------------ //
+
 // Declare consts for API URLs
 
 const ingredientListURL = "https://www.thecocktaildb.com/api/json/v2/9973533/list.php?i=list";
@@ -15,42 +17,48 @@ const resultList = document.getElementById("result-list");
 const searchInput = document.getElementById("search-input");
 const searchForm = document.getElementById("search-form");
 
-$(document).ready(function () {
-    0.;
+// Define functions ------------------------------------------ //
 
-    // Reveal header and menu after delay
+// Hide welcome div, reveal header and main menu
 
-    setTimeout(function () {
-        $("#welcome").hide("drop", { direction: "up" }, function () {
-            $("#header").show("drop", { direction: "up" });
-            $("#main-menu").show("drop", { direction: "up" });
-        });
+function welcomeToMainMenu() {
+    $("#welcome").hide("drop", { direction: "up" }, function () {
+        $("#header").show("drop", { direction: "up" });
+        $("#main-menu").show("drop", { direction: "up" });
+    });
 
-    }, 3000);
+}
 
-    // Display instructions on button press
+// Display instructions modal on button press
 
+function showInstructions() {
     $("#instructions-button").click(function () {
         $('#modal-instructions').modal("show");
     });
+}
 
-    // Link to API to get data based on API URL
-    // Utilises code from "Working with external resources" lessons of CI course
+// Create calls to API ------------------------------------------ //
 
-    function getData(apiURL, cb) {
-        let xhr = new XMLHttpRequest();
+/* Call API to get data based on API URL
+(Utilises code from "Working with external resources" lessons of CI course) */
 
-        xhr.open("GET", apiURL);
-        xhr.send();
+function getData(apiURL, cb) {
+    let xhr = new XMLHttpRequest();
 
-        xhr.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                cb(JSON.parse(this.responseText));
-            }
-        };
-    }
+    xhr.open("GET", apiURL);
+    xhr.send();
 
-    // Invoke getData function to pull full list of ingredients and push to array (fullIngArray)
+    xhr.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            cb(JSON.parse(this.responseText));
+        }
+    };
+}
+
+/* Invoke getData function to pull full list of ingredients and push to fullIngs array
+(Utilises code from "Working with external resources" lessons of CI course) */
+
+function getFullIngredients() {
 
     let fullIngs = [];
 
@@ -62,31 +70,47 @@ $(document).ready(function () {
 
     });
 
-    //Select top spirits from full ingredients array - ensures names match those from API
+}
 
-    let topSpirits = [];
+/* Select particular ingredients from full ingredients array using index
+(This ensures names match those from API for future use) */
 
-    setTimeout(function () {
-        topSpirits.push(fullIngs[0], fullIngs[1], fullIngs[2], fullIngs[3], fullIngs[4], fullIngs[65], fullIngs[66], fullIngs[149], fullIngs[186], fullIngs[349], fullIngs[416], fullIngs[465]);
-    }, 500);
+function getSelectedIngredients(...indices) {
 
-    //Select top ingredients from full ingredients array - ensures ingredient names match those from API
+    let ingArray = [];
 
-    let topIngs = [];
+    for (let i of indices) {
 
-    setTimeout(function () {
-        topIngs.push(fullIngs[378], fullIngs[234], fullIngs[247], fullIngs[18], fullIngs[155], fullIngs[385], fullIngs[279], fullIngs[281], fullIngs[396], fullIngs[315], fullIngs[158], fullIngs[361], fullIngs[200], fullIngs[194], fullIngs[26], fullIngs[261], fullIngs[126], fullIngs[72], fullIngs[132], fullIngs[84], fullIngs[190], fullIngs[71], fullIngs[29], fullIngs[30], fullIngs[273], fullIngs[114], fullIngs[47], fullIngs[16], fullIngs[280], fullIngs[196]);
-    }, 500);
+        getData(ingredientListURL, function (data) {
+            data = data.drinks;
+            ingArray.push(data[i].strIngredient1);
+        });
 
-    // Reveal "Select spirit" div on button click and create buttons from topSpirits array
-    // Code for show and hide from: https://api.jqueryui.com/
+    }
+
+    return ingArray;
+
+}
+
+$(document).ready(function () {
+
+    // Reveal header and menu after delay
+
+    setTimeout(welcomeToMainMenu, 500);
+
+    // Call other general functions
+
+    showInstructions();
+    getFullIngredients();
+
+    // Select 12 most popular spirits from full ingredients array
+
+    let topSpirits = getSelectedIngredients(0, 1, 2, 3, 4, 65, 66, 149, 186, 349, 416, 465);
+
+    /* Reveal "Select spirit" div on button click and create buttons from topSpirits array
+    Code for show and hide from: https://api.jqueryui.com/ */
 
     $("#show-i-search").click(function () {
-        $("#main-menu").hide("drop", function () {
-            $("#select-spirit").show("drop");
-            $("#header").show("drop");
-        }
-        );
 
         for (let i = 0; i < topSpirits.length; i++) {
             spiritBtnsDiv.innerHTML += `
@@ -115,6 +139,15 @@ $(document).ready(function () {
             });
 
         };
+
+        $("#main-menu").hide("drop", function () {
+
+            $("#select-spirit").show("drop");
+            $("#header").show("drop");
+        }
+        );
+
+
     });
 
     $("#s-search-back").click(function () {
@@ -126,6 +159,10 @@ $(document).ready(function () {
             $("#main-menu").show("drop");
         });
     });
+
+    // Select 30 most popular ingredients from full ingredients array
+
+    let topIngs = getSelectedIngredients(378, 234, 247, 18, 155, 385, 279, 281, 396, 315, 158, 361, 200, 194, 26, 261, 126, 72, 132, 84, 190, 71, 29, 30, 273, 114, 47, 16, 280, 196);
 
     // Reveal "Select ingredients" div, and create buttons from topIngs array
 
@@ -693,6 +730,7 @@ $(document).ready(function () {
     // Return to main menu on button click
 
     $("#results-back").click(function () {
+        getFullIngredients();
         $("#results").hide("drop", function () {
             $("#main-menu").show("drop");
             $("#results-back").fadeOut();
@@ -700,13 +738,3 @@ $(document).ready(function () {
     });
 
 });
-
-function isIntoView(elem) {
-    var documentViewTop = $(window).scrollTop();
-    var documentViewBottom = documentViewTop + $(window).height();
-
-    var elementTop = $(elem).offset().top;
-    var elementBottom = elementTop + $(elem).height();
-
-    return ((elementBottom <= documentViewBottom) && (elementTop >= documentViewTop));
-}
