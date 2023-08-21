@@ -12,7 +12,7 @@ This project creates a web-based cocktail finder application called ShakerMaker,
 
 ### Purpose
 
-A web-based app cocktail finder application which allows users to search cocktail recipes using a variety of methods.
+A web-based cocktail finder application which allows users to search cocktail recipes using a variety of methods.
 
 ### Client Goals
 
@@ -38,9 +38,21 @@ As a **Returning User**, I want to:
       
 ## Research
 
-(PLACEHOLDER - Looked at other offerings to see what sites offered)
+### Cocktail recipes
 
-(PLACEHOLDER - Explored the most popular cocktail ingredients to keep the site manageable)
+Before embarking on the project I wanted to be sure that I could obtain cocktail recipes from a reliable source, having little knowledge of the subject myself. After some research I discovered [TheCocktailDB](https://www.thecocktaildb.com/) - an open, crowd-sourced database of drinks and cocktails from around the world with a [free JSON API](https://www.thecocktaildb.com/api.php). I conducted some intial testing of the API using the links provided on the website, and determined that the full version of the API would provide the necessary functionality to satisfy the project goals outlined above. 
+
+### Popular ingredients
+
+From my initial testing of the API it became clear that there were a vast number of ingredients listed in the database, such that listing them all for selection would detract from the user experience. I resolved to include only the 12 most popular spirits and the 30 most popular additional ingredients, using the list provided on this website as a guide: [Difford's Guide - Top 100 Cocktail Ingredients](https://www.diffordsguide.com/encyclopedia/1045/cocktails/top-100-cocktail-ingredients).
+
+### Existing cocktail recipe finder websites
+
+I researched existing cocktail recipe finder websites to determine what was already available to potential users of my site. Results included:
+
+- [Difford's Guide - Cocktail Finder](https://www.diffordsguide.com/cocktails/search): A well-presented and sophisticated search engine offering various ways to search, including multiple ingredient dropdowns and the option to search by keyword. The site offers maximum functionality but arguably risks overwhelming less experienced cocktail makers.
+- [Cocktail Builder](https://www.cocktailbuilder.com/): Offers a "shopping list" of ingredients, allowing the user to select which ones they have and which they don't. The site provides a live update of cocktails which can be made with the selected ingredients, as well as other cocktails which have one or more ingredients missing. The site offers good functionality with a simple interface and straightforward results, but the styling is quite basic.
+- [Epicurious Interactive Cocktail Cabinet](https://www.epicurious.com/recipes-menus/cocktail-recipe-finder-article): Provides an excellent, user-friendly interface with images of spirits and other ingredients to be selected. As ingredients are selected, the interface adapts to indicate which other ingredients remain available for selection using a spider-diagram effect, indicating how many recipes exist with the selected ingredients. Clicking on a recipe title and image opens a new tab with the recipe, seemingly to drive traffic to other parts of the website, which arguably detracts from the user experience.
 
 ## User Stories
 
