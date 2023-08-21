@@ -16,7 +16,7 @@ A web-based cocktail finder application which allows users to search cocktail re
 
 ### Client Goals
 
-This project aims to demonstrate and embed my understanding of JavaScript as part of my personal development. As such there is no specific client, but I have built it with the following goals in mind:
+This project aims to demonstrate and embed my understanding of JavaScript as part of my personal development. As such there is no specific client, but I have built it with the following goals in mind from a client perspective:
 
 - Create a fun and engaging site which provides users with information about cocktails while generating interest in the topic
 - Provide a cocktail finder service which returns results based on selected ingredients 
@@ -25,13 +25,13 @@ This project aims to demonstrate and embed my understanding of JavaScript as par
 
 ### User Goals
 
-As a **First Time User**, I want to:
+As a **First Time Visitor**, I want to:
 
 1. Understand what the site offers
 2. Learn how to use the site to find cocktail recipes
 3. Easily navigate throughout the site to find the information I need
 
-As a **Returning User**, I want to:
+As a **Returning Visitor**, I want to:
 
 1. Use the site to find various cocktail recipes
 2. Explore different methods for finding cocktail recipes
@@ -56,7 +56,27 @@ I researched existing cocktail recipe finder websites to determine what was alre
 
 ## User Stories
 
-(PLACEHOLDER)
+Based on the research and project goals outlined above, I envisage the site being visited by casual cocktail makers with no expert knowledge, as well as more experienced cocktail makers who know what they are looking for but need to confirm the ingredients. User stories may differ depending on the experience of the user and whether they are a first-time or returning visitor. 
+
+1. As a casual cocktail maker I want to:
+- Find out what cocktails I can make with the ingredients I have available.
+- Search for cocktails I have heard of and/or tried previously.
+- Discover cocktails I am not already aware of.
+  
+2. As an experienced cocktail maker I want to:  
+- Remind myself of cocktails which can be made with the ingredients I have available.
+- Search for a particular cocktail recipe to confirm the ingredients and method.
+- Discover cocktails I am not already aware of.
+- Revisit cocktails I have not made recently.
+
+3. As a first-time visitor (regardless of experience) I want to: 
+- Understand what the site offers
+- Learn how to use the site to find cocktail recipes
+- Easily navigate throughout the site to find the information I need
+
+4. As a returning visitor (regardless of experience) I want to: 
+- Use the site to find various cocktail recipes
+- Explore different methods for finding cocktail recipes
 
 ## Design
 
