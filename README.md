@@ -44,7 +44,7 @@ Before embarking on the project I wanted to be sure that I could obtain cocktail
 
 ### Popular ingredients
 
-From my initial testing of the API it became clear that there were a vast number of ingredients listed in the database, such that listing them all for selection would detract from the user experience. I resolved to include only the 12 most popular spirits and the 30 most popular additional ingredients, using the list provided on this website as a guide: [Difford's Guide - Top 100 Cocktail Ingredients](https://www.diffordsguide.com/encyclopedia/1045/cocktails/top-100-cocktail-ingredients).
+From my initial testing of the API it became clear that there were a vast number of ingredients provided by the database, such that listing them all for selection would detract from the user experience. I resolved to include only the 12 most popular spirits and the 30 most popular additional ingredients, using the list provided on this website as a guide: [Difford's Guide - Top 100 Cocktail Ingredients](https://www.diffordsguide.com/encyclopedia/1045/cocktails/top-100-cocktail-ingredients).
 
 ### Existing cocktail recipe finder websites
 
@@ -84,20 +84,22 @@ Based on the research and project goals outlined above, I envisage the site bein
 
 Wireframes were created using the Figma platform, and can be viewed directly here: [Figma - ShakerMaker](https://www.figma.com/file/kkJOk17MsggqClsHPMeO5I/Shaker-Maker?type=design&node-id=0%3A1&mode=design&t=gZj3N4u4m5Y8Abjo-1).
 
-  - #### Desktop Wireframes
+- #### Desktop Wireframes
 
-    ![Desktop wireframes](readme_images/desktop_wireframes.png)
+  ![Desktop wireframes](readme_images/desktop_wireframes.png)
 
-  - #### Mobile Wireframes
+- #### Mobile Wireframes
 
-    ![Mobile wireframes](readme_images/mobile_wireframes.png)
+  ![Mobile wireframes](readme_images/mobile_wireframes.png)
 
-  - Only desktop and mobile wireframes were created, the expectation being that tablets in landscape mode would adopt the desktop layout, while tablets in portrait mode would adopt the mobile layout. In reality, the use of [Bootstrap's grid system](https://getbootstrap.com/docs/5.3/layout/grid/) means that the layout is more responsive, providing various layouts at different device breakpoints (see **Layout and Styling** section below). Nevertheless, the wireframes provided a useful reference to keep the overall layout of the site on track.
+Only desktop and mobile wireframes were created, the expectation being that tablets in landscape mode would adopt the desktop layout, while tablets in portrait mode would adopt the mobile layout. In reality, the use of [Bootstrap's grid system](https://getbootstrap.com/docs/5.3/layout/grid/) means that the layout is more responsive, providing various layouts at different device breakpoints (see **Layout and Styling** section below). Nevertheless, the wireframes provided a useful reference to keep the overall layout of the site on track.
 
-  - While the overall structure of the site stays true to the wireframes, there are some notable differences in the final page designs which came about for design and UX reasons:
+While the overall structure of the site stays true to the wireframes, there are some notable differences in the final page designs which came about for design and user experience reasons:
 
-  - (PLACEHOLDER reasons)
-
+- For design purposes I opted to provide a welcome screen with an animated version of the logo, which disappears after 2 seconds and gives way to the main site.
+- I added a header, to provide a space for the logo to maintain consistent branding throughout the user experience, and to provide a space for additional buttons (see below).
+- To aid the user experience I added to the header an "Instructions" button, and a "Back to menu" button which appears on the results screen.
+- To provide a fun, additional search option I added a random cocktail finder.
 
 ### Layout and Styling
 
@@ -112,14 +114,13 @@ The site uses the [Bootstrap 5.3 Grid system](https://getbootstrap.com/docs/5.3/
     | Extra large       | xl          | ≥1200px    |
     | Extra extra large | xxl         | ≥1400px    |
   
-  - In addition, the site uses the following specific components from the Bootstrap library:
-    - The cocktail search form utilises Bootstrap's [Form classes](https://getbootstrap.com/docs/5.3/forms/overview/).
-    - The site utilises Bootstrap's [Modal plugin](https://getbootstrap.com/docs/5.3/components/modal/) to display instructions at the press of a button, and to provide warnings for the ingredients search section.  
-  
-  - I have used Bootstrap's utility classes for [spacing](https://getbootstrap.com/docs/5.3/utilities/spacing/) and [typography](https://getbootstrap.com/docs/5.3/content/typography/), ensuring the layout and font are appropriate to the device in use. 
-
-  - I have also used the Boostrap [Display property](https://getbootstrap.com/docs/5.3/utilities/display/) to toggle the visibility of some components at certain breakpoints, in particular:
+In addition, the site uses the following specific components from the Bootstrap library:
+- The cocktail search form utilises Bootstrap's [Form classes](https://getbootstrap.com/docs/5.3/forms/overview/).
+- The site utilises Bootstrap's [Modal plugin](https://getbootstrap.com/docs/5.3/components/modal/) to display instructions at the press of a button, and to provide various alerts.  
+- I have used Bootstrap's utility classes for [spacing](https://getbootstrap.com/docs/5.3/utilities/spacing/) and [typography](https://getbootstrap.com/docs/5.3/content/typography/), ensuring the layout and font are appropriate to the device in use. 
+- I have also used the Bootstrap [Display property](https://getbootstrap.com/docs/5.3/utilities/display/) to toggle the visibility of some components at certain breakpoints, in particular:
     -  In the header, removing the strapline "Find your perfect cocktail" on xs viewports.
+    -  On the spirit selection page, including images in the buttons on sm viewports and above.
 
 ### Imagery
 
@@ -130,17 +131,19 @@ The **logo** is a neon representation of a cocktail glass on a black backgound, 
 
 The logo was created using a template by Carla Moreno on the Canva website, which can be found here: [Orange and Blue Neon Drinks Bar Animated Logo](https://www.canva.com/templates/EAFCXIroTmk-orange-and-blue-neon-drinks-bar-animated-logo/).
 
-The only other images used on the site are those of the cocktails, which are provided by a third-party cocktail database via its API: [The Cocktail DB API](https://www.thecocktaildb.com/api.php). See (**PLACEHOLDER**) section below for more details.
+The only other images used on the site are those of the cocktails, which are provided by [TheCocktailDB API](https://www.thecocktaildb.com/api.php). See **Technologies Used** section below for more details.
        
 ### Colour Scheme
 
-The colour scheme of the site builds on the main logo, utilising the five fluorescent colours for the various buttons, maintaining the cocktail bar aesthetic. The site is set on a black (#000000) background which provides the necessary contrast for the bright colours. Primary buttons utilise the orange colour (#) from the logo, transitioning to blue (#) when hovered over, using an ease-in-out transition for a smooth effect.
+The colour scheme of the site builds on the main logo, utilising the five fluorescent colours for the various buttons, maintaining the cocktail bar aesthetic. The site is set on a black (#000000) background which provides the necessary contrast for the bright colours. Primary buttons utilise the orange colour (#f56d1c) from the logo, transitioning to blue (#1498e5) when hovered over, using an ease-in-out transition for a smooth effect. The other colours taken from the logo are yellow (#dfc706), green (#719d02) and pink (#e01c80). 
 
-    ![Website colour scheme palette](readme_images/palette.png)
+![Website colour scheme palette](readme_images/palette.png)
 
 ### Typography
 
-  - ##### Title and navigation
+- #### Logo
+
+**PLACEHOLDER TEXT FROM HERE**
 
     ![Desyrel font shown in website header](readme_images/header.png)
 
