@@ -154,24 +154,15 @@ The colour scheme of the site builds on the main logo, utilising the five fluore
 
   - **Rest of site** uses Exo, also imported from [Google Fonts](https://fonts.google.com/specimen/Exo), with Sans Serif as the fallback font.
 
-  - Both are clear and modern fonts which work well with overall site aesthetic.
+  Both are clear and modern fonts which work well with the overall site aesthetic.
   
-
-**PLACEHOLDER TEXT FROM HERE**
-
 - #### Icons
 
-  - Icons are taken from the [Bootstrap Icons](https://icons.getbootstrap.com/) library and are utilised as classes in the `<i>` tag.
+  - [Bootstrap Icons](https://icons.getbootstrap.com/) have been used for the main menu buttons, utilised as classes in the `<i>` tag.
   
-  - The icons inherit their styling from the anchor and list tags within which they are contained, for example inheriting font-size, color and hover effect.
-  
-  - Icons are utilised in the header for navigation list items and for the "hamburger" button on smaller viewports, and in the footer for social media links.
-
 - #### Favicon
 
-  - As a favicon, the site uses a simple "S" in the Desyrel font, using the dark green colour against a white background. This proved more effective than trying to use the main logo as a favicon, as the detail of it was lost at such a small size.
-  
-  - The favicon was generated using [Favicon Generator](https://www.favicon-generator.org/).
+   - The favicon is simply "SM" in the Neoneon font, generated using [Favicon Generator](https://www.favicon-generator.org/). This proved more effective than trying to use the main logo as a favicon, as the detail of it was lost at such a small size.
 
 ## Features
 
@@ -179,30 +170,27 @@ The colour scheme of the site builds on the main logo, utilising the five fluore
 
 - #### Minimum Viable Product
 
-  - To be viable as a marketing website for the company, the website **must have**:
-    1. Information on the products available to hire.
-    2. Contact details to allow customers to reach the company and make bookings.
+  - To be viable as a cocktail search tool, the website **must have**:
+    1. At least one method for searching and returning cocktail recipes.
+    2. A source of cocktail recipes to provide reliable results.
+    3. An intuitive workflow with supporting guidance.
          
 - #### Additional Features (in scope)
 
-  - To provide a good user experience and meet the stated business needs of the company, the website also **should have**:
-    1. Images of the products available to hire.
-    2. An online booking form to allow customers to make bookings directly from the site.
-    3. An "About page" to allow customers to connect to the origin story of the company.
-    4. Quotes from previous customers to add legitimacy and build trust with customers.
-    5. Social media links to add legitimacy and allow customers to connect through their preferred platform.
+   - To provide a good user experience and meet the stated client goals, the website **should have**:
+   1. Options to find cocktails by popular ingredients, name or random selection.
+   2. Images of cocktails provided alongside recipes.
    
  - #### Future Ideas (not currently in scope)
   
-    - To provide a better user experience and better meet the business needs of the company, the website also **could have**:
-      1. Separate "Book Now" links for each package from the homepage, linking to the booking page while auto-selecting the relevant package from the dropdown menu in the booking form. 
-      2. An up-to-date availability calendar, allowing customers to check whether the games are available on their chosen date.
-      3. A fully end-to-end booking and payment system, allowing customers to book the games on their chosen date, make payment and receive a confirmation.
-      4. A gallery of images from previous events, to add legitimacy and build trust with customers.
+   - To provide a better user experience and better meet the stated client goals, the website also **could have**:
+   1. The ability to select any ingredient when searching by ingredient (not limited to most popular ingredients).
+   2. A cocktail quiz which allows users to guess which ingredients are included in a given cocktail.
+   3. An option to select "non-alcoholic" at the spirit selection stage when searching by ingredients.
 
 ### Page Elements
 
-The website includes the following page elements, in line with the scope outlined above. 
+The website is presented as a single page includes the following page elements, in line with the scope outlined above. 
 
 - #### All pages
 
