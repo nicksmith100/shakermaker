@@ -25,16 +25,11 @@ This project aims to demonstrate and embed my understanding of JavaScript as par
 
 ### User Goals
 
-As a **First Time Visitor**, I want to:
-- Understand what the site offers
-- Learn how to use the site to find cocktail recipes
-- Easily navigate throughout the site to find the information I need
+Detailed user stories are provided in the **User Stories** section below, but the primary goals of the user are to:
 
-As a **Returning Visitor**, I want to:
-
-- Use the site to find various cocktail recipes
-- Explore different methods for finding cocktail recipes
-      
+- Find cocktail recipes
+- Understand and use the different search methods offered by the site
+   
 ## Research
 
 ### Cocktail recipes
@@ -55,7 +50,7 @@ I researched existing cocktail recipe finder websites to determine what was alre
 
 ## User Stories
 
-Based on the research and project goals outlined above, I envisage the site being visited by casual cocktail makers with no expert knowledge, as well as more experienced cocktail makers who know what they are looking for but need to confirm the ingredients. User stories may differ depending on the experience of the user and whether they are a first-time or returning visitor. 
+Based on the research and project goals outlined above, I envisage the site being visited by casual cocktail makers with no expert knowledge, as well as more experienced cocktail makers who know what cocktail they are looking for but wish to confirm the ingredients and method. User stories may differ depending on the experience of the user and whether they are a first-time or returning visitor. 
 
 A. As a casual cocktail maker I want to:
 1. Find out what cocktails I can make with the ingredients I have available.
@@ -114,31 +109,32 @@ The site uses the [Bootstrap 5.3 Grid system](https://getbootstrap.com/docs/5.3/
 | Extra extra large | xxl         | ≥1400px    |
 
 In addition, the site uses the following specific components from the Bootstrap library:
-- The cocktail search form utilises Bootstrap's [Form classes](https://getbootstrap.com/docs/5.3/forms/overview/).
-- The site utilises Bootstrap's [Modal plugin](https://getbootstrap.com/docs/5.3/components/modal/) to display instructions at the press of a button, and to provide various alerts.  
-- For the most part I have used Bootstrap's utility classes for [spacing](https://getbootstrap.com/docs/5.3/utilities/spacing/) and [typography](https://getbootstrap.com/docs/5.3/content/typography/), ensuring the layout and font are appropriate to the device in use. 
-- I have also used the Bootstrap [Display property](https://getbootstrap.com/docs/5.3/utilities/display/) to toggle the visibility of some components at certain breakpoints, in particular:
+- [Form classes](https://getbootstrap.com/docs/5.3/forms/overview/) for the cocktail search form.
+- [Modal plugin](https://getbootstrap.com/docs/5.3/components/modal/) to display instructions at the press of a button, and to provide various alerts.  
+- [Spacing](https://getbootstrap.com/docs/5.3/utilities/spacing/) and [typography](https://getbootstrap.com/docs/5.3/content/typography/) utility classes throughout, ensuring the layout and font are appropriate to the device in use. 
+- [Display property](https://getbootstrap.com/docs/5.3/utilities/display/) to toggle the visibility of some components at certain breakpoints, in particular:
     -  In the header, removing the strapline "Find your perfect cocktail" on xs viewports.
     -  On the spirit selection page, including images in the buttons on sm viewports and above.
 
 ### Imagery
 
-The **logo** is a neon representation of a cocktail glass on a black backgound, with the name of the site also represented in neon-style lettering. The logo is provided in bright colours to replicate a typical sign of a cocktail bar. On the welcome screen an animated version of the logo is displayed for a few seconds, while a static version is used in the header to avoid distracting the user.
+- **Logo**: A neon representation of a cocktail glass on a black backgound, with the name of the site also represented in neon-style lettering. It is provided in bright colours to replicate a typical sign of a cocktail bar. On the welcome screen an animated version of the logo is displayed for a few seconds, while a static version is used in the header to avoid distracting the user. The logo was created using a template by Carla Moreno on the Canva website: [Orange and Blue Neon Drinks Bar Animated Logo](https://www.canva.com/templates/EAFCXIroTmk-orange-and-blue-neon-drinks-bar-animated-logo/).
 
     ![Animated logo](readme_images/logo_animated.gif)
     ![Static logo](readme_images/logo_static.png)
 
-The logo was created using a template by Carla Moreno on the Canva website: [Orange and Blue Neon Drinks Bar Animated Logo](https://www.canva.com/templates/EAFCXIroTmk-orange-and-blue-neon-drinks-bar-animated-logo/).
+- **Spirit selection**: Images of relevant spirit bottles are shown on the spirit selection buttons for sm breakpoints and above, provided by [TheCocktailDB API](https://www.thecocktaildb.com/api.php).
 
-Images of relevant spirit bottles are shown on the spirit selection buttons for sm breakpoints and above, provided by [TheCocktailDB API](https://www.thecocktaildb.com/api.php).
+- **Cocktail images**: Images of the cocktails themselves are shown on the results page, again provided by [TheCocktailDB API](https://www.thecocktaildb.com/api.php). Since the database is crowd-sourced, these images are submitted by users of the database.
 
-Images of the cocktails themselves are shown on the results page, again provided by [TheCocktailDB API](https://www.thecocktaildb.com/api.php). Since the database is crowd-sourced, these images are submitted by users of the database.
-
-Finally, the 404 page carries an image of an empty cocktail glass with an associated message.
+- **404 image**: Carries an image of an empty cocktail glass with an associated message.
        
 ### Colour Scheme
 
-The colour scheme of the site builds on the main logo, utilising the five fluorescent colours for the various buttons, maintaining the cocktail bar aesthetic. The site is set on a black (#000000) background which provides the necessary contrast for the bright colours. Primary buttons utilise the orange colour (#f56d1c) from the logo, transitioning to blue (#1498e5) when hovered over, using an ease-in-out transition for a smooth effect. The other colours taken from the logo are yellow (#dfc706), green (#719d02) and pink (#e01c80). 
+The colour scheme of the site builds on the main logo, utilising the five fluorescent colours for the various buttons, maintaining the cocktail bar aesthetic.
+- **Background**: The site is set on a black (#000000) background which provides the necessary contrast for the bright colours.
+- **Primary buttons**: Utilise the orange colour (#f56d1c) from the logo, transitioning to blue (#1498e5) when hovered over, using an ease-in-out transition for a smooth effect.
+- **Other buttons**: Use the other colours from the logo - yellow (#dfc706), green (#719d02) and pink (#e01c80). 
 
 ![Website colour scheme palette](readme_images/palette.png)
 
@@ -148,17 +144,17 @@ The colour scheme of the site builds on the main logo, utilising the five fluore
 
   ![Neoneon font shown in website header](readme_images/header.png)
 
-  The font used in the logo is Neoneon. This was available directly on [Canva](https://www.canva.com/) where the logo was created, and was chosen to complement the neon sign design of the logo. More information about the font can be found on [Dafont](https://www.dafontfree.co/neoneon-font/), where it is described as reproducing the 80s style of neons signage.
+  The font used in the logo is Neoneon. This was available directly on [Canva](https://www.canva.com/) where the logo was created, and was chosen to complement the neon sign which forms the logo. More information about the font can be found on [Dafont](https://www.dafontfree.co/neoneon-font/), where it is described as reproducing the 80s style of neons signage.
 
 - #### Other headings and text
 
   ![Oswald and Exo fonts shown on main menu](readme_images/main_menu_fonts.png)
 
-  The font used for headings and buttons is Oswald, imported from [Google Fonts](https://fonts.google.com/specimen/Oswald), with Sans Serif as the fallback font.
+  - **Headings and buttons** use Oswald, imported from [Google Fonts](https://fonts.google.com/specimen/Oswald), with Sans Serif as the fallback font.
 
-  The font used throughout the rest of the site is Exo, also imported from [Google Fonts](https://fonts.google.com/specimen/Exo), with Sans Serif as the fallback font.
+  - **Rest of site** uses Exo, also imported from [Google Fonts](https://fonts.google.com/specimen/Exo), with Sans Serif as the fallback font.
 
-  Both are clear and modern fonts which work well with overall site aesthetic.
+  - Both are clear and modern fonts which work well with overall site aesthetic.
   
 
 **PLACEHOLDER TEXT FROM HERE**
