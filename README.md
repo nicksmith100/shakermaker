@@ -103,7 +103,7 @@ While the overall structure of the site stays true to the wireframes, there are 
 ### Layout and Styling
 
 The site uses the [Bootstrap 5.3 Grid system](https://getbootstrap.com/docs/5.3/layout/grid/) to ensure it is fully responsive on all device and viewport sizes. Bootstrap 5.3 uses the following [breakpoints](https://getbootstrap.com/docs/5.3/layout/breakpoints/), the shorthand references for which are used throughout the rest of this document:
-    
+
     | Breakpoint        | Shorthand   | Dimensions |
     |-------------------|-------------|------------|
     | Extra small       | xs          | <576px     |
@@ -112,7 +112,7 @@ The site uses the [Bootstrap 5.3 Grid system](https://getbootstrap.com/docs/5.3/
     | Large             | lg          | ≥992px     |
     | Extra large       | xl          | ≥1200px    |
     | Extra extra large | xxl         | ≥1400px    |
-  
+
 In addition, the site uses the following specific components from the Bootstrap library:
 - The cocktail search form utilises Bootstrap's [Form classes](https://getbootstrap.com/docs/5.3/forms/overview/).
 - The site utilises Bootstrap's [Modal plugin](https://getbootstrap.com/docs/5.3/components/modal/) to display instructions at the press of a button, and to provide various alerts.  
