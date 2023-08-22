@@ -26,21 +26,20 @@ This project aims to demonstrate and embed my understanding of JavaScript as par
 ### User Goals
 
 As a **First Time Visitor**, I want to:
-
-1. Understand what the site offers
-2. Learn how to use the site to find cocktail recipes
-3. Easily navigate throughout the site to find the information I need
+- Understand what the site offers
+- Learn how to use the site to find cocktail recipes
+- Easily navigate throughout the site to find the information I need
 
 As a **Returning Visitor**, I want to:
 
-1. Use the site to find various cocktail recipes
-2. Explore different methods for finding cocktail recipes
+- Use the site to find various cocktail recipes
+- Explore different methods for finding cocktail recipes
       
 ## Research
 
 ### Cocktail recipes
 
-Before embarking on the project I wanted to be sure that I could obtain cocktail recipes from a reliable source, having little knowledge of the subject myself. After some research I discovered [TheCocktailDB](https://www.thecocktaildb.com/) - an open, crowd-sourced database of drinks and cocktails from around the world with a [free JSON API](https://www.thecocktaildb.com/api.php). I conducted some intial testing of the API using the links provided on the website, and determined that the full version of the API would provide the necessary functionality to satisfy the project goals outlined above. 
+Before embarking on the project I wanted to be sure that I could obtain cocktail recipes from a reliable source, having little knowledge of the subject myself. After some research I discovered [TheCocktailDB](https://www.thecocktaildb.com/) - an open, crowd-sourced database of drinks and cocktails from around the world with a [free JSON API](https://www.thecocktaildb.com/api.php). I conducted some intial testing and determined that the full version of the API would provide the necessary functionality to satisfy the project goals outlined above. (See **Technologies Used** section below for more details.)
 
 ### Popular ingredients
 
@@ -59,30 +58,30 @@ I researched existing cocktail recipe finder websites to determine what was alre
 Based on the research and project goals outlined above, I envisage the site being visited by casual cocktail makers with no expert knowledge, as well as more experienced cocktail makers who know what they are looking for but need to confirm the ingredients. User stories may differ depending on the experience of the user and whether they are a first-time or returning visitor. 
 
 1. As a casual cocktail maker I want to:
-- Find out what cocktails I can make with the ingredients I have available.
-- Search for cocktails I have heard of and/or tried previously.
-- Discover cocktails I am not already aware of.
+      a. Find out what cocktails I can make with the ingredients I have available.
+      b. Search for cocktails I have heard of and/or tried previously.
+      c. Discover cocktails I am not already aware of.
   
 2. As an experienced cocktail maker I want to:  
-- Remind myself of cocktails which can be made with the ingredients I have available.
-- Search for a particular cocktail recipe to confirm the ingredients and method.
-- Discover cocktails I am not already aware of.
-- Revisit cocktails I have not made recently.
+      a. Remind myself of cocktails which can be made with the ingredients I have available.
+      b. Search for a particular cocktail recipe to confirm the ingredients and method.
+      c. Discover cocktails I am not already aware of.
+      d. Revisit cocktails I have not made recently.
 
 3. As a first-time visitor (regardless of experience) I want to: 
-- Understand what the site offers
-- Learn how to use the site to find cocktail recipes
-- Easily navigate throughout the site to find the information I need
+      a. Understand what the site offers
+      b. Learn how to use the site to find cocktail recipes
+      c. Easily navigate throughout the site to find the information I need
 
 4. As a returning visitor (regardless of experience) I want to: 
-- Use the site to find various cocktail recipes
-- Explore different methods for finding cocktail recipes
+      a. Use the site to find various cocktail recipes
+      b. Explore different methods for finding cocktail recipes
 
 ## Design
 
 ### Wireframes
 
-Wireframes were created using the Figma platform, and can be viewed directly here: [Figma - ShakerMaker](https://www.figma.com/file/kkJOk17MsggqClsHPMeO5I/Shaker-Maker?type=design&node-id=0%3A1&mode=design&t=gZj3N4u4m5Y8Abjo-1).
+Wireframes were created using the Figma platform: [Figma - ShakerMaker](https://www.figma.com/file/kkJOk17MsggqClsHPMeO5I/Shaker-Maker?type=design&node-id=0%3A1&mode=design&t=gZj3N4u4m5Y8Abjo-1).
 
 - #### Desktop Wireframes
 
@@ -92,9 +91,9 @@ Wireframes were created using the Figma platform, and can be viewed directly her
 
   ![Mobile wireframes](readme_images/mobile_wireframes.png)
 
-Only desktop and mobile wireframes were created, the expectation being that tablets in landscape mode would adopt the desktop layout, while tablets in portrait mode would adopt the mobile layout. In reality, the use of [Bootstrap's grid system](https://getbootstrap.com/docs/5.3/layout/grid/) means that the layout is more responsive, providing various layouts at different device breakpoints (see **Layout and Styling** section below). Nevertheless, the wireframes provided a useful reference to keep the overall layout of the site on track.
+Based on prior experience I decided that desktop and mobile wireframes would be sufficient to keep the overall layout of the site on track, the expectation being that [Bootstrap's grid system](https://getbootstrap.com/docs/5.3/layout/grid/) would provide the responsiveness required at different device breakpoints (see **Layout and Styling** section below).
 
-While the overall structure of the site stays true to the wireframes, there are some notable differences in the final page designs which came about for design and user experience reasons:
+While the overall structure of the site stays true to the wireframes, there are some notable differences in the final layout which came about for design and user experience reasons:
 
 - For design purposes I opted to provide a welcome screen with an animated version of the logo, which disappears after 2 seconds and gives way to the main site.
 - I added a header, to provide a space for the logo to maintain consistent branding throughout the user experience, and to provide a space for additional buttons (see below).
@@ -117,7 +116,7 @@ The site uses the [Bootstrap 5.3 Grid system](https://getbootstrap.com/docs/5.3/
 In addition, the site uses the following specific components from the Bootstrap library:
 - The cocktail search form utilises Bootstrap's [Form classes](https://getbootstrap.com/docs/5.3/forms/overview/).
 - The site utilises Bootstrap's [Modal plugin](https://getbootstrap.com/docs/5.3/components/modal/) to display instructions at the press of a button, and to provide various alerts.  
-- I have used Bootstrap's utility classes for [spacing](https://getbootstrap.com/docs/5.3/utilities/spacing/) and [typography](https://getbootstrap.com/docs/5.3/content/typography/), ensuring the layout and font are appropriate to the device in use. 
+- For the most part I have used Bootstrap's utility classes for [spacing](https://getbootstrap.com/docs/5.3/utilities/spacing/) and [typography](https://getbootstrap.com/docs/5.3/content/typography/), ensuring the layout and font are appropriate to the device in use. 
 - I have also used the Bootstrap [Display property](https://getbootstrap.com/docs/5.3/utilities/display/) to toggle the visibility of some components at certain breakpoints, in particular:
     -  In the header, removing the strapline "Find your perfect cocktail" on xs viewports.
     -  On the spirit selection page, including images in the buttons on sm viewports and above.
@@ -129,9 +128,13 @@ The **logo** is a neon representation of a cocktail glass on a black backgound, 
     ![Animated logo](readme_images/logo_animated.gif)
     ![Static logo](readme_images/logo_static.png)
 
-The logo was created using a template by Carla Moreno on the Canva website, which can be found here: [Orange and Blue Neon Drinks Bar Animated Logo](https://www.canva.com/templates/EAFCXIroTmk-orange-and-blue-neon-drinks-bar-animated-logo/).
+The logo was created using a template by Carla Moreno on the Canva website: [Orange and Blue Neon Drinks Bar Animated Logo](https://www.canva.com/templates/EAFCXIroTmk-orange-and-blue-neon-drinks-bar-animated-logo/).
 
-The only other images used on the site are those of the cocktails, which are provided by [TheCocktailDB API](https://www.thecocktaildb.com/api.php). See **Technologies Used** section below for more details.
+Images of relevant spirit bottles are shown on the spirit selection buttons for sm breakpoints and above, provided by [TheCocktailDB API](https://www.thecocktaildb.com/api.php).
+
+Images of the cocktails themselves are shown on the results page, again provided by [TheCocktailDB API](https://www.thecocktaildb.com/api.php). Since the database is crowd-sourced, these images are submitted by users of the database.
+
+Finally, the 404 page carries an image of an empty cocktail glass with an associated message.
        
 ### Colour Scheme
 
