@@ -104,14 +104,14 @@ While the overall structure of the site stays true to the wireframes, there are 
 
 The site uses the [Bootstrap 5.3 Grid system](https://getbootstrap.com/docs/5.3/layout/grid/) to ensure it is fully responsive on all device and viewport sizes. Bootstrap 5.3 uses the following [breakpoints](https://getbootstrap.com/docs/5.3/layout/breakpoints/), the shorthand references for which are used throughout the rest of this document:
 
-    | Breakpoint        | Shorthand   | Dimensions |
-    |-------------------|-------------|------------|
-    | Extra small       | xs          | <576px     |
-    | Small             | sm          | ≥576px     |
-    | Medium            | md          | ≥768px     |
-    | Large             | lg          | ≥992px     |
-    | Extra large       | xl          | ≥1200px    |
-    | Extra extra large | xxl         | ≥1400px    |
+| Breakpoint        | Shorthand   | Dimensions |
+|-------------------|-------------|------------|
+| Extra small       | xs          | <576px     |
+| Small             | sm          | ≥576px     |
+| Medium            | md          | ≥768px     |
+| Large             | lg          | ≥992px     |
+| Extra large       | xl          | ≥1200px    |
+| Extra extra large | xxl         | ≥1400px    |
 
 In addition, the site uses the following specific components from the Bootstrap library:
 - The cocktail search form utilises Bootstrap's [Form classes](https://getbootstrap.com/docs/5.3/forms/overview/).
@@ -146,25 +146,22 @@ The colour scheme of the site builds on the main logo, utilising the five fluore
 
 - #### Logo
 
+  ![Neoneon font shown in website header](readme_images/header.png)
+
+  The font used in the logo is Neoneon. This was available directly on [Canva](https://www.canva.com/) where the logo was created, and was chosen to complement the neon sign design of the logo. More information about the font can be found on [Dafont](https://www.dafontfree.co/neoneon-font/), where it is described as reproducing the 80s style of neons signage.
+
+- #### Other headings and text
+
+  ![Oswald and Exo fonts shown on main menu](readme_images/main_menu_fonts.png)
+
+  The font used for headings and buttons is Oswald, imported from [Google Fonts](https://fonts.google.com/specimen/Oswald), with Sans Serif as the fallback font.
+
+  The font used throughout the rest of the site is Exo, also imported from [Google Fonts](https://fonts.google.com/specimen/Exo), with Sans Serif as the fallback font.
+
+  Both are clear and modern fonts which work well with overall site aesthetic.
+  
+
 **PLACEHOLDER TEXT FROM HERE**
-
-    ![Desyrel font shown in website header](readme_images/header.png)
-
-    - The font used for the title and navigation links is Desyrel, with Sans Serif as the fallback font.
-
-    - Desyrel is a playful but stylish script font which reflects that the purpose of the company is to provide fun games.
-
-    - The Desyrel font was downloaded from [Dafont](https://www.dafont.com/desyrel.font) as a TrueType font and converted to @font-face using [Transfonter](https://transfonter.org/).
-
-  - ##### Other headings and text
-
-    ![Playfair Display font shown on "About" page](readme_images/main_font.png)
-
-    - The font used throughout the rest of the site is Playfair Display, with Serif as the fallback font.
-
-    - Playfair Display is a classy, stylish serif font which provides a contrast to the playfulness of the heading font, demonstrating the professionalism of the company.
-
-    - Playfair Display is imported from [Google Fonts](https://fonts.google.com/specimen/Playfair+Display).
 
 - #### Icons
 
