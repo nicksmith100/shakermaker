@@ -57,25 +57,25 @@ I researched existing cocktail recipe finder websites to determine what was alre
 
 Based on the research and project goals outlined above, I envisage the site being visited by casual cocktail makers with no expert knowledge, as well as more experienced cocktail makers who know what they are looking for but need to confirm the ingredients. User stories may differ depending on the experience of the user and whether they are a first-time or returning visitor. 
 
-1. As a casual cocktail maker I want to:
-      a. Find out what cocktails I can make with the ingredients I have available.
-      b. Search for cocktails I have heard of and/or tried previously.
-      c. Discover cocktails I am not already aware of.
+A. As a casual cocktail maker I want to:
+1. Find out what cocktails I can make with the ingredients I have available.
+2. Search for cocktails I have heard of and/or tried previously.
+3. Discover cocktails I am not already aware of.
   
-2. As an experienced cocktail maker I want to:  
-      a. Remind myself of cocktails which can be made with the ingredients I have available.
-      b. Search for a particular cocktail recipe to confirm the ingredients and method.
-      c. Discover cocktails I am not already aware of.
-      d. Revisit cocktails I have not made recently.
+B. As an experienced cocktail maker I want to:  
+1. Remind myself of cocktails which can be made with the ingredients I have available.
+2. Search for a particular cocktail recipe to confirm the ingredients and method.
+3. Discover cocktails I am not already aware of.
+4. Revisit cocktails I have not made recently.
 
-3. As a first-time visitor (regardless of experience) I want to: 
-      a. Understand what the site offers
-      b. Learn how to use the site to find cocktail recipes
-      c. Easily navigate throughout the site to find the information I need
+C. As a first-time visitor (regardless of experience) I want to:
+1. Understand what the site offers
+2. Learn how to use the site to find cocktail recipes
+3. Easily navigate throughout the site to find the information I need
 
-4. As a returning visitor (regardless of experience) I want to: 
-      a. Use the site to find various cocktail recipes
-      b. Explore different methods for finding cocktail recipes
+D. As a returning visitor (regardless of experience) I want to: 
+1. Use the site to find various cocktail recipes
+2. Explore different methods for finding cocktail recipes
 
 ## Design
 
