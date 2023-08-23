@@ -199,7 +199,7 @@ function noInputAlert() {
 function getData(apiURL, cb) {
 
     try {
-    
+
         let xhr = new XMLHttpRequest();
 
         xhr.open("GET", apiURL);
@@ -412,9 +412,9 @@ $(document).ready(function () {
         //Invoke getData function to display drinks by main ingredient
 
         function writeResults(ingredients, ingredientsSpaced) {
-            
+
             let searchURL = ingredientSearchURL + ingredients;
-            
+
             resultList.innerHTML = "";
 
             getData(searchURL, function (data) {
@@ -632,7 +632,7 @@ $(document).ready(function () {
             // Replace final comma with "and" - code from: https://stackoverflow.com/questions/29985085/replace-final-comma-in-a-string-with-and
 
             ingStringSpaced = ingStringSpaced.replace(/,(?=[^,]+$)/, " and ");
-            
+
             writeResults(ingString, ingStringSpaced);
 
             searchIngredientsToResults();
