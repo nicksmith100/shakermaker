@@ -311,13 +311,13 @@ $(document).ready(function () {
 
         let spiritBtns = document.querySelectorAll('.spirit-btn');
 
-        for (i of spiritBtns) {
+        for (let i of spiritBtns) {
             i.addEventListener('click', function () {
 
                 // Highlight selected spirit button only
 
                 let spiritBtns2 = document.querySelectorAll('.spirit-btn');
-                for (j of spiritBtns2) {
+                for (let j of spiritBtns2) {
                     j.classList.remove("btn-green");
                     j.classList.add("btn-yellow");
                 }
@@ -362,7 +362,7 @@ $(document).ready(function () {
 
                 let ingBtns = document.querySelectorAll('.ing-btn');
 
-                for (i of ingBtns) {
+                for (let i of ingBtns) {
                     i.addEventListener('click', function () {
 
                         let selectedIngs = document.getElementsByClassName("ing-selected");
@@ -424,7 +424,7 @@ $(document).ready(function () {
 
             let ingString = selectedSpirit;
 
-            for (i of selectedIngs) {
+            for (let i of selectedIngs) {
 
                 ingString += "," + i.innerText;
 
@@ -434,7 +434,7 @@ $(document).ready(function () {
 
             let ingStringSpaced = selectedSpirit;
 
-            for (i of selectedIngs) {
+            for (let i of selectedIngs) {
 
                 ingStringSpaced += ", " + i.innerText;
 
