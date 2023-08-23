@@ -79,7 +79,7 @@
     <!-- /.header -->
 
     <!-- Instructions modal -->
-    <div id="modal-instructions" class="modal fade alert alert-dark" tabindex="-1" role="dialog" data-mdb-backdrop="false">
+    <div id="modal-instructions" class="modal modal-dark fade alert alert-dark" tabindex="-1" role="dialog" data-mdb-backdrop="false">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-body">
@@ -172,7 +172,7 @@
       <!-- /.search by ingredient -->
 
     <!-- No spirit alert -->
-    <div id="modal-spirit-alert" class="modal fade alert alert-dark" tabindex="-1" role="dialog" data-mdb-backdrop="false">
+    <div id="modal-spirit-alert" class="modal modal-dark fade alert alert-dark" tabindex="-1" role="dialog" data-mdb-backdrop="false">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-body">
@@ -187,7 +187,7 @@
     <!-- /.no spirit alert -->
 
     <!-- Max ingredients alert -->
-    <div id="modal-ing-alert" class="modal fade alert alert-dark" tabindex="-1" role="dialog" data-mdb-backdrop="false">
+    <div id="modal-ing-alert" class="modal modal-dark fade alert alert-dark" tabindex="-1" role="dialog" data-mdb-backdrop="false">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-body">
@@ -222,7 +222,7 @@
       <!-- /.search by cocktail -->
 
     <!-- No search input alert -->
-    <div id="modal-no-input-alert" class="modal fade alert alert-dark" tabindex="-1" role="dialog" data-mdb-backdrop="false">
+    <div id="modal-no-input-alert" class="modal modal-dark fade alert alert-dark" tabindex="-1" role="dialog" data-mdb-backdrop="false">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-body">
@@ -243,6 +243,21 @@
         </div>        
       </section>
     <!-- /.results -->
+
+    <!-- Database error -->
+    <div id="modal-db-error" class="modal modal-dark fade alert alert-dark" tabindex="-1" role="dialog" data-mdb-backdrop="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p class="text-danger fw-bold fs-3">Sorry, the database could not be reached. Please try again later.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="db-error-close">Close page</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.database error -->
 
     <!-- Scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>

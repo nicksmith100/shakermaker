@@ -99,10 +99,7 @@ h2 {
 
 /* Modals */
 
-#modal-ing-alert,
-#modal-spirit-alert,
-#modal-instructions,
-#modal-no-input-alert {
+.modal-dark {
     background-color: #000;
 }
 

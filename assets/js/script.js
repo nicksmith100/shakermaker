@@ -150,6 +150,15 @@ function returnToMainMenu() {
 
 }
 
+// Display database error modal with "close page" button
+
+function databaseError() {
+    $('#modal-db-error').modal("show");
+    $("#db-error-close").click(function () {
+        window.close();
+    });
+}
+
 // Display instructions modal on button press
 
 function showInstructions() {
@@ -182,16 +191,25 @@ function noInputAlert() {
 (Utilises code from "Working with external resources" lessons of CI course) */
 
 function getData(apiURL, cb) {
-    let xhr = new XMLHttpRequest();
 
-    xhr.open("GET", apiURL);
-    xhr.send();
+    try {
+    
+        let xhr = new XMLHttpRequest();
 
-    xhr.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            cb(JSON.parse(this.responseText));
-        }
-    };
+        xhr.open("GET", apiURL);
+        xhr.send();
+
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                cb(JSON.parse(this.responseText));
+            }
+        };
+    }
+
+    catch (error) {
+        databaseError();
+    }
+
 }
 
 /* Invoke getData function to pull full list of ingredients and push to fullIngs array
