@@ -142,7 +142,6 @@ function mainMenuToResults() {
 function returnToMainMenu() {
 
     $("#results-back").click(function () {
-        getFullIngredients();
         $("#results").hide("drop", function () {
             $("#main-menu").show("drop");
             $("#results-back").fadeOut();
