@@ -34,7 +34,7 @@ Detailed user stories are provided in the **User Stories** section below, but th
 
 ### Cocktail recipes
 
-Before embarking on the project I wanted to be sure that I could obtain cocktail recipes from a reliable source, having little knowledge of the subject myself. After some research I discovered [TheCocktailDB](https://www.thecocktaildb.com/) - an open, crowd-sourced database of drinks and cocktails from around the world with a [free JSON API](https://www.thecocktaildb.com/api.php). I conducted some intial testing and determined that the full version of the API would provide the necessary functionality to satisfy the project goals outlined above. (See **Technologies Used** section below for more details.)
+Before embarking on the project I wanted to be sure that I could obtain cocktail recipes from a reliable source, having little knowledge of the subject myself. After some research I discovered [TheCocktailDB](https://www.thecocktaildb.com/) - an open, crowd-sourced database of drinks and cocktails from around the world with a [free JSON API](https://www.thecocktaildb.com/api.php). I conducted some intial testing and determined that the full version of the API would provide the necessary functionality to satisfy the project goals outlined above. (See **JavaScript Functionality** section below for more details.)
 
 ### Popular ingredients
 
@@ -188,7 +188,7 @@ The colour scheme of the site builds on the main logo, utilising the five fluore
    2. A cocktail quiz which allows users to guess which ingredients are included in a given cocktail.
    3. An option to select "non-alcoholic" at the spirit selection stage when searching by ingredients.
 
-### Page Elements
+### Page Elements and Interaction
 
 The website is presented as a single page with elements which are displayed or hidden based on user interaction, in line with the scope outlined above. All pages utilise Bootstrap's [Grid system](https://getbootstrap.com/docs/5.3/layout/grid/), ensuring that the page is fully responsive to viewport size.
 
@@ -198,8 +198,6 @@ The website is presented as a single page with elements which are displayed or h
 
 - #### Header
          
-  Apart from the welcome page, all pages include a header with a static version of the logo on the left-hand side and a button menu on the right-hand side, which initially includes an "Instructions" button. At sm breakpoints and above the header also includes a heading "Find your perfect cocktail".
-
    - Desktop header
       
    ![Website header - desktop](readme_images/header.png)
@@ -211,13 +209,10 @@ The website is presented as a single page with elements which are displayed or h
    - Mobile header
       
    ![Website header - mobile](readme_images/header_xs.png)
+
+     Apart from the welcome page, all pages include a header with a static version of the logo on the left-hand side and a button menu on the right-hand side. The button menu initially includes only an "Instructions" button, which on being pressed displays a modal offering guidance on how to use the various search options. At sm breakpoints and above the header also includes a heading "Find your perfect cocktail".
     
 - #### Main menu
-
-  The main menu provides three large buttons displaying different search options, with appropriate [Bootstrap icons](https://icons.getbootstrap.com/):
-  - Search by ingredients (with a shopping basket icon)
-  - Look up cocktail (with a magnifying glass icon)
-  - Surprise me (with a dice icon)
 
    - Desktop menu
       
@@ -231,89 +226,150 @@ The website is presented as a single page with elements which are displayed or h
       
    ![Website menu - mobile](readme_images/menu_xs.png)
       
+  The main menu provides three large buttons displaying different search options, with appropriate [Bootstrap icons](https://icons.getbootstrap.com/):
+  - Search by ingredients (with a shopping basket icon)
+  - Look up cocktail (with a magnifying glass icon)
+  - Surprise me (with a dice icon)
       
-      
-- #### Find by ingredients
+- #### Search by ingredients
 - ##### Select a Spirit
       
   ![Select a spirit - desktop](readme_images/spirit_select_desktop.png)
   ![Select a spirit - mobile](readme_images/spirit_select_mobile.png)
+  ![Select a spirit - no spirit alert](readme_images/no_spirit_alert.png)
     
-   Selecting "Find by ingredients" takes the user to a spirit selection page, allowing the user to select one of 12 spirits. The spirit selection buttons are presented with images of spirit bottles on sm viewports and above, and as simple text buttons on xs viewports. The background of the button turns from yellow to green when selected. Navigation buttons at the bottom of the page allow the user to proceed or go back.
+   Selecting "Search by ingredients" takes the user to a spirit selection page, allowing the user to select one of 12 spirits. The spirit selection buttons are presented with images of spirit bottles on sm viewports and above, and as simple text buttons on xs viewports. The background of the button turns from yellow to green when selected. Navigation buttons at the bottom of the page allow the user to proceed or go back. An alert modal is displayed if the user tries to proceed with no spirit button selected.
 
 - ##### Select additional ingredients
       
   ![Select ingredients - desktop](readme_images/ingredient_select_desktop.png)
   ![Select ingredients - mobile](readme_images/ingredient_select_mobile.png)
+  ![Select ingredients - no ingredient alert](readme_images/no_ingredient_alert.png)
+  ![Select ingredients - max ingredients alert](readme_images/max_ingredients_alert.png)
     
-   The next page allows the user to select 1-3 additional ingredients. The buttons are presented as simple text buttons on all viewports, the background of the button turning from yellow to green when selected. Buttons at the bottom of the page allow the user to search based on the selected ingredients or go back.
+   The next page allows the user to select 1-3 additional ingredients. The buttons are presented as simple text buttons on all viewports, the background of the button turning from yellow to green when selected. Buttons at the bottom of the page allow the user to search based on the selected ingredients or go back. An alert modal is displayed if the user tries to proceed with no ingredient button selected, or if the user attempts to select more than three additional ingredients.
+
+- ##### Results
+
+  ![Search by ingredients - results - desktop](readme_images/ingredient_select_results_desktop.png)
+  ![Search by ingredients - results - mobile](readme_images/ingredient_select_results_mobile.png)
+
+  The results page displays all cocktails matching the selected ingredients, as names and images. As multiple results are expected, recipes are initially hidden but can be revealed by clicking on the photograph. Positioning of recipes is dependent on device size, with the direction of the reveal animation adjusting accordingly. The results page also includes an additional "Back to menu" button in the header.
+
+  ![Search by ingredients - no results - desktop](readme_images/ingredient_select_no_results_desktop.png)
+  ![Search by ingredients - no results - mobile](readme_images/ingredient_select_no_results_mobile.png)
+
+  If no exact matches are found then the user is informed and presented with a selection of popular cocktails instead.
 
 - #### Look up cocktail
+- ##### Search form
 
-   ![Look up cocktail - desktop](readme_images/lookup_desktop.png)
-   ![Look up cocktail - mobile](readme_images/lookup_mobile.png)
+  ![Look up cocktail - desktop](readme_images/lookup_desktop.png)
+  ![Look up cocktail - mobile](readme_images/lookup_mobile.png)
 
-   Selecting "Look up cocktail" displays a simple form, allowing the user to enter the name of a cocktail. The form forces selection from an autocomplete list, ensuring that only cocktails which exist in the database can be entered into the form. Buttons beneath the form allow the user to search or go back.
+   Selecting "Look up cocktail" displays a simple form, allowing the user to enter the name of a cocktail. The form forces selection from an autocomplete list, ensuring that only cocktails which exist in the database can be entered into the form, preventing nil results. Buttons beneath the form allow the user to search or go back.
 
-- #### Surprise me!
+- ##### Results
 
-  There is no page associated with the "Surprise me!" random search option, as the user is taken straight to the results page.
+  ![Look up cocktail - results - desktop](readme_images/lookup_results_desktop.png)
+  ![Look up cocktail - results - mobile](readme_images/lookup_results_mobile.png)
 
-- #### Results
+  The results page displays the cocktail(s) matching the search term, as name(s) and image(s). As usually only a single result is expected, the recipe is automatically revealed as the results page is revealed. Positioning of the recipe is dependent on device size, with the direction of the reveal animation adjusting accordingly. The results page also includes an additional "Back to menu" button in the header.
 
-   ![Results - desktop](readme_images/results_desktop.png)
-   ![Results - mobile](readme_images/results_mobile.png)
+- #### Random search (Surprise me!)
 
-  The results page displays one or more cocktail names with an associated photograph. Where multiple results are expected (e.g. ingredients search), recipes are initially hidden but can be revealed by clicking on the photograph. Where only a single result is expected (look up or random search) then the recipe is automatically revealed as the results page is revealed. Positioning of recipes is dependent on device size, with the direction of the reveal animation adjusting accordingly.
+  ![Random search - desktop](readme_images/random_desktop.png)
+  ![Random search - mobile](readme_images/random_mobile.png)
 
-  The results page also includes an additional "Back to menu" button in the header.
+  Selecting "Surprise me!" takes the user straight to the results page, where they are presented with a random cocktail, displayed as a name and image. As only a single result is provided, the recipe is automatically revealed as the results page is revealed. Positioning of the recipe is dependent on device size, with the direction of the reveal animation adjusting accordingly. The results page also includes an additional "Back to menu" button in the header.
 
-- #### Modals
+- #### Database Error Modal
 
-  A number of modals are used to provide useful and necessary information:
-  - **Instructions**: Displays guidance on how to use the various search options.
-  - **Database error**: Displays an alert if the database cannot be reached or returns an error. 
-  - **No spirit alert**: Displays an alert if the user tries to proceed with no spirit button selected.
-  - **No ingredients alert**: Displays an alert if the user tries to proceed with no ingredient button selected.
-  - **Max ingredients alert**: Displays an alert if the user attempts to select more than three additional ingredients.
+  An alert modal is displayed if the database cannot be reached or returns an error. This includes a "Close page" button which closes the whole page rather than just the modal itself. 
 
+### JavaScript Functionality
 
+- #### Presentation and navigation
 
+   - The [jQuery](https://jquery.com/) [show and hide methods](https://www.w3schools.com/jquery/jquery_hide_show.asp) have been used to allow various page elements to be revealed and hidden. The [Drop effect](https://www.tutorialspoint.com/jquery/effect-drop.htm) is used in most cases to add style to the transitions.
+     
+   - The [jQuery](https://jquery.com/) [fadeIn](https://api.jquery.com/fadeout/) and [fadeOut](https://api.jquery.com/fadeout/) effects have been applied to the "Back to menu" button in the header.
+   
+   - EventListeners have been used to add functionality to various elements, including buttons and cocktail images (where necessary to allow the reveal of recipes). 
+
+- #### API and associated functionality
+
+  The site utilises [TheCocktailDB API](https://www.thecocktaildb.com/api.php) to provide all information regarding cocktails. In particular:
+
+   - ##### Search by ingredients
+     - An XML HttpRequest is used to pull a full list of ingredients from the API. A function selects a subset of these ingredients to provide the list of spirits available for selection, and creates the associated buttons (including images for sm viewports and above). A similar process is used to create the list of additional ingredients available for selection and the associated buttons.
+     - The properties of selected buttons are read to create a search string which is submitted to the API to get results, each in the form of a cocktail name, a photograph and a unique ID.
+     - The unique ID of each cocktail is submitted to the API to get the list of ingredients and method which form the recipe.
+     - If no matches are found then the API's in-built functionality is used to provide a list of popular cocktails instead.
+
+   - ##### Look up cocktail 
+     - An XML HttpRequest is used to pull a full list of cocktail names from the API, pushing them to an array.
+     - The search form includes an [autocomplete function from jQuery UI](https://jqueryui.com/autocomplete/) which uses the array of cocktail names as its basis, avoiding nil results.
+     - The search term is submitted to the API to get the details of the cocktail.
+
+   - ##### Random search (Surprise me!)
+      - The API's in-built functionality is used to get details of a random cocktail.
+         
 ## Technologies Used
 
 ### Languages
 - [HTML](https://html.spec.whatwg.org/multipage/)
   - Standard markup language for web pages
 - [CSS](https://www.w3.org/Style/CSS/)
-  - Used to add style to HTML
+  - Adding style to HTML
+- [JavaScript](https://www.w3schools.com/js/)
+  - Adding interactive elements
 
 ### Frameworks
 - [Bootstrap 5.3](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
-  - Used for overall layout and styling of page, as well as specific components as described above
+  - Overall layout and styling, and specific components as described above
 
 ### Libraries
+- [jQuery](https://jquery.com/)
+  - Show and hide functionality
+- [jQuery UI](https://jqueryui.com/)
+  - Autocomplete on search form
 - [Google Fonts](https://fonts.google.com)
-  - Used for importing Playfair Display font
+  - Exo and Oswald fonts
 - [Bootstrap icons](https://icons.getbootstrap.com/)
-  - Used for icons
+  - Icons on main menu buttons
+
+### APIs
+- [TheCocktailDB API](https://www.thecocktaildb.com/api.php)
+  - All cocktail information including spirit names, ingredient names and results (including cocktail photographs)
 
 ### Platforms
 - [Github](https://github.com/)
-  - Used to store code remotely and for deployment
+  - Storing code and deployment
 - [CodeAnywhere](https://app.codeanywhere.com/)
   - IDE used for majority of project development
 - [Gitpod](https://gitpod.io/)
-  - IDE used to finalise project due to technical issues with CodeAnywhere
+  - IDE used to finalise project (due to technical issues with CodeAnywhere)
 
 ### Other Tools
 - [Figma](https://www.figma.com/)
-  - Used to create wireframes
+  - Wireframes
 - [Coolors](https://coolors.co/)
-  - Used to create colour palette
+  - Colour palette
 - [Favicon Generator](https://www.favicon-generator.org/)
-  - Used to create the website favicon
+  - Website favicon
 - [Am I Responsive](https://ui.dev/amiresponsive)
-  - Used to create montage of different devices displaying the site
+  - Montage of different devices displaying the site
+- [Canva](https://www.canva.com/)
+  - Creation of main logo
+- [Unsplash](https://unsplash.com/)
+  - 404 image
+- [Fix the photo](https://fixthephoto.com/uk/online-gimp.html)
+  - Image editing
+
+
+**NOT YET COMPLETE FROM HERE**
+
 
 ## Testing
 
@@ -357,15 +413,11 @@ The website is presented as a single page with elements which are displayed or h
 
 ## Development and Deployment
 
-### Git Commits
-
-Early on in development, as I was still becoming familiar with the concept of Git, **my commits were very large with long messages**. My mentor spotted this during the midway project session and explained the need to commit regularly, with shorter messages. Later commits should demonstrate this change in approach.  
-
 ### GitHub Pages
 
 The project was deployed to GitHub Pages using the following steps.
 
-1. Log in to GitHub and locate the [GitHub Repository](https://github.com/nicksmith100/milestone-project-1/)
+1. Log in to GitHub and locate the [GitHub Repository](https://github.com/nicksmith100/shakermaker/)
 2. At the top of the Repository (not top of page), locate the "Settings" Button on the menu.
 3. In the menu on the left-hand side, under "Code and automation", select "Pages".
 4. Under "Source", click the dropdown which says "None" and select "main", then click "Save".
@@ -385,16 +437,17 @@ The project was deployed to GitHub Pages using the following steps.
 
 ### Content
 
-- All content was written by the developer.
+- (API)
+- All other content was written by the developer.
 
 ### Media
 
-- All Images were created by the developer except:
-  - Primary image on About page taken by [Eleanor Jane Weddings](http://eleanorjaneweddings.co.uk/)
-  - Primary image on Booking page from [Freepik](https://www.freepik.com/free-photo/desk-office-with-objects_3369397.htm)
-  - Primary image on 404 page by Glenn Carstens-Peters on [Unsplash](https://unsplash.com/photos/IMRuLuNnFw4)  
+- Logo
+- Spirit bottle images
+- 404 image    
 
 ### Acknowledgements
 
 - My Mentor Rory Patrick Sheridan for many helpful pointers, including providing an [example README](https://github.com/Ri-Dearg/horizon-photo/blob/master/README.md) which has provided a useful template for this document.
 - Our Cohort Facilitator Iris Smok for providing helpful guidance on project requirements throughout.
+- 
