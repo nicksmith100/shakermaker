@@ -153,7 +153,7 @@ function returnToMainMenu() {
 // Display database error modal with "close page" button
 
 function databaseError() {
-    $('#modal-db-error').modal("show");
+    $("#modal-db-error").modal("show");
     $("#db-error-close").click(function () {
         window.close();
     });
@@ -163,32 +163,32 @@ function databaseError() {
 
 function showInstructions() {
     $("#instructions-button").click(function () {
-        $('#modal-instructions').modal("show");
+        $("#modal-instructions").modal("show");
     });
 }
 
 // Alert if no spirit selected
 
 function noSpiritAlert() {
-    $('#modal-spirit-alert').modal("show");
+    $("#modal-spirit-alert").modal("show");
 }
 
 // Alert if maximum number of ingredients exceeded
 
 function maxIngredientsAlert() {
-    $('#modal-max-ing-alert').modal("show");
+    $("#modal-max-ing-alert").modal("show");
 }
 
 // Alert if no additional ingredients selected
 
 function noIngAlert() {
-    $('#modal-no-ing-alert').modal("show");
+    $("#modal-no-ing-alert").modal("show");
 }
 
 // Alert if no search input provided
 
 function noInputAlert() {
-    $('#modal-no-input-alert').modal("show");
+    $("#modal-no-input-alert").modal("show");
 }
 
 // Create calls to API ------------------------------------------ //
@@ -309,14 +309,14 @@ $(document).ready(function () {
 
         // Add event listeners to spirit buttons. Code adapted from: https://www.codeinwp.com/snippets/add-event-listener-to-multiple-elements-with-javascript/
 
-        let spiritBtns = document.querySelectorAll('.spirit-btn');
+        let spiritBtns = document.querySelectorAll(".spirit-btn");
 
         for (let i of spiritBtns) {
-            i.addEventListener('click', function () {
+            i.addEventListener("click", function () {
 
                 // Highlight selected spirit button only
 
-                let spiritBtns2 = document.querySelectorAll('.spirit-btn');
+                let spiritBtns2 = document.querySelectorAll(".spirit-btn");
                 for (let j of spiritBtns2) {
                     j.classList.remove("btn-green");
                     j.classList.add("btn-yellow");
@@ -360,10 +360,10 @@ $(document).ready(function () {
 
                 // Add event listeners to ingredient buttons
 
-                let ingBtns = document.querySelectorAll('.ing-btn');
+                let ingBtns = document.querySelectorAll(".ing-btn");
 
                 for (let i of ingBtns) {
-                    i.addEventListener('click', function () {
+                    i.addEventListener("click", function () {
 
                         let selectedIngs = document.getElementsByClassName("ing-selected");
 
@@ -495,7 +495,7 @@ $(document).ready(function () {
 
                                     let list = document.getElementById("ingredient-list" + drinkCode);
                                     for (let i = 0; i < drinkIngredients.length; ++i) {
-                                        let li = document.createElement('li');
+                                        let li = document.createElement("li");
                                         li.innerText = drinkIngredients[i];
                                         list.appendChild(li);
                                     }
@@ -582,7 +582,7 @@ $(document).ready(function () {
 
                                 let list = document.getElementById("ingredient-list" + drinkCode);
                                 for (let i = 0; i < drinkIngredients.length; ++i) {
-                                    let li = document.createElement('li');
+                                    let li = document.createElement("li");
                                     li.innerText = drinkIngredients[i];
                                     list.appendChild(li);
                                 }
@@ -631,7 +631,7 @@ $(document).ready(function () {
 
             // Replace final comma with "and" - code from: https://stackoverflow.com/questions/29985085/replace-final-comma-in-a-string-with-and
 
-            ingStringSpaced = ingStringSpaced.replace(/,(?=[^,]+$)/, ' and ');
+            ingStringSpaced = ingStringSpaced.replace(/,(?=[^,]+$)/, " and ");
             
             writeResults(ingString, ingStringSpaced);
 
@@ -726,7 +726,7 @@ $(document).ready(function () {
                     let list = document.getElementById("ingredient-list" + drinkCode);
 
                     for (let i = 0; i < drinkIngredients.length; ++i) {
-                        let li = document.createElement('li');
+                        let li = document.createElement("li");
                         li.innerText = drinkIngredients[i];
                         list.appendChild(li);
                     }
@@ -742,7 +742,7 @@ $(document).ready(function () {
 
     }
 
-    searchForm.addEventListener('submit', searchName);
+    searchForm.addEventListener("submit", searchName);
 
     $("#c-search-back").click(cocktailSearchBack);
 
@@ -798,7 +798,7 @@ $(document).ready(function () {
                 let list = document.getElementById("ingredient-list" + drinkCode);
 
                 for (let i = 0; i < drinkIngredients.length; ++i) {
-                    let li = document.createElement('li');
+                    let li = document.createElement("li");
                     li.innerText = drinkIngredients[i];
                     list.appendChild(li);
                 }
