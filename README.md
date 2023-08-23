@@ -170,90 +170,114 @@ The colour scheme of the site builds on the main logo, utilising the five fluore
 
 - #### Minimum Viable Product
 
-  - To be viable as a cocktail search tool, the website **must have**:
-    1. At least one method for searching and returning cocktail recipes.
-    2. A source of cocktail recipes to provide reliable results.
-    3. An intuitive workflow with supporting guidance.
+  To be viable as a cocktail search tool, the website **must have**:
+  1. At least one method for searching and returning cocktail recipes.
+  2. A source of cocktail recipes to provide reliable results.
+  3. An intuitive workflow with supporting guidance.
          
 - #### Additional Features (in scope)
 
-   - To provide a good user experience and meet the stated client goals, the website **should have**:
-   1. Options to find cocktails by popular ingredients, name or random selection.
-   2. Images of cocktails provided alongside recipes.
+  To provide a good user experience and meet the stated client goals, the website **should have**:
+  1. Options to find cocktails by popular ingredients, name or random selection.
+  2. Images of cocktails provided alongside recipes.
    
- - #### Future Ideas (not currently in scope)
+- #### Future Ideas (not currently in scope)
   
-   - To provide a better user experience and better meet the stated client goals, the website also **could have**:
+   To provide a better user experience and better meet the stated client goals, the website also **could have**:
    1. The ability to select any ingredient when searching by ingredient (not limited to most popular ingredients).
    2. A cocktail quiz which allows users to guess which ingredients are included in a given cocktail.
    3. An option to select "non-alcoholic" at the spirit selection stage when searching by ingredients.
 
 ### Page Elements
 
-The website is presented as a single page with elements which are displayed or hidden based on user interaction, in line with the scope outlined above. 
+The website is presented as a single page with elements which are displayed or hidden based on user interaction, in line with the scope outlined above. All pages utilise Bootstrap's [Grid system](https://getbootstrap.com/docs/5.3/layout/grid/), ensuring that the page is fully responsive to viewport size.
 
 - #### Welcome page
 
+  The site displays an animated version of the logo for 2 seconds, before automatically giving way to the header and main menu.
+
 - #### Header
          
-    - All pages include a header with branding on the left-hand side and a navigation menu on the right-hand side. The header is fully responsive:
-      - The title and logo are displayed as a single image on xs viewports.
-      - On sm and md viewports, the logo and title are displayed separately with the title being stacked in three lines, while on lg viewports and above, the title displays as a single line.
-      - The navigation menu collapses to a hamburger menu on xs viewports, but is otherwise displayed as a single line.
-     
-     - Desktop header
-      
-      ![Website header](readme_images/header.png)
-    
-    - Tablet header
-      
-      ![Website header - medium](readme_images/header_md.png)
-    
-    - Mobile header
-      
-      ![Website header - collapsed](readme_images/header_collapsed.png)
-    
-  - #### Main menu
+  Apart from the welcome page, all pages include a header with a static version of the logo on the left-hand side and a button menu on the right-hand side, which initially includes an "Instructions" button. At sm breakpoints and above the header also includes a heading "Find your perfect cocktail".
 
-    - The primary image on the homepage is overlaid with a box on the right-hand side which presents three quotes from previous customers on rotation, utilising Bootstrap's [Carousel](https://getbootstrap.com/docs/5.3/components/carousel/) component.
+   - Desktop header
       
-      ![Homepage primary image with quote box - desktop](readme_images/homepage_primary_quotes.png)
-      
-    - The quotes box disappears at the xs breakpoint as the text would either be too small to read or the box would dominate the primary image.
-      
-      ![Homepage primary image - mobile](readme_images/homepage_primary_xs.png)
-      
-    - The main content of the homepage comprises two distinct sections:
-      
-      - A section outlining the hire packages on offer, each package including a specific number of games from each tier, along with a "Book Now" button.
-      
-        ![Homepage packages section - desktop](readme_images/packages_desktop.png)
-        
-        ![Homepage packages section - mobile](readme_images/packages_xs.png)
-              
-      - A section illustrating the games in each tier, each tier including an image gallery using Bootstrap's [Carousel](https://getbootstrap.com/docs/5.3/components/carousel/) component, and a list of games along with descriptions. The captions for the gallery fade out after 2 seconds to avoid them dominating the images.
-        
-        ![Homepage games section - desktop](readme_images/games_desktop.png)
-        
-        ![Homepage games section - mobile](readme_images/games_xs.png)
-       
-      - Both sections utilise Bootstrap's [Grid system](https://getbootstrap.com/docs/5.3/layout/grid/), ensuring that the content adjusts according to viewport size as shown above.
-      
-  - #### Find by ingredients
-      
-      ![About page - desktop](readme_images/about_desktop.png)
+   ![Website header - desktop](readme_images/header.png)
     
-    - The About page is the simplest of all the pages with no particular special features. It includes as its primary image a photograph of the owners of the company during their own wedding celebrations, accompanied by the story of how the company began.
-                    
-  - #### Lookup cocktail
-  
-      ![Booking form - desktop](readme_images/booking_desktop.png)
-    
-    - The Booking page includes a booking form which allows customers to provide their contact details, event details, the package they wish to book and their selected games, and to submit these details to the company.
-    - The form is arranged into sections for ease of understanding, and includes required fields which will prevent the form from being submitted unless they are completed.          
-    - The form includes a modal to display booking terms and conditions at the press of a button, utilising Bootstrap's [Modal plugin](https://getbootstrap.com/docs/5.3/components/modal/).
+   - Tablet header
       
-      ![Booking page - modal](readme_images/modal.png)
+   ![Website header - tablet](readme_images/header_md.png)
+    
+   - Mobile header
+      
+   ![Website header - mobile](readme_images/header_xs.png)
+    
+- #### Main menu
+
+  The main menu provides three large buttons displaying different search options, with appropriate [Bootstrap icons](https://icons.getbootstrap.com/):
+  - Search by ingredients (with a shopping basket icon)
+  - Look up cocktail (with a magnifying glass icon)
+  - Surprise me (with a dice icon)
+
+   - Desktop menu
+      
+   ![Website menu - desktop](readme_images/menu.png)
+    
+   - Tablet menu
+      
+   ![Website menu - tablet](readme_images/menu_md.png)
+    
+   - Mobile menu
+      
+   ![Website menu - mobile](readme_images/menu_xs.png)
+      
+      
+      
+- #### Find by ingredients
+- ##### Select a Spirit
+      
+  ![Select a spirit - desktop](readme_images/spirit_select_desktop.png)
+  ![Select a spirit - mobile](readme_images/spirit_select_mobile.png)
+    
+   Selecting "Find by ingredients" takes the user to a spirit selection page, allowing the user to select one of 12 spirits. The spirit selection buttons are presented with images of spirit bottles on sm viewports and above, and as simple text buttons on xs viewports. The background of the button turns from yellow to green when selected. Navigation buttons at the bottom of the page allow the user to proceed or go back.
+
+- ##### Select additional ingredients
+      
+  ![Select ingredients - desktop](readme_images/ingredient_select_desktop.png)
+  ![Select ingredients - mobile](readme_images/ingredient_select_mobile.png)
+    
+   The next page allows the user to select 1-3 additional ingredients. The buttons are presented as simple text buttons on all viewports, the background of the button turning from yellow to green when selected. Buttons at the bottom of the page allow the user to search based on the selected ingredients or go back.
+
+- #### Look up cocktail
+
+   ![Look up cocktail - desktop](readme_images/lookup_desktop.png)
+   ![Look up cocktail - mobile](readme_images/lookup_mobile.png)
+
+   Selecting "Look up cocktail" displays a simple form, allowing the user to enter the name of a cocktail. The form forces selection from an autocomplete list, ensuring that only cocktails which exist in the database can be entered into the form. Buttons beneath the form allow the user to search or go back.
+
+- #### Surprise me!
+
+  There is no page associated with the "Surprise me!" random search option, as the user is taken straight to the results page.
+
+- #### Results
+
+   ![Results - desktop](readme_images/results_desktop.png)
+   ![Results - mobile](readme_images/results_mobile.png)
+
+  The results page displays one or more cocktail names with an associated photograph. Where multiple results are expected (e.g. ingredients search), recipes are initially hidden but can be revealed by clicking on the photograph. Where only a single result is expected (look up or random search) then the recipe is automatically revealed as the results page is revealed. Positioning of recipes is dependent on device size, with the direction of the reveal animation adjusting accordingly.
+
+  The results page also includes an additional "Back to menu" button in the header.
+
+- #### Modals
+
+  A number of modals are used to provide useful and necessary information:
+  - **Instructions**: Displays guidance on how to use the various search options.
+  - **Database error**: Displays an alert if the database cannot be reached or returns an error. 
+  - **No spirit alert**: Displays an alert if the user tries to proceed with no spirit button selected.
+  - **No ingredients alert**: Displays an alert if the user tries to proceed with no ingredient button selected.
+  - **Max ingredients alert**: Displays an alert if the user attempts to select more than three additional ingredients.
+
+
 
 ## Technologies Used
 
