@@ -235,7 +235,7 @@ function getFullIngredients() {
 
 }
 
-/* Select particular ingredients from full ingredients array using index
+/* Select particular ingredients from full ingredients list using index
 (This ensures names match those from API for future use) */
 
 function getSelectedIngredients(...indices) {
@@ -367,7 +367,7 @@ $(document).ready(function () {
 
                         let selectedIngs = document.getElementsByClassName("ing-selected");
 
-                        // Allow toggling of button classes, and add max selection of 3
+                        // Allow toggling of button classes, and display alert if maximum selection of 3 is reached
 
                         if (selectedIngs.length < 3) {
 
