@@ -146,7 +146,7 @@
             <div class="text-center hidden" id="select-ingredients">
                 <div class="row">
                     <div class="col-12" id="ing-heading">
-                        <h2>Select up to three other ingredients</h2>
+                        <h2>Select 1-3 additional ingredients</h2>
                     </div>
                 </div>
                 <div class="row">
@@ -187,7 +187,7 @@
     <!-- /.no spirit alert -->
 
     <!-- Max ingredients alert -->
-    <div id="modal-ing-alert" class="modal modal-dark fade alert alert-dark" tabindex="-1" role="dialog" data-mdb-backdrop="false">
+    <div id="modal-max-ing-alert" class="modal modal-dark fade alert alert-dark" tabindex="-1" role="dialog" data-mdb-backdrop="false">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-body">
@@ -201,6 +201,21 @@
         </div>
     </div>
     <!-- /.max ingredients alert -->
+
+    <!-- No ingredients alert -->
+    <div id="modal-no-ing-alert" class="modal modal-dark fade alert alert-dark" tabindex="-1" role="dialog" data-mdb-backdrop="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p>Please select at least one additional ingredient.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.no ingredients alert -->
 
       <!-- Search by cocktail -->
       <section id="search-cocktail" class="container text-center hidden">
