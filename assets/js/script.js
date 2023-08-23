@@ -8,6 +8,7 @@ const cocktailSearchURL = "https://www.thecocktaildb.com/api/json/v2/9973533/loo
 const nameSearchURL = "https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=";
 const alcoholSearchURL = "https://www.thecocktaildb.com/api/json/v2/9973533/filter.php?a=";
 const randomSearchURL = "https://www.thecocktaildb.com/api/json/v2/9973533/random.php?";
+const randomSelectionURL = "https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php?";
 
 // Declare consts for DOM elements
 
@@ -276,7 +277,7 @@ function getCocktailNames() {
 
 $(document).ready(function () {
 
-    // Reveal header and menu after delay
+    // Reveal header and menu after 2 second delay
 
     setTimeout(welcomeToMainMenu, 2000);
 
@@ -434,21 +435,20 @@ $(document).ready(function () {
 
         function writeResults(ingredients) {
             searchURL = ingredientSearchURL + ingredients;
-            searchURL2 = ingredientSearchURL + selectedSpirit;
-
+            
             resultList.innerHTML = "";
 
             getData(searchURL, function (data) {
                 data = data.drinks;
 
-                // Returns drinks based on just base spirit if no results found for particular ingredients
+                // Returns a random selection of cocktails if no results found for particular ingredients
 
                 if (data.includes("None")) {
 
-                    resultList.innerHTML = `<p class="fs-2">Sorry, no drinks were found with <strong>${ingStringSpaced}</strong>, but here are all the cocktails you can make with <strong>${selectedSpirit}</strong>.</p>
+                    resultList.innerHTML = `<p class="fs-2">Sorry, no drinks were found with <strong>${ingStringSpaced}</strong>, so here's a random selection of cocktails instead.</p>
                     <p class="fs-3">(Click on a drink image to see the full recipe.)</p>`;
 
-                    getData(searchURL2, function (data) {
+                    getData(randomSelectionURL, function (data) {
                         data = data.drinks;
 
                         data.forEach(function (item) {
