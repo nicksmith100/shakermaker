@@ -146,15 +146,15 @@ The colour scheme of the site builds on the main logo, utilising the five fluore
 
   The font used in the logo is Neoneon. This was available directly on [Canva](https://www.canva.com/) where the logo was created, and was chosen to complement the neon sign which forms the logo. More information about the font can be found on [Dafont](https://www.dafontfree.co/neoneon-font/), where it is described as reproducing the 80s style of neons signage.
 
-- #### Other headings and text
-
   ![Oswald and Exo fonts shown on main menu](readme_images/main_menu_fonts.png)
 
-  - **Headings and buttons** use Oswald, imported from [Google Fonts](https://fonts.google.com/specimen/Oswald), with Sans Serif as the fallback font.
+- #### Main heading
 
-  - **Rest of site** uses Exo, also imported from [Google Fonts](https://fonts.google.com/specimen/Exo), with Sans Serif as the fallback font.
+  The main heading "Find your perfect cocktail" uses Exo, imported from [Google Fonts](https://fonts.google.com/specimen/Exo), with Sans Serif as the fallback font. Exo is a stylish but clear font with a rounded form which complements the Neoneon font used in the logo.
 
-  Both are clear and modern fonts which work well with the overall site aesthetic.
+- #### Other headings, buttons and text
+
+   The rest of the site uses Oswald, imported from [Google Fonts](https://fonts.google.com/specimen/Oswald), with Sans Serif as the fallback font. This is a simple, modern font which ensures that everything can be read clearly while working well with the overall site aesthetic.
   
 - #### Icons
 
