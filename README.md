@@ -190,11 +190,11 @@ The colour scheme of the site builds on the main logo, utilising the five fluore
 
 ### Page Elements
 
-The website is presented as a single page includes the following page elements, in line with the scope outlined above. 
+The website is presented as a single page with elements which are displayed or hidden based on user interaction, in line with the scope outlined above. 
 
-- #### All pages
+- #### Welcome page
 
-  - ##### Header
+- #### Header
          
     - All pages include a header with branding on the left-hand side and a navigation menu on the right-hand side. The header is fully responsive:
       - The title and logo are displayed as a single image on xs viewports.
@@ -213,31 +213,7 @@ The website is presented as a single page includes the following page elements, 
       
       ![Website header - collapsed](readme_images/header_collapsed.png)
     
-  - ##### Primary image
-          
-    - All pages include a primary image relevant to the content of the page. Each image uses [Bootstrap's .img-fluid class](https://getbootstrap.com/docs/5.3/content/images/#responsive-images) to ensure it is fully responsive, stretching across the full width of the viewport for xs viewports, or the full width of the container on sm viewports and above.
-    
-    - Primary image - desktop
-      
-      ![Primary image desktop example - About page](readme_images/primary_image_about.png)
-      
-    - Primary image - mobile
-      
-      ![Primary image mobile example - About page](readme_images/primary_image_about_xs.png)
-                
-  - ##### Footer
-       
-    - All pages include a footer with three equally spaced and centred social media icons, linking to Instagram, Facebook and Whatsapp. The icons utilise automatic margins so that their spacing is reponsive to the viewport size. 
-    
-    - Desktop footer
-      
-      ![Website footer - desktop](readme_images/footer_desktop.png)
-      
-    - Mobile footer
-      
-      ![Website footer - mobile](readme_images/footer_xs.png) 
-
-  - #### Homepage
+  - #### Main menu
 
     - The primary image on the homepage is overlaid with a box on the right-hand side which presents three quotes from previous customers on rotation, utilising Bootstrap's [Carousel](https://getbootstrap.com/docs/5.3/components/carousel/) component.
       
@@ -263,13 +239,13 @@ The website is presented as a single page includes the following page elements, 
        
       - Both sections utilise Bootstrap's [Grid system](https://getbootstrap.com/docs/5.3/layout/grid/), ensuring that the content adjusts according to viewport size as shown above.
       
-  - #### About page
+  - #### Find by ingredients
       
       ![About page - desktop](readme_images/about_desktop.png)
     
     - The About page is the simplest of all the pages with no particular special features. It includes as its primary image a photograph of the owners of the company during their own wedding celebrations, accompanied by the story of how the company began.
                     
-  - #### Booking page
+  - #### Lookup cocktail
   
       ![Booking form - desktop](readme_images/booking_desktop.png)
     
@@ -294,8 +270,6 @@ The website is presented as a single page includes the following page elements, 
 ### Libraries
 - [Google Fonts](https://fonts.google.com)
   - Used for importing Playfair Display font
-- [Dafont](https://dafont.com/)
-  - Used to download Desyrel font
 - [Bootstrap icons](https://icons.getbootstrap.com/)
   - Used for icons
 
@@ -303,15 +277,15 @@ The website is presented as a single page includes the following page elements, 
 - [Github](https://github.com/)
   - Used to store code remotely and for deployment
 - [CodeAnywhere](https://app.codeanywhere.com/)
-  - IDE used for project development
+  - IDE used for majority of project development
+- [Gitpod](https://gitpod.io/)
+  - IDE used to finalise project due to technical issues with CodeAnywhere
 
 ### Other Tools
 - [Figma](https://www.figma.com/)
   - Used to create wireframes
 - [Coolors](https://coolors.co/)
   - Used to create colour palette
-- [Transfonter](https://transfonter.org/)
-  - Used to convert TrueType font to @font-face 
 - [Favicon Generator](https://www.favicon-generator.org/)
   - Used to create the website favicon
 - [Am I Responsive](https://ui.dev/amiresponsive)
