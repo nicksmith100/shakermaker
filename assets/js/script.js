@@ -326,7 +326,7 @@ $(document).ready(function () {
 
             });
 
-        };
+        }
 
         mainMenuToSpirits();
 
@@ -396,7 +396,7 @@ $(document).ready(function () {
                         }
 
                     });
-                };
+                }
             });
 
         }
@@ -428,7 +428,7 @@ $(document).ready(function () {
 
                 ingString += "," + i.innerText;
 
-            };
+            }
 
             // Create spaced, grammatical list for results page
 
@@ -438,7 +438,7 @@ $(document).ready(function () {
 
                 ingStringSpaced += ", " + i.innerText;
 
-            };
+            }
 
             // Replace final comma with "and" - code from: https://stackoverflow.com/questions/29985085/replace-final-comma-in-a-string-with-and
 
@@ -630,7 +630,7 @@ $(document).ready(function () {
 
                 });
 
-            };
+            }
 
             writeResults(ingString);
 
