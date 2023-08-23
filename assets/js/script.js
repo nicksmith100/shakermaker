@@ -8,7 +8,7 @@ const cocktailSearchURL = "https://www.thecocktaildb.com/api/json/v2/9973533/loo
 const nameSearchURL = "https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=";
 const alcoholSearchURL = "https://www.thecocktaildb.com/api/json/v2/9973533/filter.php?a=";
 const randomSearchURL = "https://www.thecocktaildb.com/api/json/v2/9973533/random.php?";
-const randomSelectionURL = "https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php?";
+const popularCocktailsURL = "https://www.thecocktaildb.com/api/json/v2/9973533/popular.php?";
 
 // Declare consts for DOM elements
 
@@ -420,14 +420,14 @@ $(document).ready(function () {
             getData(searchURL, function (data) {
                 data = data.drinks;
 
-                // Returns a random selection of cocktails if no results found for particular ingredients
+                // Returns a selection of the most popular cocktails if no matches found for particular ingredients
 
                 if (data.includes("None")) {
 
-                    resultList.innerHTML = `<p class="fs-3 mt-3">Sorry, no drinks were found with <strong>${ingredientsSpaced}</strong>. Here's a random selection of cocktails instead.</p>
+                    resultList.innerHTML = `<p class="fs-3 mt-3">Sorry, no drinks were found with <strong>${ingredientsSpaced}</strong>. Please try again, or browse our most popular cocktails below instead.</p>
                     <p class="fs-4">(Click on a drink image to see the full recipe.)</p>`;
 
-                    getData(randomSelectionURL, function (data) {
+                    getData(popularCocktailsURL, function (data) {
                         data = data.drinks;
 
                         data.forEach(function (item) {
@@ -450,55 +450,54 @@ $(document).ready(function () {
 
                                     resultList.innerHTML +=
 
-                                        `<div id="result-${drinkCode}" class="drink-result mt-5">
-                        <div class="row">
-                            <div class="col-12">
-                                <h3>${drinkName}</h3>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12 col-sm-4">
-                                <img src="${drinkImage}" class="drink-img img-fluid rounded border border-light">
-                            </div>
-                            <div id="recipe-${drinkCode}" class="recipe hidden col-12 col-sm-4">
-                                <div class = "rounded text-dark px-3 py-2 mt-2 my-sm-0 recipe-card">
-                                    <h3>Ingredients:</h3>
-                                    <ul id="ingredient-list${drinkCode}" class="list-unstyled"></ul>
-                                </div>
-                            </div>
-                            <div id="instructions-${drinkCode}" class="instructions hidden col-12 col-sm-4">
-                                <div class = "rounded text-dark px-3 py-2 mt-2 my-sm-0 inst-card">    
-                                    <h3>Instructions:</h3>
-                                    <p>${drinkInstructions}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    `;
+                                            `<div id="result-${drinkCode}" class="drink-result mt-5">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <h3>${drinkName}</h3>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12 col-sm-4">
+                                                        <img src="${drinkImage}" class="drink-img img-fluid rounded border border-light">
+                                                    </div>
+                                                    <div id="recipe-${drinkCode}" class="recipe hidden col-12 col-sm-4">
+                                                        <div class = "rounded text-dark px-3 py-2 mt-2 my-sm-0 recipe-card">
+                                                            <h3>Ingredients:</h3>
+                                                            <ul id="ingredient-list${drinkCode}" class="list-unstyled"></ul>
+                                                        </div>
+                                                    </div>
+                                                    <div id="instructions-${drinkCode}" class="instructions hidden col-12 col-sm-4">
+                                                        <div class = "rounded text-dark px-3 py-2 mt-2 my-sm-0 inst-card">    
+                                                            <h3>Instructions:</h3>
+                                                            <p>${drinkInstructions}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>`;
 
-                                    resultList.onclick = function (event) {
+                                        resultList.onclick = function (event) {
 
-                                        let target = event.target;
+                                            let target = event.target;
 
-                                        if (target.tagName === "IMG") {
+                                            if (target.tagName === "IMG") {
 
-                                            $(target.parentNode.nextElementSibling).show("drop");
-                                            $(target.parentNode.nextElementSibling).siblings().show("drop");
+                                                $(target.parentNode.nextElementSibling).show("drop");
+                                                $(target.parentNode.nextElementSibling).siblings().show("drop");
 
 
+                                            }
+
+                                        };
+                                    
+                                        //Create list from array. Code from: https://www.tutorialspoint.com/how-to-create-html-list-from-javascript-array
+
+                                        let list = document.getElementById("ingredient-list" + drinkCode);
+                                        for (let i = 0; i < drinkIngredients.length; ++i) {
+                                            let li = document.createElement("li");
+                                            li.innerText = drinkIngredients[i];
+                                            list.appendChild(li);
                                         }
-
-                                    };
-
-
-                                    //Create list from array. Code from: https://www.tutorialspoint.com/how-to-create-html-list-from-javascript-array
-
-                                    let list = document.getElementById("ingredient-list" + drinkCode);
-                                    for (let i = 0; i < drinkIngredients.length; ++i) {
-                                        let li = document.createElement("li");
-                                        li.innerText = drinkIngredients[i];
-                                        list.appendChild(li);
-                                    }
+                                                                       
 
                                 });
                             });
