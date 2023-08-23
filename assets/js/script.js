@@ -409,6 +409,195 @@ $(document).ready(function () {
 
     $("#i-search-button").click(function () {
 
+        //Invoke getData function to display drinks by main ingredient
+
+        function writeResults(ingredients, ingredientsSpaced) {
+            
+            let searchURL = ingredientSearchURL + ingredients;
+            
+            resultList.innerHTML = "";
+
+            getData(searchURL, function (data) {
+                data = data.drinks;
+
+                // Returns a random selection of cocktails if no results found for particular ingredients
+
+                if (data.includes("None")) {
+
+                    resultList.innerHTML = `<p class="fs-2">Sorry, no drinks were found with <strong>${ingredientsSpaced}</strong>. Here's a random selection of cocktails instead.</p>
+                    <p class="fs-3">(Click on a drink image to see the full recipe.)</p>`;
+
+                    getData(randomSelectionURL, function (data) {
+                        data = data.drinks;
+
+                        data.forEach(function (item) {
+
+                            let drinkCode = item.idDrink;
+                            let drinkImage = item.strDrinkThumb;
+                            let drinkName = item.strDrink;
+
+                            getData(cocktailSearchURL + drinkCode, function (data) {
+                                data = data.drinks;
+                                data.forEach(function (item) {
+                                    let drinkInstructions = item.strInstructions;
+                                    let drinkIngredients = [item.strIngredient1, item.strIngredient2, item.strIngredient3, item.strIngredient4, item.strIngredient5, item.strIngredient6, item.strIngredient7, item.strIngredient8, item.strIngredient9, item.strIngredient10, item.strIngredient11, item.strIngredient12, item.strIngredient13, item.strIngredient14, item.strIngredient15];
+
+                                    //Filter null values
+
+                                    drinkIngredients = drinkIngredients.filter(elements => {
+                                        return elements !== null;
+                                    });
+
+                                    resultList.innerHTML +=
+
+                                        `<div id="result-${drinkCode}" class="drink-result mt-5">
+                        <div class="row">
+                            <div class="col-12">
+                                <h2>${drinkName}</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-4">
+                                <img src="${drinkImage}" class="drink-img img-fluid rounded border border-light">
+                            </div>
+                            <div id="recipe-${drinkCode}" class="recipe hidden col-12 col-sm-4">
+                                <div class = "rounded text-dark px-3 py-2 mt-2 my-sm-0 recipe-card">
+                                    <h3>Ingredients:</h3>
+                                    <ul id="ingredient-list${drinkCode}" class="list-unstyled"></ul>
+                                </div>
+                            </div>
+                            <div id="instructions-${drinkCode}" class="instructions hidden col-12 col-sm-4">
+                                <div class = "rounded text-dark px-3 py-2 mt-2 my-sm-0 inst-card">    
+                                    <h3>Instructions:</h3>
+                                    <p>${drinkInstructions}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    `;
+
+                                    resultList.onclick = function (event) {
+
+                                        let target = event.target;
+
+                                        if (target.tagName === "IMG") {
+
+                                            $(target.parentNode.nextElementSibling).show("drop");
+                                            $(target.parentNode.nextElementSibling).siblings().show("drop");
+
+
+                                        }
+
+                                    };
+
+
+                                    //Create list from array. Code from: https://www.tutorialspoint.com/how-to-create-html-list-from-javascript-array
+
+                                    let list = document.getElementById("ingredient-list" + drinkCode);
+                                    for (let i = 0; i < drinkIngredients.length; ++i) {
+                                        let li = document.createElement('li');
+                                        li.innerText = drinkIngredients[i];
+                                        list.appendChild(li);
+                                    }
+
+                                });
+                            });
+
+
+                        });
+
+
+                    });
+
+                }
+
+                else {
+
+                    resultList.innerHTML = `<p class="fs-2">Here are all the cocktails you can make with <strong>${ingredientsSpaced}</strong>.</p>
+                    <p class="fs-3">(Click on a drink image to see the full recipe.)</p>`;
+
+                    data.forEach(function (item) {
+
+                        let drinkCode = item.idDrink;
+                        let drinkImage = item.strDrinkThumb;
+                        let drinkName = item.strDrink;
+
+                        getData(cocktailSearchURL + drinkCode, function (data) {
+                            data = data.drinks;
+                            data.forEach(function (item) {
+                                let drinkInstructions = item.strInstructions;
+                                let drinkIngredients = [item.strIngredient1, item.strIngredient2, item.strIngredient3, item.strIngredient4, item.strIngredient5, item.strIngredient6, item.strIngredient7, item.strIngredient8, item.strIngredient9, item.strIngredient10, item.strIngredient11, item.strIngredient12, item.strIngredient13, item.strIngredient14, item.strIngredient15];
+
+                                //Filter null values
+
+                                drinkIngredients = drinkIngredients.filter(elements => {
+                                    return elements !== null;
+                                });
+
+                                resultList.innerHTML +=
+
+                                    `<div id="result-${drinkCode}" class="drink-result mt-5">
+                        <div class="row">
+                            <div class="col-12">
+                                <h2>${drinkName}</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-4">
+                                <img src="${drinkImage}" class="drink-img img-fluid rounded border border-light">
+                            </div>
+                            <div id="recipe-${drinkCode}" class="recipe hidden col-12 col-sm-4">
+                                <div class = "rounded text-dark px-3 py-2 mt-2 my-sm-0 recipe-card">
+                                    <h3>Ingredients:</h3>
+                                    <ul id="ingredient-list${drinkCode}" class="list-unstyled"></ul>
+                                </div>
+                            </div>
+                            <div id="instructions-${drinkCode}" class="instructions hidden col-12 col-sm-4">
+                                <div class = "rounded text-dark px-3 py-2 mt-2 my-sm-0 inst-card">    
+                                    <h3>Instructions:</h3>
+                                    <p>${drinkInstructions}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    `;
+
+
+                                resultList.onclick = function (event) {
+
+                                    let target = event.target;
+
+                                    if (target.tagName === "IMG") {
+
+                                        $(target.parentNode.nextElementSibling).show("drop");
+                                        $(target.parentNode.nextElementSibling).siblings().show("drop");
+
+                                    }
+
+                                };
+
+
+
+                                //Create list from array. Code from: https://www.tutorialspoint.com/how-to-create-html-list-from-javascript-array
+
+                                let list = document.getElementById("ingredient-list" + drinkCode);
+                                for (let i = 0; i < drinkIngredients.length; ++i) {
+                                    let li = document.createElement('li');
+                                    li.innerText = drinkIngredients[i];
+                                    list.appendChild(li);
+                                }
+
+                            });
+                        });
+
+                    });
+
+                }
+
+            });
+
+        }
+
         // Create search string from inner text of selected spirit and ingredients
 
         let selectedSpirit = document.getElementsByClassName("spirit-selected")[0].innerText;
@@ -443,196 +632,8 @@ $(document).ready(function () {
             // Replace final comma with "and" - code from: https://stackoverflow.com/questions/29985085/replace-final-comma-in-a-string-with-and
 
             ingStringSpaced = ingStringSpaced.replace(/,(?=[^,]+$)/, ' and ');
-
-            //Invoke getData function to display drinks by main ingredient
-
-            function writeResults(ingredients) {
-                let searchURL = ingredientSearchURL + ingredients;
-                
-                resultList.innerHTML = "";
-
-                getData(searchURL, function (data) {
-                    data = data.drinks;
-
-                    // Returns a random selection of cocktails if no results found for particular ingredients
-
-                    if (data.includes("None")) {
-
-                        resultList.innerHTML = `<p class="fs-2">Sorry, no drinks were found with <strong>${ingStringSpaced}</strong>. Here's a random selection of cocktails instead.</p>
-                        <p class="fs-3">(Click on a drink image to see the full recipe.)</p>`;
-
-                        getData(randomSelectionURL, function (data) {
-                            data = data.drinks;
-
-                            data.forEach(function (item) {
-
-                                let drinkCode = item.idDrink;
-                                let drinkImage = item.strDrinkThumb;
-                                let drinkName = item.strDrink;
-
-                                getData(cocktailSearchURL + drinkCode, function (data) {
-                                    data = data.drinks;
-                                    data.forEach(function (item) {
-                                        let drinkInstructions = item.strInstructions;
-                                        let drinkIngredients = [item.strIngredient1, item.strIngredient2, item.strIngredient3, item.strIngredient4, item.strIngredient5, item.strIngredient6, item.strIngredient7, item.strIngredient8, item.strIngredient9, item.strIngredient10, item.strIngredient11, item.strIngredient12, item.strIngredient13, item.strIngredient14, item.strIngredient15];
-
-                                        //Filter null values
-
-                                        drinkIngredients = drinkIngredients.filter(elements => {
-                                            return elements !== null;
-                                        });
-
-                                        resultList.innerHTML +=
-
-                                            `<div id="result-${drinkCode}" class="drink-result mt-5">
-                            <div class="row">
-                                <div class="col-12">
-                                    <h2>${drinkName}</h2>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 col-sm-4">
-                                    <img src="${drinkImage}" class="drink-img img-fluid rounded border border-light">
-                                </div>
-                                <div id="recipe-${drinkCode}" class="recipe hidden col-12 col-sm-4">
-                                    <div class = "rounded text-dark px-3 py-2 mt-2 my-sm-0 recipe-card">
-                                        <h3>Ingredients:</h3>
-                                        <ul id="ingredient-list${drinkCode}" class="list-unstyled"></ul>
-                                    </div>
-                                </div>
-                                <div id="instructions-${drinkCode}" class="instructions hidden col-12 col-sm-4">
-                                    <div class = "rounded text-dark px-3 py-2 mt-2 my-sm-0 inst-card">    
-                                        <h3>Instructions:</h3>
-                                        <p>${drinkInstructions}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        `;
-
-                                        resultList.onclick = function (event) {
-
-                                            let target = event.target;
-
-                                            if (target.tagName === "IMG") {
-
-                                                $(target.parentNode.nextElementSibling).show("drop");
-                                                $(target.parentNode.nextElementSibling).siblings().show("drop");
-
-
-                                            }
-
-                                        };
-
-
-                                        //Create list from array. Code from: https://www.tutorialspoint.com/how-to-create-html-list-from-javascript-array
-
-                                        let list = document.getElementById("ingredient-list" + drinkCode);
-                                        for (let i = 0; i < drinkIngredients.length; ++i) {
-                                            let li = document.createElement('li');
-                                            li.innerText = drinkIngredients[i];
-                                            list.appendChild(li);
-                                        }
-
-                                    });
-                                });
-
-
-                            });
-
-
-                        });
-
-                    }
-
-                    else {
-
-                        resultList.innerHTML = `<p class="fs-2">Here are all the cocktails you can make with <strong>${ingStringSpaced}</strong>.</p>
-                        <p class="fs-3">(Click on a drink image to see the full recipe.)</p>`;
-
-                        data.forEach(function (item) {
-
-                            let drinkCode = item.idDrink;
-                            let drinkImage = item.strDrinkThumb;
-                            let drinkName = item.strDrink;
-
-                            getData(cocktailSearchURL + drinkCode, function (data) {
-                                data = data.drinks;
-                                data.forEach(function (item) {
-                                    let drinkInstructions = item.strInstructions;
-                                    let drinkIngredients = [item.strIngredient1, item.strIngredient2, item.strIngredient3, item.strIngredient4, item.strIngredient5, item.strIngredient6, item.strIngredient7, item.strIngredient8, item.strIngredient9, item.strIngredient10, item.strIngredient11, item.strIngredient12, item.strIngredient13, item.strIngredient14, item.strIngredient15];
-
-                                    //Filter null values
-
-                                    drinkIngredients = drinkIngredients.filter(elements => {
-                                        return elements !== null;
-                                    });
-
-                                    resultList.innerHTML +=
-
-                                        `<div id="result-${drinkCode}" class="drink-result mt-5">
-                            <div class="row">
-                                <div class="col-12">
-                                    <h2>${drinkName}</h2>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 col-sm-4">
-                                    <img src="${drinkImage}" class="drink-img img-fluid rounded border border-light">
-                                </div>
-                                <div id="recipe-${drinkCode}" class="recipe hidden col-12 col-sm-4">
-                                    <div class = "rounded text-dark px-3 py-2 mt-2 my-sm-0 recipe-card">
-                                        <h3>Ingredients:</h3>
-                                        <ul id="ingredient-list${drinkCode}" class="list-unstyled"></ul>
-                                    </div>
-                                </div>
-                                <div id="instructions-${drinkCode}" class="instructions hidden col-12 col-sm-4">
-                                    <div class = "rounded text-dark px-3 py-2 mt-2 my-sm-0 inst-card">    
-                                        <h3>Instructions:</h3>
-                                        <p>${drinkInstructions}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        `;
-
-
-                                    resultList.onclick = function (event) {
-
-                                        let target = event.target;
-
-                                        if (target.tagName === "IMG") {
-
-                                            $(target.parentNode.nextElementSibling).show("drop");
-                                            $(target.parentNode.nextElementSibling).siblings().show("drop");
-
-                                        }
-
-                                    };
-
-
-
-                                    //Create list from array. Code from: https://www.tutorialspoint.com/how-to-create-html-list-from-javascript-array
-
-                                    let list = document.getElementById("ingredient-list" + drinkCode);
-                                    for (let i = 0; i < drinkIngredients.length; ++i) {
-                                        let li = document.createElement('li');
-                                        li.innerText = drinkIngredients[i];
-                                        list.appendChild(li);
-                                    }
-
-                                });
-                            });
-
-                        });
-
-                    }
-
-                });
-
-            }
-
-            writeResults(ingString);
+            
+            writeResults(ingString, ingStringSpaced);
 
             searchIngredientsToResults();
         }
