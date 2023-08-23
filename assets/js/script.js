@@ -447,7 +447,7 @@ $(document).ready(function () {
             //Invoke getData function to display drinks by main ingredient
 
             function writeResults(ingredients) {
-                searchURL = ingredientSearchURL + ingredients;
+                let searchURL = ingredientSearchURL + ingredients;
                 
                 resultList.innerHTML = "";
 
@@ -528,7 +528,7 @@ $(document).ready(function () {
                                         //Create list from array. Code from: https://www.tutorialspoint.com/how-to-create-html-list-from-javascript-array
 
                                         let list = document.getElementById("ingredient-list" + drinkCode);
-                                        for (i = 0; i < drinkIngredients.length; ++i) {
+                                        for (let i = 0; i < drinkIngredients.length; ++i) {
                                             let li = document.createElement('li');
                                             li.innerText = drinkIngredients[i];
                                             list.appendChild(li);
@@ -615,7 +615,7 @@ $(document).ready(function () {
                                     //Create list from array. Code from: https://www.tutorialspoint.com/how-to-create-html-list-from-javascript-array
 
                                     let list = document.getElementById("ingredient-list" + drinkCode);
-                                    for (i = 0; i < drinkIngredients.length; ++i) {
+                                    for (let i = 0; i < drinkIngredients.length; ++i) {
                                         let li = document.createElement('li');
                                         li.innerText = drinkIngredients[i];
                                         list.appendChild(li);
@@ -724,7 +724,7 @@ $(document).ready(function () {
 
                     let list = document.getElementById("ingredient-list" + drinkCode);
 
-                    for (i = 0; i < drinkIngredients.length; ++i) {
+                    for (let i = 0; i < drinkIngredients.length; ++i) {
                         let li = document.createElement('li');
                         li.innerText = drinkIngredients[i];
                         list.appendChild(li);
@@ -796,7 +796,7 @@ $(document).ready(function () {
 
                 let list = document.getElementById("ingredient-list" + drinkCode);
 
-                for (i = 0; i < drinkIngredients.length; ++i) {
+                for (let i = 0; i < drinkIngredients.length; ++i) {
                     let li = document.createElement('li');
                     li.innerText = drinkIngredients[i];
                     list.appendChild(li);
