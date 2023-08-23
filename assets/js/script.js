@@ -424,8 +424,8 @@ $(document).ready(function () {
 
                 if (data.includes("None")) {
 
-                    resultList.innerHTML = `<p class="fs-2">Sorry, no drinks were found with <strong>${ingredientsSpaced}</strong>. Here's a random selection of cocktails instead.</p>
-                    <p class="fs-3">(Click on a drink image to see the full recipe.)</p>`;
+                    resultList.innerHTML = `<p class="fs-3 mt-3">Sorry, no drinks were found with <strong>${ingredientsSpaced}</strong>. Here's a random selection of cocktails instead.</p>
+                    <p class="fs-4">(Click on a drink image to see the full recipe.)</p>`;
 
                     getData(randomSelectionURL, function (data) {
                         data = data.drinks;
@@ -453,7 +453,7 @@ $(document).ready(function () {
                                         `<div id="result-${drinkCode}" class="drink-result mt-5">
                         <div class="row">
                             <div class="col-12">
-                                <h2>${drinkName}</h2>
+                                <h3>${drinkName}</h3>
                             </div>
                         </div>
                         <div class="row">
@@ -513,8 +513,8 @@ $(document).ready(function () {
 
                 else {
 
-                    resultList.innerHTML = `<p class="fs-2">Here are all the cocktails you can make with <strong>${ingredientsSpaced}</strong>.</p>
-                    <p class="fs-3">(Click on a drink image to see the full recipe.)</p>`;
+                    resultList.innerHTML = `<p class="fs-3 mt-3">Here are all the cocktails you can make with <strong>${ingredientsSpaced}</strong>.</p>
+                    <p class="fs-4">(Click on a drink image to see the full recipe.)</p>`;
 
                     data.forEach(function (item) {
 
@@ -539,7 +539,7 @@ $(document).ready(function () {
                                     `<div id="result-${drinkCode}" class="drink-result mt-5">
                         <div class="row">
                             <div class="col-12">
-                                <h2>${drinkName}</h2>
+                                <h3>${drinkName}</h3>
                             </div>
                         </div>
                         <div class="row">
@@ -674,7 +674,7 @@ $(document).ready(function () {
         }
 
         else {
-            resultList.innerHTML = `<p class="fs-2">Here's the recipe for <strong>${searchTerm}</strong>.</p>`;
+            resultList.innerHTML = `<p class="fs-3 mt-3">Here's the recipe for <strong>${searchTerm}</strong>.</p>`;
 
             getData(nameSearchURL + searchTerm, function (data) {
                 data = data.drinks;
@@ -748,7 +748,7 @@ $(document).ready(function () {
 
     $("#random-search").click(function () {
 
-        resultList.innerHTML = `<p class="fs-2">Here's a <strong>random cocktail</strong> for you to try!</p>`;
+        resultList.innerHTML = `<p class="fs-3 mt-3">Here's a <strong>random cocktail</strong> for you to try!</p>`;
 
         getData(randomSearchURL, function (data) {
             data = data.drinks;
@@ -770,7 +770,7 @@ $(document).ready(function () {
                     `<div id="result-${drinkCode}" class="drink-result mt-5">
                         <div class="row">
                             <div class="col-12">
-                                <h2>${drinkName}</h2>
+                                <h3>${drinkName}</h3>
                             </div>
                         </div>
                         <div class="row">
