@@ -52,21 +52,24 @@ h3 {
     color: #eee;
 }
 
-.btn-yellow:hover {
+.img-btn {
+    height: 180px;
+    width: 180px;
+    font-weight: bold;
+}
+
+/* Override Bootstrap's default button behaviour */
+
+.btn-yellow:hover,
+.btn-yellow:active {
     background-color: #dfc706;
     color: #000;    
 }
 
-.btn-green:hover {
+.btn-green:hover,
+.btn-green:active {
         background-color: #719d02;
         color: #eee;
-}
-
-.img-btn {
-    height: 180px;
-    width: 180px;
-    color: black;
-    font-weight: bold;
 }
 
 .bg-yellow {
