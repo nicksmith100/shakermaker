@@ -57,17 +57,11 @@ h3 {
 .btn-yellow:hover {
     background-color: #dfc706;
     color: #000;    
-    transition: all .3s ease-in-out;
-    -moz-transition: all .3s ease-in-out;
-    -webkit-transition: all .3s ease-in-out;
 }
 
 .btn-green:hover {
         background-color: #719d02;
         color: #eee;
-        transition: all .3s ease-in-out;
-        -moz-transition: all .3s ease-in-out;
-        -webkit-transition: all .3s ease-in-out;
 }
 
 .img-btn {
