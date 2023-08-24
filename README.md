@@ -91,7 +91,7 @@ Wireframes were created using the Figma platform: [Figma - ShakerMaker](https://
 </details>
 <br>
 
-Based on prior experience I decided that desktop and mobile wireframes would be sufficient to keep the overall layout of the site on track, the expectation being that [Bootstrap's grid system](https://getbootstrap.com/docs/5.3/layout/grid/) would provide the responsiveness required at different device breakpoints (see **Layout and Styling** section below).
+Based on prior experience I decided that desktop and mobile wireframes would be sufficient to keep the overall layout of the site on track, the expectation being that [Bootstrap's grid system](https://getbootstrap.com/docs/5.3/layout/grid/) would provide the responsiveness required at different device breakpoints in between (see **Layout and Styling** section below).
 
 While the overall structure of the site stays true to the wireframes, there are some notable differences in the final layout which came about for design and user experience reasons:
 
@@ -115,11 +115,11 @@ The site uses the [Bootstrap 5.3 Grid system](https://getbootstrap.com/docs/5.3/
 
 In addition, the site uses the following specific components from the Bootstrap library:
 - [Form classes](https://getbootstrap.com/docs/5.3/forms/overview/) for the cocktail search form.
-- [Modal plugin](https://getbootstrap.com/docs/5.3/components/modal/) to display instructions at the press of a button, and to provide various alerts.  
+- [Modal plugin](https://getbootstrap.com/docs/5.3/components/modal/) to display instructions and various alerts.  
 - [Spacing](https://getbootstrap.com/docs/5.3/utilities/spacing/) and [typography](https://getbootstrap.com/docs/5.3/content/typography/) utility classes throughout, ensuring the layout and font are appropriate to the device in use. 
 - [Display property](https://getbootstrap.com/docs/5.3/utilities/display/) to toggle the visibility of some components at certain breakpoints, in particular:
-    -  In the header, removing the strapline "Find your perfect cocktail" on xs viewports.
-    -  On the spirit selection page, including images in the buttons on sm viewports and above.
+    -  In the header, hiding the strapline "Find your perfect cocktail" on xs viewports.
+    -  On the spirit selection page, displaying images within the buttons on sm viewports and above.
 
 ### Imagery
 
@@ -151,33 +151,65 @@ The colour scheme of the site builds on the main logo, utilising the five fluore
 - **Primary buttons**: Utilise the orange colour (#f56d1c) from the logo, transitioning to blue (#1498e5) when hovered over, using an ease-in-out transition for a smooth effect.
 - **Other buttons**: Use the other colours from the logo - yellow (#dfc706), green (#719d02) and pink (#e01c80). 
 
+<details><summary>Colour scheme palette</summary>
+
 ![Website colour scheme palette](readme_images/palette.png)
+
+</details>
 
 ### Typography
 
 - #### Logo
 
-  ![Neoneon font shown in website header](readme_images/header.png)
+  The font used in the logo is Neoneon. This was available directly on [Canva](https://www.canva.com/) where the logo was created, and was chosen to complement the neon sign which forms the logo. More information about the font can be found on [Dafont](https://www.dafontfree.co/neoneon-font/), where it is described as "reproducing the 80s style of neon signage".
 
-  The font used in the logo is Neoneon. This was available directly on [Canva](https://www.canva.com/) where the logo was created, and was chosen to complement the neon sign which forms the logo. More information about the font can be found on [Dafont](https://www.dafontfree.co/neoneon-font/), where it is described as reproducing the 80s style of neons signage.
+  <details><summary>Neoneon font</summary>
 
-  ![Oswald and Exo fonts shown on main menu](readme_images/main_menu_fonts.png)
+  ![Neoneon font](readme_images/neoneon.png)
 
+  </details>
+  
 - #### Main heading
 
   The main heading "Find your perfect cocktail" uses Exo, imported from [Google Fonts](https://fonts.google.com/specimen/Exo), with Sans Serif as the fallback font. Exo is a stylish but clear font with a rounded form which complements the Neoneon font used in the logo.
 
+  <details><summary>Exo font</summary>
+
+  ![Exo font](readme_images/exo.png)
+
+  </details>
+
 - #### Other headings, buttons and text
 
    The rest of the site uses Oswald, imported from [Google Fonts](https://fonts.google.com/specimen/Oswald), with Sans Serif as the fallback font. This is a simple, modern font which ensures that everything can be read clearly while working well with the overall site aesthetic.
-  
+
+  <details><summary>Oswald font</summary>
+
+  ![Oswald font](readme_images/oswald.png)
+
+  </details>
+
 - #### Icons
 
-  - [Bootstrap Icons](https://icons.getbootstrap.com/) have been used for the main menu buttons, utilised as classes in the `<i>` tag.
+  [Bootstrap Icons](https://icons.getbootstrap.com/) have been used for the main menu buttons, utilised as classes in the `<i>` tag.
+
+  <details><summary>Menu icons</summary>
+
+  ![Shopping basket icon](readme_images/basket.png)
+  ![Magnifying glass icon](readme_images/search.png)
+  ![Dice icon](readme_images/dice.png)
+
+  </details>
   
 - #### Favicon
 
-   - The favicon is simply "SM" in the Neoneon font, generated using [Favicon Generator](https://www.favicon-generator.org/). This proved more effective than trying to use the main logo as a favicon, as the detail of it was lost at such a small size.
+   The favicon is simply "SM" in the Neoneon font, generated using [Favicon Generator](https://www.favicon-generator.org/). This proved more effective than trying to use the main logo as a favicon, as the detail of it was lost at such a small size.
+
+  <details><summary>Favicon</summary>
+
+  ![Oswald font](readme_images/favicon.png)
+
+  </details>
 
 ## Features
 
