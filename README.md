@@ -244,95 +244,213 @@ The website is presented as a single page with elements which are displayed or h
   The site displays an animated version of the logo for 2 seconds, before automatically giving way to the header and main menu.
 
 - #### Header
-         
-   - Desktop header
-      
-   ![Website header - desktop](readme_images/header.png)
-    
-   - Tablet header
-      
-   ![Website header - tablet](readme_images/header_md.png)
-    
-   - Mobile header
-      
-   ![Website header - mobile](readme_images/header_xs.png)
 
-     Apart from the welcome page, all pages include a header with a static version of the logo on the left-hand side and a button menu on the right-hand side. The button menu initially includes only an "Instructions" button, which on being pressed displays a modal offering guidance on how to use the various search options. At sm breakpoints and above the header also includes a heading "Find your perfect cocktail".
+  Apart from the welcome page, all pages include a header with a static version of the logo on the left-hand side and a button menu on the right-hand side. The button menu initially includes only an "Instructions" button, which on being pressed displays a modal offering guidance on how to use the various search options. The header also includes a heading "Find your perfect cocktail", which is hidden for xs viewports.
+         
+  <details><summary>Header (lg)</summary>
+      
+  ![Header (lg)](readme_images/header_lg.png)
+
+  </details>
+    
+  <details><summary>Header (md)</summary>
+      
+  ![Header (md)](readme_images/header_md.png)
+
+  </details>
+    
+  <details><summary>Header (sm)</summary>
+      
+  ![Header (xs)](readme_images/header_xs.png)
+
+  </details>
     
 - #### Main menu
 
-   - Desktop menu
-      
-   ![Website menu - desktop](readme_images/menu.png)
-    
-   - Tablet menu
-      
-   ![Website menu - tablet](readme_images/menu_md.png)
-    
-   - Mobile menu
-      
-   ![Website menu - mobile](readme_images/menu_xs.png)
-      
   The main menu provides three large buttons displaying different search options, with appropriate [Bootstrap icons](https://icons.getbootstrap.com/):
   - Search by ingredients (with a shopping basket icon)
   - Look up cocktail (with a magnifying glass icon)
   - Surprise me (with a dice icon)
+
+  <br>
+  <details><summary>Main menu (lg)</summary>
+         
+  ![Main menu (lg)](readme_images/menu_lg.png)
+
+  </details>
+
+  <details><summary>Main menu (md)</summary>
+         
+  ![Main menu (md)](readme_images/menu_md.png)
+
+  </details>
+      
+  <details><summary>Main menu (xs)</summary>
+         
+  ![Main menu (xs)](readme_images/menu_xs.png)
+
+  </details>
+      
+
       
 - #### Search by ingredients
-- ##### Select a Spirit
-      
-  ![Select a spirit - desktop](readme_images/spirit_select_desktop.png)
-  ![Select a spirit - mobile](readme_images/spirit_select_mobile.png)
-  ![Select a spirit - no spirit alert](readme_images/no_spirit_alert.png)
+  - ##### Select a Spirit
+        
+    Selecting "Search by ingredients" takes the user to a spirit selection page, allowing the user to select one of 12 spirits. The spirit selection buttons are presented with images of spirit bottles on sm viewports and above, and as simple text buttons on xs viewports. The background of the button turns from yellow to green when selected. Navigation buttons at the bottom of the page allow the user to proceed or go back. An alert modal is displayed if the user tries to proceed with no spirit button selected.
+
+    <details><summary>Spirit selection (lg)</summary>
+
+    ![Spirit selection (lg)](readme_images/spirit_select_lg.png)
+
+    </details>
+
+    <details><summary>Spirit selection (xs)</summary>
+
+    ![Spirit selection (xs)](readme_images/spirit_select_xs.png)
+
+    </details>
     
-   Selecting "Search by ingredients" takes the user to a spirit selection page, allowing the user to select one of 12 spirits. The spirit selection buttons are presented with images of spirit bottles on sm viewports and above, and as simple text buttons on xs viewports. The background of the button turns from yellow to green when selected. Navigation buttons at the bottom of the page allow the user to proceed or go back. An alert modal is displayed if the user tries to proceed with no spirit button selected.
+    <details><summary>No spirit alert</summary>
 
-- ##### Select additional ingredients
-      
-  ![Select ingredients - desktop](readme_images/ingredient_select_desktop.png)
-  ![Select ingredients - mobile](readme_images/ingredient_select_mobile.png)
-  ![Select ingredients - no ingredient alert](readme_images/no_ingredient_alert.png)
-  ![Select ingredients - max ingredients alert](readme_images/max_ingredients_alert.png)
+    ![No spirit alert](readme_images/no_spirit_alert.png)
+
+    </details>
+
+  - ##### Select additional ingredients
     
-   The next page allows the user to select 1-3 additional ingredients. The buttons are presented as simple text buttons on all viewports, the background of the button turning from yellow to green when selected. Buttons at the bottom of the page allow the user to search based on the selected ingredients or go back. An alert modal is displayed if the user tries to proceed with no ingredient button selected, or if the user attempts to select more than three additional ingredients.
+    The next page allows the user to select 1-3 additional ingredients. The buttons are presented as simple text buttons on all viewports, the background of the button turning from yellow to green when selected. Buttons at the bottom of the page allow the user to search based on the selected ingredients or go back. An alert modal is displayed if the user tries to proceed with no ingredient button selected, or if the user attempts to select more than three additional ingredients.
 
-- ##### Results
+    <details><summary>Ingredients selection (lg)</summary>
 
-  ![Search by ingredients - results - desktop](readme_images/ingredient_select_results_desktop.png)
-  ![Search by ingredients - results - mobile](readme_images/ingredient_select_results_mobile.png)
+    ![Ingredients selection (lg)](readme_images/ing_select_lg.png)
 
-  The results page displays all cocktails matching the selected ingredients, as names and images. As multiple results are expected, recipes are initially hidden but can be revealed by clicking on the photograph. Positioning of recipes is dependent on device size, with the direction of the reveal animation adjusting accordingly. The results page also includes an additional "Back to menu" button in the header.
+    </details>
 
-  ![Search by ingredients - no results - desktop](readme_images/ingredient_select_no_results_desktop.png)
-  ![Search by ingredients - no results - mobile](readme_images/ingredient_select_no_results_mobile.png)
+    <details><summary>Ingredients selection (xs)</summary>
 
-  If no exact matches are found then the user is informed and presented with a selection of popular cocktails instead.
+    ![Ingredients selection (xs)](readme_images/ing_select_xs.png)
+
+    </details>
+    
+    <details><summary>No ingredient alert</summary>
+
+    ![No ingredient alert](readme_images/no_ing_alert.png)
+
+    </details>
+
+    <details><summary>Max ingredients alert</summary>
+
+    ![Max ingredients alert](readme_images/max_ing_alert.png)
+
+    </details>
+
+  - ##### Results
+
+    The results page displays all cocktails matching the selected ingredients, as names and images. As multiple results are expected, recipes are initially hidden but can be revealed by clicking on the photograph. Positioning of recipes is dependent on device size, with the direction of the reveal animation adjusted accordingly. The results page also includes an additional "Back to menu" button in the header.
+
+    <details><summary>Search by ingredients - results (lg)</summary>
+
+    ![Search by ingredients - results - desktop](readme_images/ing_results_lg.png)
+
+    </details>
+
+    <details><summary>Search by ingredients - results (xs)</summary>
+
+    ![Search by ingredients - results - mobile](readme_images/ing_results_xs1.png)
+    ![Search by ingredients - results - mobile](readme_images/ing_results_xs2.png)
+
+    </details>
+    <br>
+
+    If no exact matches are found then the user is informed and presented with a selection of popular cocktails instead.
+
+    <details><summary>Search by ingredients - no results (lg)</summary>
+
+    ![Search by ingredients - no results (lg)](readme_images/ing_no_results_lg.png)
+
+    </details>
+
+    <details><summary>Search by ingredients - no results (xs)</summary>
+
+    ![Search by ingredients - no results (lg)](readme_images/ing_no_results_xs.png)
+
+    </details>
+   
 
 - #### Look up cocktail
-- ##### Search form
+  - ##### Search form
 
-  ![Look up cocktail - desktop](readme_images/lookup_desktop.png)
-  ![Look up cocktail - mobile](readme_images/lookup_mobile.png)
+    Selecting "Look up cocktail" displays a simple form, allowing the user to enter the name of a cocktail. The form forces selection from an autocomplete list, ensuring that only cocktails which exist in the database can be entered into the form, preventing nil results. Buttons beneath the form allow the user to search or go back.
 
-   Selecting "Look up cocktail" displays a simple form, allowing the user to enter the name of a cocktail. The form forces selection from an autocomplete list, ensuring that only cocktails which exist in the database can be entered into the form, preventing nil results. Buttons beneath the form allow the user to search or go back.
+    <details><summary>Look up cocktail (lg)</summary>
 
-- ##### Results
+    ![Look up cocktail (lg)](readme_images/lookup_lg.png)
+    
+    </details>
 
-  ![Look up cocktail - results - desktop](readme_images/lookup_results_desktop.png)
-  ![Look up cocktail - results - mobile](readme_images/lookup_results_mobile.png)
+    <details><summary>Look up cocktail (xs)</summary>
+    
+    ![Look up cocktail (xs)](readme_images/lookup_xs.png)
 
-  The results page displays the cocktail(s) matching the search term, as name(s) and image(s). As usually only a single result is expected, the recipe is automatically revealed as the results page is revealed. Positioning of the recipe is dependent on device size, with the direction of the reveal animation adjusting accordingly. The results page also includes an additional "Back to menu" button in the header.
+    </details>
+ 
+  - ##### Results
+
+    The results page displays the cocktail(s) matching the search term, as name(s) and image(s). As usually only a single result is expected, the recipe is automatically revealed as the results page is revealed. Positioning of the recipe is dependent on device size, with the direction of the reveal animation adjusted accordingly. The results page also includes an additional "Back to menu" button in the header.
+
+    <details><summary>Look up cocktail - results (lg)</summary>
+
+    ![Look up cocktail - results (lg)](readme_images/lookup_results_lg.png)
+    
+    </details>
+
+    <details><summary>Look up cocktail - results (xs)</summary>
+    
+    ![Look up cocktail (xs)](readme_images/lookup_results_xs.png)
+
+    </details>
 
 - #### Random search (Surprise me!)
 
-  ![Random search - desktop](readme_images/random_desktop.png)
-  ![Random search - mobile](readme_images/random_mobile.png)
-
   Selecting "Surprise me!" takes the user straight to the results page, where they are presented with a random cocktail, displayed as a name and image. As only a single result is provided, the recipe is automatically revealed as the results page is revealed. Positioning of the recipe is dependent on device size, with the direction of the reveal animation adjusting accordingly. The results page also includes an additional "Back to menu" button in the header.
+
+  <details><summary>Random result (lg)</summary>
+
+  ![Random result (lg)](readme_images/random_result_lg.png)
+    
+  </details>
+
+  <details><summary>Random result (xs)</summary>
+    
+  ![Random result (xs)](readme_images/random_result_xs.png)
+
+  </details>
 
 - #### Database Error Modal
 
-  An alert modal is displayed if the database cannot be reached or returns an error. This includes a "Close page" button which closes the whole page rather than just the modal itself. 
+  An alert modal is displayed if the database cannot be reached or returns an error. This includes a "Close page" button which closes the whole page rather than just the modal itself.
+
+  <details><summary>Database error modal</summary>
+    
+  ![Database error modal](readme_images/db_error_modal.png)
+
+  </details>
+
+- #### 404 page
+
+  A 404 page is provided in the event that the user browses to a page which does not exist. It depicts an empty cocktail glass with associated text.
+
+  <details><summary>404 page (lg)</summary>
+    
+  ![404 page (lg)](readme_images/404_lg.png)
+
+  </details>
+
+  <details><summary>404 page (xs)</summary>
+    
+  ![404 page (xs)](readme_images/404_xs.png)
+
+  </details>    
 
 ### JavaScript Functionality
 
@@ -415,14 +533,15 @@ The website is presented as a single page with elements which are displayed or h
   - Image editing
 
 
-**NOT YET COMPLETE FROM HERE**
-
 
 ## Testing
 
-### Validation
+### Automated testing
 
-- [W3C Markup Validator](https://validator.w3.org/) returns no errors against any of the pages. (It does, however, return a minor warning against the booking.html page - see **Known Bugs** section.)
+- #### HTML validation
+
+  [W3C Markup Validator](https://validator.w3.org/) returned warnings concerning sections lacking headings. Headings were added to sections where appropriate, and the welcome screen was changed to a div which is more appropriate. **The current pages return no errors or warnings.**
+
 - [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) returns no errors or warnings.
 
 ### Accessibility
