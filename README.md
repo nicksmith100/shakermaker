@@ -1,6 +1,6 @@
-# Shaker Maker Website
+# ShakerMaker Website
 
-![ShakerMaker logo](readme_images/readme_logo.png)
+![ShakerMaker logo](readme_images/logo_static.png)
 
 This project creates a web-based cocktail finder application called ShakerMaker, allowing users to search cocktail recipes using a variety of methods. It is designed to be responsive and accessible on a range of devices, making it easy to navigate for users.
 
@@ -78,13 +78,18 @@ D. As a returning visitor (regardless of experience) I want to:
 
 Wireframes were created using the Figma platform: [Figma - ShakerMaker](https://www.figma.com/file/kkJOk17MsggqClsHPMeO5I/Shaker-Maker?type=design&node-id=0%3A1&mode=design&t=gZj3N4u4m5Y8Abjo-1).
 
-- #### Desktop Wireframes
+<details><summary>Desktop wireframes</summary>
 
   ![Desktop wireframes](readme_images/desktop_wireframes.png)
 
-- #### Mobile Wireframes
+</details>
+
+<details><summary>Mobile wireframes</summary>
 
   ![Mobile wireframes](readme_images/mobile_wireframes.png)
+
+</details>
+<br>
 
 Based on prior experience I decided that desktop and mobile wireframes would be sufficient to keep the overall layout of the site on track, the expectation being that [Bootstrap's grid system](https://getbootstrap.com/docs/5.3/layout/grid/) would provide the responsiveness required at different device breakpoints (see **Layout and Styling** section below).
 
@@ -120,8 +125,18 @@ In addition, the site uses the following specific components from the Bootstrap 
 
 - **Logo**: A neon representation of a cocktail glass on a black backgound, with the name of the site also represented in neon-style lettering. It is provided in bright colours to replicate a typical sign of a cocktail bar. On the welcome screen an animated version of the logo is displayed for a few seconds, while a static version is used in the header to avoid distracting the user. The logo was created using a template by Carla Moreno on the Canva website: [Orange and Blue Neon Drinks Bar Animated Logo](https://www.canva.com/templates/EAFCXIroTmk-orange-and-blue-neon-drinks-bar-animated-logo/).
 
-    ![Animated logo](readme_images/logo_animated.gif)
-    ![Static logo](readme_images/logo_static.png)
+  <details><summary>Animated logo</summary>
+  
+  ![Animated logo](readme_images/logo_animated.gif)
+  
+  </details>
+  
+  <details><summary>Static logo</summary>
+  
+  ![Static logo](readme_images/logo_static.png)
+  
+  </details>
+  <br>
 
 - **Spirit selection**: Images of relevant spirit bottles are shown on the spirit selection buttons for sm breakpoints and above, provided by [TheCocktailDB API](https://www.thecocktaildb.com/api.php).
 
