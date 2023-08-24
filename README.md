@@ -8,6 +8,20 @@ This project creates a web-based cocktail finder application called ShakerMaker,
 
 ![ShakerMaker website displayed on various devices](readme_images/responsive_screens.png)
 
+
+## Table of Contents
+
+1. [Project Goals](#project-goals)
+2. [Research](#research)
+3. [User Stories](#user-stories)
+4. [Design](#design)
+5. [Features](#features)
+6. [Testing](#testing)
+7. [Tecnologies Used](#technologies-used)
+8. [Deployment](#deployment)
+9. [Credits](#credits)
+
+
 ## Project Goals
 
 ### Purpose
@@ -61,7 +75,7 @@ B. As an experienced cocktail maker I want to:
 1. Remind myself of cocktails which can be made with the ingredients I have available.
 2. Search for a particular cocktail recipe to confirm the ingredients and method.
 3. Discover cocktails I am not already aware of.
-4. Revisit cocktails I have not made recently.
+4. Revisit cocktails I have not made recently and may have forgotten about.
 
 C. As a first-time visitor (regardless of experience) I want to:
 1. Understand what the site offers
@@ -479,7 +493,107 @@ The website is presented as a single page with elements which are displayed or h
 
    - ##### Random search (Surprise me!)
       - The API's in-built functionality is used to get details of a random cocktail.
-         
+
+## Testing
+
+### Automated testing
+
+- #### HTML validation with [W3C Markup Validator](https://validator.w3.org/)
+
+  | **Error/Warning**         | **Offending code**           | **Fix**                                                                              |
+  |---------------------------|-----------------------------|--------------------------------------------------------------------------------------|
+  | Warning: Sections lacking headings | Various sections throughout | - Change welcome screen from ```<section>``` to ```<div>```<br>- Add ```<h2>``` headings to all other sections |
+
+
+  The current HTML returns **no errors or warnings**.
+
+- #### CSS validation with [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
+
+  | **Error/Warning**         | **Offending code**           | **Fix**                                                                              |
+  |---------------------------|-----------------------------|--------------------------------------------------------------------------------------|
+  | Warning: Vendor extensions | ```-moz-transition```<br>```-webkit-transition``` | Delete vendor extensions (since they are obsolete anyway) |  
+  
+  The current CSS returns **no errors or warnings**.
+
+- #### JavaScript validation using [JSHint](https://jshint.com/)
+
+  | **Error/Warning**                                                                                                                       | **Offending code**                                                                                                                          | **Fix**                                                                                                                                                                                                                                |
+  |-----------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | Unnecessary semicolons                                                                                                                  | 5 lines, throughout code                                                                                                                    | Remove unnecessary semicolons                                                                                                                                                                                                          |
+  | Creating global 'for' variable                                                                                                          | 5 lines, e.g. ```for (i of indices)```                                                                                                      | Declare variables with "let", e.g. ```for (let i of indices)```                                                                                                                                                                        |
+  | Undefined variables                                                                                                                     | Throughout, e.g. ```for (i = 0; i < topIngs.length; i++)```                                                                                 | Declare variables with "let", e.g. ```for (let i = 0; i < topIngs.length; i++)```                                                                                                                                                      |
+  | Function declarations should not be placed in blocks. Use a function expression or move the statement to the top of the outer function. | ```writeResults()``` function, within ```$("#i-search-button").click(function () {})``` block                                               | ```writeResults()``` function moved to top of outer function                                                                                                                                                                           |
+  | Functions declared within loops referencing an outer scoped variable may lead to confusing semantics. (ingArray, i)                     | Line 247:<br>  ``` getData(ingredientListURL, function (data) { data = data.drinks; ingArray.push(data[i].strIngredient1); }); ```              | I am satisfied that the code is semantically clear, so no change made (noting this is only a warning, not an error).                                                                                                                   |
+  | Functions declared within loops referencing an outer scoped variable may lead to confusing semantics. (maxIngredientsAlert)             | Line 366:<br>  ``` i.addEventListener("click", function () {  [...]  if (this.classList.contains("btn-yellow")) { maxIngredientsAlert(); }  ``` | Can be resolved by replacing the call to ```maxIngredientsAlert()``` with the contents of the function. However, this would appear to be more confusing semantically, so no change made (noting this is only a warning, not an error). |
+  
+  The current JavaScript returns **no errors** and **no warnings** apart from those acknowledged above.
+
+- #### Accessibility using [Lighthouse accessibility](https://developer.chrome.com/docs/lighthouse/accessibility/)
+
+  Lighthouse audit scores (accessed through Chrome DevTools) show that the site is fully accessible and complies with best practices.
+
+  <details><summary>Lighthouse scores</summary>
+
+  ![Lighthouse scores](readme_images/lighthouse.png)
+
+  </details>
+
+### Manual Testing
+
+- #### User stories
+
+  The site was tested against the user stories as follows:
+
+  | **User Goal**                                                                          | **How it is achieved**                                                                                                                                                                                                                                                                                                                                                           |
+  |----------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | _A. As a casual cocktail maker I want to:_                                             |                                                                                                                                                                                                                                                                                                                                                                                  |
+  | 1. Find out what cocktails I can make with the ingredients I have available.           | The "Search by ingredients" function allows the user to select a base spirit and up to three additional ingredients, providing a list of cocktails which include those ingredients.                                                                                                                                                                                              |
+  | 2. Search for cocktails I have heard of and/or tried previously.                       | The "Look up cocktail" function allows the user to search for cocktails by name, and the autocomplete functionality means that cocktails can be found with partial matches if the user does not remember the exact name.                                                                                                                                                         |
+  | 3. Discover cocktails I am not already aware of.                                       | The "Surprise me!" function returns a random cocktail. In addition, if a search by ingredients does not match any results then a selection of popular cocktails are returned instead.                                                                                                                                                                                            |
+  | _B. As an experienced cocktail maker I want to:_                                       |                                                                                                                                                                                                                                                                                                                                                                                  |
+  | 1. Remind myself of cocktails which can be made with the ingredients I have available. | The "Search by ingredients" function allows the user to select a base spirit and up to three additional ingredients, providing a list of cocktails which include those ingredients. |
+  | 2. Search for a particular cocktail recipe to confirm the ingredients and method.      | The "Look up cocktail" function allows the user to search for cocktails by name.                                                                                                                                                                                                                                                                                                 |
+  | 3. Discover cocktails I am not already aware of.                                       | The "Surprise me!" function returns a random cocktail. In addition, if a search by ingredients does not match any results then a selection of popular cocktails are returned instead.                                                                                                                                                                                            |
+  | 4. Revisit cocktails I have not made recently and may have forgotten about.            | As above. In addition, when looking up cocktails by name, the autocomplete feature allows for partial matches, allowing the user to browse by cocktail types (e.g. "martini", "sour").                                                                                                                                                                                          |
+  | _C. As a first-time visitor (regardless of experience) I want to:_                     |                                                                                                                                                                                                                                                                                                                                                                                  |
+  | 1. Understand what the site offers                                                     | The user is presented with a clear, intuitive menu. If in any doubt, instructions are available at the click of a button.                                                                                                                                                                                                                                                        |
+  | 2. Learn how to use the site to find cocktail recipes                                  | Instructions are available at the click of a button which fully explain how each search option works. The "Search by ingredients" and "Look up cocktail" options also include helpful cues and reminders to guide the user through the process.                                                                                                                                  |
+  | 3. Easily navigate throughout the site to find the information I need                  | Navigation is intuitive and the site includes helpful cues and reminders to guide the user through the process of searching for cocktails. The "Instructions" button is clear, and a "Return to menu" button is presented on the results page, making it easy to start again.                                                                                                    |
+  | _D. As a returning visitor (regardless of experience) I want to:_                      |                                                                                                                                                                                                                                                                                                                                                                                  |
+  | 1. Use the site to find various cocktail recipes                                       | The database provides access to 627 cocktail recipes, allowing for a wide range of cocktail recipes to be discovered. The intuitive navigation makes repeated searching easy.                                                                                                                                                                                                    |
+  | 2. Explore different methods for finding cocktail recipes                              | The site provides three very different options for finding cocktail recipes. The simple interface and clear instructions make it easy to explore these different methods.|
+
+- #### Feature testing
+
+  
+
+- #### Browser and device compatibility
+
+  The Website was fully tested on the following browsers and devices, checking that all features and links worked correctly:
+
+  | Browser        | Version                                  | Device                                      | Operating Sytem       | Results                                                        |
+  |----------------|------------------------------------------|---------------------------------------------|-----------------------|----------------------------------------------------------------|
+  | Firefox        | 113.0.2 (64-bit)                         | Dell Latitude E6420 laptop                  | Windows 10 Home       | Fully functional                                               |
+  | Google Chrome  | 113.0.5672.127 (Official Build) (64-bit) | Dell Latitude E6420 laptop                  | Windows 10 Home       | Minor issue with form warnings - see **Known Bugs**            |
+  | Google Chrome  | 113.0.5672.127 (Official Build) (64-bit) | Microsoft Surface Pro 7 256GB               | Windows 10 Enterprise | Minor issue with form warnings - see **Known Bugs**            |
+  | Google Chrome  | 113.0.5672.162                           | Xiaomi Mi 10 Lite 5G                        | Android 12            | Minor issue with form warnings - see **Known Bugs**            |
+  | Google Chrome  | 113.0.5672.163                           | Huawei HONOR 20 Lite                        | Android 10            | Minor issue with form warnings - see **Known Bugs**            |
+  | Microsoft Edge | 114.0.1823.37 (Official build) (64-bit)  | Dell Latitude E6420 laptop                  | Windows 10 Home       | Minor issue with form warnings - see **Known Bugs**            |
+  | Microsoft Edge | 112.0.1722.39 (Official build) (64-bit)  | Microsoft Surface Pro 7 256GB               | Windows 10 Enterprise | Minor issue with form warnings - see **Known Bugs**            |
+  | Safari         | 16.5                                     | Apple iPad (9th generation) running         | iPadOS 16.5           | Minor issue with touch input on galleries - see **Known Bugs** |
+  | Safari         | 16.3.1                                   | Apple iPad Pro (12.9-inch) (4th generation) | iPadOS 16.3.1         | Minor issue with touch input on galleries - see **Known Bugs** |
+
+### Fixed Bugs
+
+- The quotes in the box overlaid on the hero image in the main page would not vertically centre using standard CSS such as automatic margins. This was fixed using the `translateY` function of the CSS property `transform` as detailed here: [How to vertically center a bootstrap carousel caption](https://stackoverflow.com/questions/27279865/how-to-vertically-center-a-bootstrap-carousel-caption).
+- The dropdown selecter in the booking form had the `required` attribute, but was allowing the form to be submitted even if a value had not been selected. This was fixed by ensuring that the "Please select" option had an empty value, as detailed here: [Applying the required attribute to select fields](https://stackoverflow.com/questions/6048710/can-i-apply-the-required-attribute-to-select-fields-in-html).  
+
+### Known Bugs
+
+- On Google Chrome and Microsoft Edge browsers, if a required form field is not populated and the field is off screen when "Submit" is pressed, the browser jumps back to that field and highlights it, but does **not** display a warning to the user that the field must be filled in. This error does not occur on Firefox or Safari browsers. Despite extensive investigation, I have been unable to find the cause of this bug, and cannot determine if it is due to any fault in the code. This could be circumvented by separating the form into separate pages, but that is beyond the scope of this project.
+- On touch devices, the image carousels do not react to swipe actions unless they have already been interacted with using the next button. Searching relevant forums suggests that adding `data-touch="true"` to the carousel div should solve this, but it does not. It appears that a workable solution may require JavaScript which is beyond the scope of this project.
+- The Booking page returns a minor warning concerning two `<h1>` elements. Only one `<h1>` element is actually displayed at any one time, and the second one as been given the attribute `aria-hidden="true"` to avoid being read by screen readers, but the error remains. Oddly, the error is not returned on the other pages which all include the same code. As this is only a minor warning and not an error, it has not been investigated further at this stage.
+
 ## Technologies Used
 
 ### Languages
@@ -531,53 +645,9 @@ The website is presented as a single page with elements which are displayed or h
   - 404 image
 - [Fix the photo](https://fixthephoto.com/uk/online-gimp.html)
   - Image editing
+  
 
-
-
-## Testing
-
-### Automated testing
-
-- #### HTML validation
-
-  [W3C Markup Validator](https://validator.w3.org/) returned warnings concerning sections lacking headings. Headings were added to sections where appropriate, and the welcome screen was changed to a div which is more appropriate. **The current pages return no errors or warnings.**
-
-- [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) returns no errors or warnings.
-
-### Accessibility
-
-- [Lighthouse accessibility](https://developer.chrome.com/docs/lighthouse/accessibility/) audit scores (accessed through Chrome DevTools) show that the site is fully accessible and complies with best practices.
-
-  ![Lighthouse scores](readme_images/lighthouse.png)
-
-### Manual Testing
-
-- The Website was fully tested on the following browsers and devices, checking that all features and links worked correctly:
-
-| Browser        | Version                                  | Device                                      | Operating Sytem       | Results                                                        |
-|----------------|------------------------------------------|---------------------------------------------|-----------------------|----------------------------------------------------------------|
-| Firefox        | 113.0.2 (64-bit)                         | Dell Latitude E6420 laptop                  | Windows 10 Home       | Fully functional                                               |
-| Google Chrome  | 113.0.5672.127 (Official Build) (64-bit) | Dell Latitude E6420 laptop                  | Windows 10 Home       | Minor issue with form warnings - see **Known Bugs**            |
-| Google Chrome  | 113.0.5672.127 (Official Build) (64-bit) | Microsoft Surface Pro 7 256GB               | Windows 10 Enterprise | Minor issue with form warnings - see **Known Bugs**            |
-| Google Chrome  | 113.0.5672.162                           | Xiaomi Mi 10 Lite 5G                        | Android 12            | Minor issue with form warnings - see **Known Bugs**            |
-| Google Chrome  | 113.0.5672.163                           | Huawei HONOR 20 Lite                        | Android 10            | Minor issue with form warnings - see **Known Bugs**            |
-| Microsoft Edge | 114.0.1823.37 (Official build) (64-bit)  | Dell Latitude E6420 laptop                  | Windows 10 Home       | Minor issue with form warnings - see **Known Bugs**            |
-| Microsoft Edge | 112.0.1722.39 (Official build) (64-bit)  | Microsoft Surface Pro 7 256GB               | Windows 10 Enterprise | Minor issue with form warnings - see **Known Bugs**            |
-| Safari         | 16.5                                     | Apple iPad (9th generation) running         | iPadOS 16.5           | Minor issue with touch input on galleries - see **Known Bugs** |
-| Safari         | 16.3.1                                   | Apple iPad Pro (12.9-inch) (4th generation) | iPadOS 16.3.1         | Minor issue with touch input on galleries - see **Known Bugs** |
-
-### Fixed Bugs
-
-- The quotes in the box overlaid on the hero image in the main page would not vertically centre using standard CSS such as automatic margins. This was fixed using the `translateY` function of the CSS property `transform` as detailed here: [How to vertically center a bootstrap carousel caption](https://stackoverflow.com/questions/27279865/how-to-vertically-center-a-bootstrap-carousel-caption).
-- The dropdown selecter in the booking form had the `required` attribute, but was allowing the form to be submitted even if a value had not been selected. This was fixed by ensuring that the "Please select" option had an empty value, as detailed here: [Applying the required attribute to select fields](https://stackoverflow.com/questions/6048710/can-i-apply-the-required-attribute-to-select-fields-in-html).  
-
-### Known Bugs
-
-- On Google Chrome and Microsoft Edge browsers, if a required form field is not populated and the field is off screen when "Submit" is pressed, the browser jumps back to that field and highlights it, but does **not** display a warning to the user that the field must be filled in. This error does not occur on Firefox or Safari browsers. Despite extensive investigation, I have been unable to find the cause of this bug, and cannot determine if it is due to any fault in the code. This could be circumvented by separating the form into separate pages, but that is beyond the scope of this project.
-- On touch devices, the image carousels do not react to swipe actions unless they have already been interacted with using the next button. Searching relevant forums suggests that adding `data-touch="true"` to the carousel div should solve this, but it does not. It appears that a workable solution may require JavaScript which is beyond the scope of this project.
-- The Booking page returns a minor warning concerning two `<h1>` elements. Only one `<h1>` element is actually displayed at any one time, and the second one as been given the attribute `aria-hidden="true"` to avoid being read by screen readers, but the error remains. Oddly, the error is not returned on the other pages which all include the same code. As this is only a minor warning and not an error, it has not been investigated further at this stage.   
-
-## Development and Deployment
+## Deployment
 
 ### GitHub Pages
 
