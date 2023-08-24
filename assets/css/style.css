@@ -41,8 +41,6 @@ h3 {
     color: #eee;
     /* Code for ease-in-out effect from Code Institute: https://github.com/Code-Institute-Solutions/resume-miniproject-bootstrap4/tree/master/07-adding-hover-css */
     transition: all .3s ease-in-out;
-    -moz-transition: all .3s ease-in-out;
-    -webkit-transition: all .3s ease-in-out;
 }
 
 .btn-yellow {
@@ -108,8 +106,6 @@ h3 {
     opacity: 0.9;
     color: #eee;
     transition: all .3s ease-in-out;
-    -moz-transition: all .3s ease-in-out;
-    -webkit-transition: all .3s ease-in-out;
 }
 
 /* Results */
