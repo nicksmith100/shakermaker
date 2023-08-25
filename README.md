@@ -684,7 +684,7 @@ The website is presented as a single page with elements which are displayed or h
   | Favicon      | Favicon is displayed in browser tab                                                                                                                                                                                               | Favicon displays correctly                                                  | Pass       |
   | Favicon      | Saving page to mobile homescreen displays favicon as icon                                                                                                                                                                                               | Favicon displayed as icon                                                  | Pass       |
   | 404 page      | Entering incorrect address displays 404 page page                                                                                                                                                                                               | 404 page is displayed                                                  | Pass       |
-  | Console      | No errors displayed in console                                                                                                                                                                                               | No errors in console                                                  | Pass       |
+  | Console      | No errors displayed in console                                                                                                                                                                                               | Only error relates to Permissions-Policy header which can be safely ignored (see [Error with Permissions-Policy header](#error-with-permissions-policy-header))                                                  | Pass       |
     
 
 - #### Browser and device compatibility
@@ -703,10 +703,6 @@ The website is presented as a single page with elements which are displayed or h
   In addition, I asked a number of friends and family members to test the website on their devices, with only one bug reported (see below).
 
 ### Bugs and fixes
-
-- #### No database content on specific device
-
-  One test user reported that no ingredients or search results could be retrieved using any method. They were using Chrome 115.0.5790.166 on a Moto G31(W) phone running Android 11. Suspecting this to be a database issue I asked them to try again later, using Incognito mode in case any content was cached, but they got the same result. I was unable to replicate this issue and all other test users reported full functionality.
 
 - #### Empty page when selecting "Search by ingredients"
 
@@ -776,6 +772,22 @@ The website is presented as a single page with elements which are displayed or h
     }
     ```
   </details>
+
+  - #### No database content on specific device
+
+  One test user reported that no ingredients or search results could be retrieved using any method. They were using Chrome 115.0.5790.166 on a Moto G31(W) phone running Android 11. Suspecting this to be a database issue I asked them to try again later, using Incognito mode in case any content was cached, but they got the same result. I was unable to replicate this issue and all other test users reported full functionality.
+
+  - #### Error with Permissions-Policy header
+
+  When accessed on GitHub pages, the console displays the following error:
+
+  ```Error with Permissions-Policy header: Origin trial controlled feature not enabled: 'interest-cohort'.```
+
+  This appears to be shown because GitHub pages blocks Google's new FLoC (alternative to cookies) technology, as detailed here: [Error with Permissions-Policy header](https://bobbyhadz.com/blog/error-with-permissions-policy-header-unrecognized-feature).
+
+  I have attempted to avoid this error by adding the following code to the head of each HTML page, but to no avail. In any event, the error can be safely ignored as detailed in the link above.
+  
+  ```<meta http-equiv="Permissions-Policy" content="interest-cohort=()">```
 
 ## Technologies Used
 
