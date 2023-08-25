@@ -103,7 +103,6 @@ Wireframes were created using the Figma platform: [Figma - ShakerMaker](https://
   ![Mobile wireframes](readme_images/mobile_wireframes.png)
 
 </details>
-<br>
 
 Based on prior experience I decided that desktop and mobile wireframes would be sufficient to keep the overall layout of the site on track, the expectation being that [Bootstrap's grid system](https://getbootstrap.com/docs/5.3/layout/grid/) would provide the responsiveness required at different device breakpoints in between (see [Layout and Styling](#layout-and-styling) section below).
 
@@ -150,7 +149,6 @@ In addition, the site uses the following specific components from the Bootstrap 
   ![Static logo](readme_images/logo_static.png)
   
   </details>
-  <br>
 
 - **Spirit selection**: Images of relevant spirit bottles are shown on the spirit selection buttons for sm breakpoints and above, provided by [TheCocktailDB API](https://www.thecocktaildb.com/api.php).
 
@@ -712,7 +710,7 @@ The website is presented as a single page with elements which are displayed or h
 
   ![Empty page bug](readme_images/empty_page_bug.png)
 
-  </details><br>
+  </details>
 
   This was caused by the the whole "search-ingredients" section being hidden when moving from the "select ingredients" page to the results page.
 
@@ -751,7 +749,7 @@ The website is presented as a single page with elements which are displayed or h
 
   ![Multiple ingredients buttons bug](readme_images/multiple_ings_bug.png)
 
-  </details><br>
+  </details>
 
   **Fix:** Ensure the divs holding the spirit buttons and the ingredients buttons are cleared of content whenever the "Back to menu" or "Back" buttons are used, e.g.:
 
@@ -773,11 +771,11 @@ The website is presented as a single page with elements which are displayed or h
     ```
   </details>
 
-  - #### No database content on specific device
+- #### No database content on specific device
 
   One test user reported that no ingredients or search results could be retrieved using any method. They were using Chrome 115.0.5790.166 on a Moto G31(W) phone running Android 11. Suspecting this to be a database issue I asked them to try again later, using Incognito mode in case any content was cached, but they got the same result. I was unable to replicate this issue and all other test users reported full functionality.
 
-  - #### Error with Permissions-Policy header
+- #### Error with Permissions-Policy header
 
   When accessed on GitHub pages, the console displays the following error:
 
