@@ -39,7 +39,7 @@ This project aims to demonstrate and embed my understanding of JavaScript as par
 
 ### User Goals
 
-Detailed user stories are provided in the **User Stories** section below, but the primary goals of the user are to:
+Detailed user stories are provided in the [User Stories](#user-stories) section below, but the primary goals of the user are to:
 
 - Find cocktail recipes
 - Understand and use the different search methods offered by the site
@@ -48,7 +48,7 @@ Detailed user stories are provided in the **User Stories** section below, but th
 
 ### Cocktail recipes
 
-Before embarking on the project I wanted to be sure that I could obtain cocktail recipes from a reliable source, having little knowledge of the subject myself. After some research I discovered [TheCocktailDB](https://www.thecocktaildb.com/) - an open, crowd-sourced database of drinks and cocktails from around the world with a [free JSON API](https://www.thecocktaildb.com/api.php). I conducted some intial testing and determined that the full version of the API would provide the necessary functionality to satisfy the project goals outlined above. (See **JavaScript Functionality** section below for more details.)
+Before embarking on the project I wanted to be sure that I could obtain cocktail recipes from a reliable source, having little knowledge of the subject myself. After some research I discovered [TheCocktailDB](https://www.thecocktaildb.com/) - an open, crowd-sourced database of drinks and cocktails from around the world with a [free JSON API](https://www.thecocktaildb.com/api.php). I conducted some intial testing and determined that the full version of the API would provide the necessary functionality to satisfy the project goals outlined above. (See [JavaScript functionality](#javascript-functionality) section below for more details.)
 
 ### Popular ingredients
 
@@ -105,7 +105,7 @@ Wireframes were created using the Figma platform: [Figma - ShakerMaker](https://
 </details>
 <br>
 
-Based on prior experience I decided that desktop and mobile wireframes would be sufficient to keep the overall layout of the site on track, the expectation being that [Bootstrap's grid system](https://getbootstrap.com/docs/5.3/layout/grid/) would provide the responsiveness required at different device breakpoints in between (see **Layout and Styling** section below).
+Based on prior experience I decided that desktop and mobile wireframes would be sufficient to keep the overall layout of the site on track, the expectation being that [Bootstrap's grid system](https://getbootstrap.com/docs/5.3/layout/grid/) would provide the responsiveness required at different device breakpoints in between (see [Layout and Styling](#layout-and-styling) section below).
 
 While the overall structure of the site stays true to the wireframes, there are some notable differences in the final layout which came about for design and user experience reasons:
 
@@ -548,7 +548,7 @@ The website is presented as a single page with elements which are displayed or h
 
 - #### User stories
 
-  The site was tested against the user stories as follows:
+  The site was tested against the user stories as follows. (See [User story screenshots](#user-story-screenshots) below table for associated screenshots.)
 
   | **User Goal**                                                                          | **How it is achieved**                                                                                                                                                                                                                                                                                                                                                           |
   |----------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -571,34 +571,70 @@ The website is presented as a single page with elements which are displayed or h
 
 - #### User story screenshots
 
+  Screenshots are shown for xs viewports (i.e. mobile devices) because this is how the majority of users are expected to access the site. Screenshots for lg viewports (tablets, laptops and desktops) can be found in the [Features](#features) section. 
+
   - ##### Search by ingredients
 
-    ![Spirit selection](readme_images/spirit_select_lg.png)
+    <details><summary>Search by ingredients - spirit selection</summary>
 
-    ![Ingredient selection](readme_images/ing_select_lg.png)
+    ![Spirit selection](readme_images/spirit_select_xs.png)
+
+    </details>
+
+    <details><summary>Search by ingredients - additional ingredients</summary>
+
+    ![Ingredient selection](readme_images/ing_select_xs.png)
+
+    </details>
     
-    ![Results](readme_images/ing_results_lg.png)
+    <details><summary>Search by ingredients - matches found</summary>
+
+    ![Results](readme_images/ing_results_xs1.png) ![Results](readme_images/ing_results_xs2.png)
+
+    </details>
+
+    <details><summary>Search by ingredients - no matches found</summary>
     
-    ![Results](readme_images/ing_no_results_lg.png)
+    ![Results](readme_images/ing_no_results_xs.png)
+
+    </details>
 
 
   - ##### Look up cocktail
 
-    ![Search form](readme_images/lookup_lg.png)
+    <details><summary>Look up cocktail - search form</summary>
 
-    ![Look up cocktail - results](readme_images/lookup_results_lg.png)
+    ![Search form](readme_images/lookup_xs.png)
+
+    </details>
+
+    <details><summary>Look up cocktail - results</summary>
+
+    ![Look up cocktail - results](readme_images/lookup_results_xs.png)
+
+    </details>
 
   - ##### Surprise me!
 
-    ![Random result](readme_images/random_result_lg.png)
+    <details><summary>Surprise me!</summary>
 
-  - ##### Navigation
+    ![Random result](readme_images/random_result_xs.png)
 
-    ![Main menu](readme_images/menu_lg.png)
+    </details>
 
-  - ##### Instructions
+  - ##### Navigation and instructions
 
-    ![Instructions](readme_images/instructions.png)
+    <details><summary>Site navigation</summary>
+
+    ![Main menu](readme_images/navigation.png)
+
+    </details>
+
+    <details><summary>Instructions</summary>
+
+    ![Instructions](readme_images/instructions_xs.png)
+
+    </details>
 
 - #### Feature testing
 
@@ -644,7 +680,12 @@ The website is presented as a single page with elements which are displayed or h
   | Results page (surprise me)                     | Displays text "Here's a random cocktail for you try!" followed by the name of the cocktail with a photo                                                                                                                                           | Expected text and content is displayed                              | Pass       |
   | Results page (surprise me)                     | The cocktail's list of ingredients and method are automatically revealed                                                                                                                                                                          | Expected animation occurs                                           | Pass       |
   | Database error alert                           | If database call returns error, alert modal is displayed informing user that the database could not be reached and asking them to try again later                                                                                                 | Alert modal is displayed (tested by adding typo to database call)   | Pass       |
-  | Database error alert: "Close page" button      | Clicking "Close page" button closes the entire page                                                                                                                                                                                               | Closes entire page                                                  | Pass       |  
+  | Database error alert: "Close page" button      | Clicking "Close page" button closes the entire page                                                                                                                                                                                               | Closes entire page                                                  | Pass       |
+  | Favicon      | Favicon is displayed in browser tab                                                                                                                                                                                               | Favicon displays correctly                                                  | Pass       |
+  | Favicon      | Saving page to mobile homescreen displays favicon as icon                                                                                                                                                                                               | Favicon displayed as icon                                                  | Pass       |
+  | 404 page      | Entering incorrect address displays 404 page page                                                                                                                                                                                               | 404 page is displayed                                                  | Pass       |
+  | Console      | No errors displayed in console                                                                                                                                                                                               | No errors in console                                                  | Pass       |
+    
 
 - #### Browser and device compatibility
 
