@@ -278,6 +278,12 @@ The website is presented as a single page with elements which are displayed or h
   ![Header (xs)](readme_images/header_xs.png)
 
   </details>
+
+  <details><summary>Instructions modal</summary>
+
+  ![Instructions](readme_images/instructions.png)
+
+  </details>
     
 - #### Main menu
 
@@ -547,7 +553,7 @@ The website is presented as a single page with elements which are displayed or h
   | **User Goal**                                                                          | **How it is achieved**                                                                                                                                                                                                                                                                                                                                                           |
   |----------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
   | _A. As a casual cocktail maker I want to:_                                             |                                                                                                                                                                                                                                                                                                                                                                                  |
-  | 1. Find out what cocktails I can make with the ingredients I have available.           | The "Search by ingredients" function allows the user to select a base spirit and up to three additional ingredients, providing a list of cocktails which include those ingredients.                                                                                                                                                                                              |
+  | 1. Find out what cocktails I can make with the ingredients I have available.           | The "Search by ingredients" function allows the user to select a base spirit and up to three additional ingredients, providing a list of cocktails which include those ingredients.                                                                                                                                                                                            |
   | 2. Search for cocktails I have heard of and/or tried previously.                       | The "Look up cocktail" function allows the user to search for cocktails by name, and the autocomplete functionality means that cocktails can be found with partial matches if the user does not remember the exact name.                                                                                                                                                         |
   | 3. Discover cocktails I am not already aware of.                                       | The "Surprise me!" function returns a random cocktail. In addition, if a search by ingredients does not match any results then a selection of popular cocktails are returned instead.                                                                                                                                                                                            |
   | _B. As an experienced cocktail maker I want to:_                                       |                                                                                                                                                                                                                                                                                                                                                                                  |
@@ -562,6 +568,37 @@ The website is presented as a single page with elements which are displayed or h
   | _D. As a returning visitor (regardless of experience) I want to:_                      |                                                                                                                                                                                                                                                                                                                                                                                  |
   | 1. Use the site to find various cocktail recipes                                       | The database provides access to 627 cocktail recipes, allowing for a wide range of cocktail recipes to be discovered. The intuitive navigation makes repeated searching easy.                                                                                                                                                                                                    |
   | 2. Explore different methods for finding cocktail recipes                              | The site provides three very different options for finding cocktail recipes. The simple interface and clear instructions make it easy to explore these different methods.|
+
+- #### User story screenshots
+
+  - ##### Search by ingredients
+
+    ![Spirit selection](readme_images/spirit_select_lg.png)
+
+    ![Ingredient selection](readme_images/ing_select_lg.png)
+    
+    ![Results](readme_images/ing_results_lg.png)
+    
+    ![Results](readme_images/ing_no_results_lg.png)
+
+
+  - ##### Look up cocktail
+
+    ![Search form](readme_images/lookup_lg.png)
+
+    ![Look up cocktail - results](readme_images/lookup_results_lg.png)
+
+  - ##### Surprise me!
+
+    ![Random result](readme_images/random_result_lg.png)
+
+  - ##### Navigation
+
+    ![Main menu](readme_images/menu_lg.png)
+
+  - ##### Instructions
+
+    ![Instructions](readme_images/instructions.png)
 
 - #### Feature testing
 
