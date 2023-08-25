@@ -194,7 +194,8 @@ function noInputAlert() {
 // Create calls to API ------------------------------------------ //
 
 /* Call API to get data based on API URL
-(Utilises code from "Working with external resources" lessons of CI course) */
+(Utilises code from "Working with external resources" lessons of CI course)
+https://github.com/Code-Institute-Solutions/WorkingWithExternalResources/tree/master/02-ConsumingAPIsUsingJavaScript/05-callbacks */
 
 function getData(apiURL, cb) {
 
