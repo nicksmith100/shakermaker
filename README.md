@@ -565,34 +565,139 @@ The website is presented as a single page with elements which are displayed or h
 
 - #### Feature testing
 
-  
+  | **Feature**                                    | **Expected outcome**                                                                                                                                                                                                                              | **Actual outcome** (tested on various devices and Chrome Dev Tools) | **Result** |
+  |------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------|------------|
+  | Responsive design                              | Site layout is fully responsive to device and viewport size                                                                                                                                                                                       | Site layout is fully responsive                                     | Pass       |
+  | Welcome screen                                 | Animated logo displayed for 2 seconds before sliding upwards, then header and main menu slide downwards                                                                                                                                           | Expected animation occurs                                           | Pass       |
+  | Header: logo                                   | Clicking header logo takes user back to welcome screen                                                                                                                                                                                            | Expected navigation occurs                                          | Pass       |
+  | Header: "Find your perfect cocktail" heading   | Disappears at xs viewport size                                                                                                                                                                                                                    | Heading disappears                                                  | Pass       |
+  | Header: "Instructions" button                  | Clicking button displays modal with instructions                                                                                                                                                                                                  | Instructions modal is displayed                                     | Pass       |
+  | Header: "Back to menu" button                  | Results page slides out to left, main menu slides in from left, "Back to menu" button fades out                                                                                                                                                   | Expected animation occurs                                           |            |
+  | Main menu                                      | Main menu buttons change opacity and font colour turns white on hover                                                                                                                                                                             | Expected hover effect occurs                                        | Pass       |
+  | Main menu: "Search by ingredients" button      | Main menu slides out to left, spirit selection page slides in from left                                                                                                                                                                           | Expected animation occurs                                           | Pass       |
+  | Main menu: "Look up cocktail" button           | Main menu slides out to left, cocktail search form slides in from left                                                                                                                                                                            | Expected animation occurs                                           | Pass       |
+  | Main menu: "Surprise me!" button               | Main menu slides out to left, results page slides in from left, "Back to menu" button slides in                                                                                                                                                   | Expected animation occurs                                           | Pass       |
+  | Spirit selection page                          | Twelve most popular spirits retrieved from API and displayed as buttons                                                                                                                                                                           | Buttons displayed                                                   | Pass       |
+  | Spirit selection page: spirit buttons          | Images of spirit bottles displayed on buttons at sm breakpoints and above                                                                                                                                                                         | Images displayed at sm breakpoints and above                        | Pass       |
+  | Spirit selection page: spirit buttons          | Background colour turns green and font colour turns white on selection                                                                                                                                                                            | Selected button turns green with white text                         | Pass       |
+  | Spirit selection page: spirit buttons          | Clicking a different spirit selection button deselects currently selected button                                                                                                                                                                  | Selected button styling switches to newly selected button           | Pass       |
+  | Spirit selection page: "Back" button           | Spirit selection page slides out to left, main menu slides in from left                                                                                                                                                                           | Expected animation occurs                                           | Pass       |
+  | Spirit selection page: "Next button"           | If no spirit has been selected, modal is displayed asking user to select a spirit                                                                                                                                                                 | Alert modal is displayed                                            | Pass       |
+  | Spirit selection page: "Next button"           | If a spirit has been selected, spirit selection page slides out to left, ingredients selection page slides in from left                                                                                                                           | Expected animation occurs                                           |            |
+  | Ingredients selection page                     | 30 most popular ingredients retrieved from API and displayed as buttons                                                                                                                                                                           | Buttons displayed                                                   | Pass       |
+  | Ingredients selection page: ingredient buttons | Background colour turns green and font colour turns white on selection                                                                                                                                                                            | Selected button turns green with white text                         | Pass       |
+  | Ingredients selection page: ingredient buttons | Clicking already selected button deselects it                                                                                                                                                                                                     | Button is deselected                                                | Pass       |
+  | Ingredients selection page: ingredient buttons | If more than three buttons selected, alert modal is displayed explaining that maximum number of ingredients is three                                                                                                                              | Alert modal is displayed                                            | Pass       |
+  | Ingredients selection page: "Back" button      | Ingredients selection page slides out to left, spirit selection page slides in from left                                                                                                                                                          | Expected animation occurs                                           | Pass       |
+  | Ingredients selection page: "Next" button      | If no ingredient has been selected, alert modal is displayed asking user to select at least one additional ingredient                                                                                                                             | Alert modal is displayed                                            | Pass       |
+  | Ingredients selection page: "Next" button      | If at least one ingredient has been selected, ingredient selection page slides out to left, results page slides in from left, "Back to menu" button fades in                                                                                      | Expected animation occurs                                           | Pass       |
+  | Results page (search by ingredients)           | If any cocktails are found matching the selected spirit and ingredients, displays text "Here are all the cocktails you can make with [selected spirit] and [selected ingredients]"                                                                | Text is displayed                                                   | Pass       |
+  | Results page (search by ingredients)           | For each match, the name of the cocktail and a photo of it are displayed                                                                                                                                                                          | Cocktail names and photos are displayed                             | Pass       |
+  | Results page (search by ingredients)           | If no matches are found, displays text "Sorry, no drinks were found with [selected spirit] and [selected ingredients]. Please try again, or browse our most popular cocktails below instead." followed by a list of popular cocktails with photos | Expected text and content is displayed                              | Pass       |
+  | Results page (search by ingredients)           | Clicking on a cocktail photo reveals its list of ingredients and a method                                                                                                                                                                         | Expected animation occurs                                           | Pass       |
+  | Look up cocktail page                          | Search form is displayed with placeholder text "Start typing"                                                                                                                                                                                     | Search form is displayed                                            | Pass       |
+  | Look up cocktail: search input                 | Typing into search input box displays autocomplete list of cocktail names                                                                                                                                                                         | Autocomplete list is displayed                                      | Pass       |
+  | Look up cocktail: search input                 | If user selects item from autocomplete list, it is entered into search input box                                                                                                                                                                  | Selected item is entered into search input box                      | Pass       |
+  | Look up cocktail: search input                 | If user clicks outside search input box or autocomplete list, search input is deleted                                                                                                                                                             | Search input is deleted                                             | Pass       |
+  | Look up cocktail: "Back" button                | Search form slides out to left, main menu slides in from left                                                                                                                                                                                     | Expected animation occurs                                           | Pass       |
+  | Look up cocktail: "Submit" button              | If item from autocomplete list is not present in search input box, alert modal is displayed asking user to select an item from the list                                                                                                           | Alert modal is displayed                                            | Pass       |
+  | Look up cocktail: "Submit" button              | If item from autocomplete list is present in search input box, search form slides out to left, results page slides in from left, "Back to menu" button fades in                                                                                   | Expected animation occurs                                           | Pass       |
+  | Results page (look up cocktail)                | Displays text "Here's the recipe for [selected item]", followed by the name of the cocktail with a photo                                                                                                                                          | Expected text and content is displayed                              | Pass       |
+  | Results page (look up cocktail)                | The cocktail's list of ingredients and method are automatically revealed                                                                                                                                                                          | Expected animation occurs                                           | Pass       |
+  | Results page (surprise me)                     | Displays text "Here's a random cocktail for you try!" followed by the name of the cocktail with a photo                                                                                                                                           | Expected text and content is displayed                              | Pass       |
+  | Results page (surprise me)                     | The cocktail's list of ingredients and method are automatically revealed                                                                                                                                                                          | Expected animation occurs                                           | Pass       |
+  | Database error alert                           | If database call returns error, alert modal is displayed informing user that the database could not be reached and asking them to try again later                                                                                                 | Alert modal is displayed (tested by adding typo to database call)   | Pass       |
+  | Database error alert: "Close page" button      | Clicking "Close page" button closes the entire page                                                                                                                                                                                               | Closes entire page                                                  | Pass       |  
 
 - #### Browser and device compatibility
 
-  The Website was fully tested on the following browsers and devices, checking that all features and links worked correctly:
+  The above features were tested on the following browsers and devices:
 
   | Browser        | Version                                  | Device                                      | Operating Sytem       | Results                                                        |
   |----------------|------------------------------------------|---------------------------------------------|-----------------------|----------------------------------------------------------------|
-  | Firefox        | 113.0.2 (64-bit)                         | Dell Latitude E6420 laptop                  | Windows 10 Home       | Fully functional                                               |
-  | Google Chrome  | 113.0.5672.127 (Official Build) (64-bit) | Dell Latitude E6420 laptop                  | Windows 10 Home       | Minor issue with form warnings - see **Known Bugs**            |
-  | Google Chrome  | 113.0.5672.127 (Official Build) (64-bit) | Microsoft Surface Pro 7 256GB               | Windows 10 Enterprise | Minor issue with form warnings - see **Known Bugs**            |
-  | Google Chrome  | 113.0.5672.162                           | Xiaomi Mi 10 Lite 5G                        | Android 12            | Minor issue with form warnings - see **Known Bugs**            |
-  | Google Chrome  | 113.0.5672.163                           | Huawei HONOR 20 Lite                        | Android 10            | Minor issue with form warnings - see **Known Bugs**            |
-  | Microsoft Edge | 114.0.1823.37 (Official build) (64-bit)  | Dell Latitude E6420 laptop                  | Windows 10 Home       | Minor issue with form warnings - see **Known Bugs**            |
-  | Microsoft Edge | 112.0.1722.39 (Official build) (64-bit)  | Microsoft Surface Pro 7 256GB               | Windows 10 Enterprise | Minor issue with form warnings - see **Known Bugs**            |
-  | Safari         | 16.5                                     | Apple iPad (9th generation) running         | iPadOS 16.5           | Minor issue with touch input on galleries - see **Known Bugs** |
-  | Safari         | 16.3.1                                   | Apple iPad Pro (12.9-inch) (4th generation) | iPadOS 16.3.1         | Minor issue with touch input on galleries - see **Known Bugs** |
+  | Firefox        | 116.0.3 (64-bit)                         | Dell Latitude E6420 laptop                  | Windows 10 Home       | Fully functional                                               |
+  | Google Chrome  | 116.0.5845.98 (Official Build) (64-bit) | Dell Latitude E6420 laptop                  | Windows 10 Home       | Fully functional            |
+  | Google Chrome  | 116.0.5845.92                           | Samsung Galaxy S9 SM-G960F                        | Android 10            | Fully functional            |
+  | Google Chrome         | 116.0.5845.103                                     | Apple iPad Pro (12.9-inch) (4th generation)         | iPadOS 16.3.1            | Fully functional |
+  | Microsoft Edge | 116.0.1938.54 (Official build) (64-bit)  | Dell Latitude E6420 laptop                  | Windows 10 Home       | Fully functional           |
+  | Safari         | 16.3.1                                   | Apple iPad Pro (12.9-inch) (4th generation) | iPadOS 16.3.1         | Fully functional |
 
-### Fixed Bugs
+  In addition, I asked a number of friends and family members to test the website on their devices, with only one bug reported (see below).
 
-- The quotes in the box overlaid on the hero image in the main page would not vertically centre using standard CSS such as automatic margins. This was fixed using the `translateY` function of the CSS property `transform` as detailed here: [How to vertically center a bootstrap carousel caption](https://stackoverflow.com/questions/27279865/how-to-vertically-center-a-bootstrap-carousel-caption).
-- The dropdown selecter in the booking form had the `required` attribute, but was allowing the form to be submitted even if a value had not been selected. This was fixed by ensuring that the "Please select" option had an empty value, as detailed here: [Applying the required attribute to select fields](https://stackoverflow.com/questions/6048710/can-i-apply-the-required-attribute-to-select-fields-in-html).  
+### Bugs and fixes
 
-### Known Bugs
+- #### No database content on specific device
 
-- On Google Chrome and Microsoft Edge browsers, if a required form field is not populated and the field is off screen when "Submit" is pressed, the browser jumps back to that field and highlights it, but does **not** display a warning to the user that the field must be filled in. This error does not occur on Firefox or Safari browsers. Despite extensive investigation, I have been unable to find the cause of this bug, and cannot determine if it is due to any fault in the code. This could be circumvented by separating the form into separate pages, but that is beyond the scope of this project.
-- On touch devices, the image carousels do not react to swipe actions unless they have already been interacted with using the next button. Searching relevant forums suggests that adding `data-touch="true"` to the carousel div should solve this, but it does not. It appears that a workable solution may require JavaScript which is beyond the scope of this project.
-- The Booking page returns a minor warning concerning two `<h1>` elements. Only one `<h1>` element is actually displayed at any one time, and the second one as been given the attribute `aria-hidden="true"` to avoid being read by screen readers, but the error remains. Oddly, the error is not returned on the other pages which all include the same code. As this is only a minor warning and not an error, it has not been investigated further at this stage.
+  One test user reported that no ingredients or search results could be retrieved using any method. They were using Chrome 115.0.5790.166 on a Moto G31(W) phone running Android 11. Suspecting this to be a database issue I asked them to try again later, using Incognito mode in case any content was cached, but they got the same result. I was unable to replicate this issue and all other test users reported full functionality.
+
+- #### Empty page when selecting "Search by ingredients"
+
+  During development, I noticed that if "Search by ingredients" was selected and followed through to the results page, and then "Return to menu" was selected and then "Search by ingredients" was selected again, no buttons would be displayed.
+
+  <details><summary>Empty page bug</summary>
+
+  ![Empty page bug](readme_images/empty_page_bug.png)
+
+  </details><br>
+
+  This was caused by the the whole "search-ingredients" section being hidden when moving from the "select ingredients" page to the results page.
+
+  **Fix:** Hide only the "select-ingredients" div when moving from the "select ingredients" page to the results page.
+
+  <details><summary>Empty page fix</summary>
+
+
+    ```
+    function searchIngredientsToResults() {
+      $("#select-ingredients").hide("drop", function () {
+
+          // Reset innerHTML of "spirit-buttons" and "ing-buttons" to avoid potential duplication
+          spiritBtnsDiv.innerHTML = "";
+          ingBtnsDiv.innerHTML = "";
+
+          $("#results").show("drop");
+          $("#results-back").fadeIn();
+      }
+      );
+    }
+    ```
+  </details>
+
+- #### Multiple spirit and ingredient buttons
+
+  Once the empty page bug was fixed, I noticed that if "Search by ingredients" was selected, and then either "Return to menu" or the "Back" buttons were used and then "Search by ingredients" was selected again, multiple sets of spirit and ingredients buttons would be created.
+
+  <details><summary>Multiple spirit buttons bug</summary>
+
+  ![Multiple spirit buttons bug](readme_images/multiple_spirits_bug.png)
+
+  </details>
+
+  <details><summary>Multiple ingredients buttons bug</summary>
+
+  ![Multiple ingredients buttons bug](readme_images/multiple_ings_bug.png)
+
+  </details><br>
+
+  **Fix:** Ensure the divs holding the spirit buttons and the ingredients buttons are cleared of content whenever the "Back to menu" or "Back" buttons are used, e.g.:
+
+  <details><summary>Multiple buttons fix</summary>
+
+    ```
+    function searchIngredientsToResults() {
+      $("#select-ingredients").hide("drop", function () {
+
+          // Reset innerHTML of "spirit-buttons" and "ing-buttons" to avoid potential duplication
+          
+          spiritBtnsDiv.innerHTML = "";
+          ingBtnsDiv.innerHTML = "";
+
+          $("#results").show("drop");
+          $("#results-back").fadeIn();
+      });
+    }
+    ```
+  </details>
 
 ## Technologies Used
 
@@ -664,26 +769,22 @@ The project was deployed to GitHub Pages using the following steps.
 
 ### Code
 
-- [Bootstrap 5.3](https://getbootstrap.com/docs/5.3/layout/grid/): Bootstrap Library used throughout the project, to make the site responsive using the Bootstrap Grid System, and specific components as outlined above.
-- [Code Institute - adding hover CSS](https://github.com/Code-Institute-Solutions/resume-miniproject-bootstrap4/tree/master/07-adding-hover-css): Used to provide ease-in-out transition on navigation links, social links and buttons.
-- [How to vertically center a bootstrap carousel caption](https://stackoverflow.com/questions/27279865/how-to-vertically-center-a-bootstrap-carousel-caption): Used to vertically centre quotes in box overlaid on hero image on homepage.
-- [CSS fade-in effect](https://blog.hubspot.com/website/css-fade-in): For fade-in effect used on primary images.
-- [W3 CSS animations](https://www.w3schools.com/css/css3_animations.asp): Used to adapt the above fade-in effect to provide a fade-out effect on image gallery captions.
-- [Applying the required attribute to select fields](https://stackoverflow.com/questions/6048710/can-i-apply-the-required-attribute-to-select-fields-in-html): Used to ensure the dropdown selecter in the booking form operates as a required field.
+- [Bootstrap 5.3](https://getbootstrap.com/docs/5.3/layout/grid/): Bootstrap Library used throughout the project, including responsive layout and specific components as outlined above.
+- All other code snippets are credited in comments in the relevant files.
 
 ### Content
 
-- (API)
+- All information regarding cocktails, including names and recipes: [TheCocktailDB API](https://www.thecocktaildb.com/api.php).
 - All other content was written by the developer.
 
 ### Media
 
-- Logo
-- Spirit bottle images
-- 404 image    
+- Logo: [Carla Moreno on Canva](https://www.canva.com/templates/EAFCXIroTmk-orange-and-blue-neon-drinks-bar-animated-logo/)  
+- Cocktail images and spirit bottle images: [TheCocktailDB API](https://www.thecocktaildb.com/api.php)
+- 404 image: [Engin Akyurt on Unsplash](https://unsplash.com/photos/1BwfhAJkTD4)     
 
 ### Acknowledgements
 
-- My Mentor Rory Patrick Sheridan for many helpful pointers, including providing an [example README](https://github.com/Ri-Dearg/horizon-photo/blob/master/README.md) which has provided a useful template for this document.
-- Our Cohort Facilitator Iris Smok for providing helpful guidance on project requirements throughout.
-- 
+- My Mentor [Rory Patrick Sheridan](https://github.com/Ri-Dearg) for many helpful pointers.
+- Our Cohort Facilitator [Iris Smok](https://github.com/Iris-Smok/Iris-Smok) for providing helpful guidance on project requirements throughout.
+- [Emma Hewson](https://github.com/emmahewson) whose [Travel Personality Quiz](https://github.com/emmahewson/mp2_travel_quiz/tree/main) project has provided much inspiration!
